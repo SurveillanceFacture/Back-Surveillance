@@ -6,7 +6,7 @@ public class Divergencia
 {
     public Guid DivergenciaId { get; private set; }
     public Guid ComparacaoId { get; private set; }
-    public string Campo { get; private set; } = null!;
+    public string CampoComparado { get; private set; } = null!;
     public string? ValorXml { get; private set; }
     public string? ValorJson { get; private set; }
     public GravidadeDivergencia Gravidade { get; private set; }
@@ -43,7 +43,7 @@ public class Divergencia
 
         DivergenciaId = Guid.NewGuid();
         ComparacaoId = comparacaoId;
-        Campo = campo.Trim();
+        CampoComparado = campo.Trim();
         ValorXml = Truncar(valorXml);
         ValorJson = Truncar(valorJson);
         Gravidade = gravidade;
