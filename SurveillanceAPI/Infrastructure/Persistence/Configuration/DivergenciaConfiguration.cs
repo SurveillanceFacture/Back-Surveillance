@@ -11,7 +11,7 @@ public class DivergenciaConfiguration : IEntityTypeConfiguration<Divergencia>
         builder.ToTable("Divergencia");
         builder.HasKey(d => d.DivergenciaId);
 
-        builder.Property(d => d.CampoComparado).IsRequired().HasMaxLength(200);
+        builder.Property(d => d.Campo).IsRequired().HasMaxLength(200);
         builder.Property(d => d.ValorXml).HasMaxLength(500);
         builder.Property(d => d.ValorJson).HasMaxLength(500);
         builder.Property(d => d.Observacao).HasMaxLength(1000);
@@ -32,7 +32,7 @@ public class DivergenciaConfiguration : IEntityTypeConfiguration<Divergencia>
             .OnDelete(DeleteBehavior.Restrict);
         builder.Navigation(d => d.Historico).UsePropertyAccessMode(PropertyAccessMode.Field);
 
-        builder.HasIndex(d => new { d.ComparacaoId, d.CampoComparado });
+        builder.HasIndex(d => new { d.ComparacaoId, d.Campo });
         builder.HasIndex(d => d.Status);
     }
 }
