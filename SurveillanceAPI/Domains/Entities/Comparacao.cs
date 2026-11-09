@@ -41,7 +41,6 @@ public class Comparacao
         AuditorUsuarioId = auditorUsuarioId;
         ChaveDocumento = chaveDocumento.Trim();
         HashXml = hashXml;
-        HashJson = hashJson;    
         Status = StatusComparacao.Conforme;
         DataComparacao = DateTime.UtcNow;
     }

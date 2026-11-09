@@ -13,9 +13,6 @@ public class ComparacaoConfiguration : IEntityTypeConfiguration<Comparacao>
 
         builder.Property(c => c.ChaveDocumento).IsRequired().HasMaxLength(44);
         builder.Property(c => c.HashXml).IsRequired().HasMaxLength(64);
-        builder.Property(c => c.HashJson).IsRequired().HasMaxLength(64);
-        builder.Property(c => c.CaminhoXml).IsRequired().HasMaxLength(500);
-        builder.Property(c => c.CaminhoJson).IsRequired().HasMaxLength(500);
         builder.Property(c => c.Status).HasConversion<string>().HasMaxLength(20).IsRequired();
         builder.Property(c => c.DataComparacao).IsRequired();
 
