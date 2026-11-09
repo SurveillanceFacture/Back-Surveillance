@@ -6,7 +6,10 @@ public class Divergencia
 {
     public Guid DivergenciaId { get; private set; }
     public Guid ComparacaoId { get; private set; }
-    public string CampoComparado { get; private set; } = null!;
+    public int NumeroItem {get; private set;}
+    public string? CodigoProduto{get; private set;}
+    public string? Ean {get; private set;}
+    public string? CampoComparado { get; private set; } = null!;
     public string? ValorXml { get; private set; }
     public string? ValorJson { get; private set; }
     public GravidadeDivergencia Gravidade { get; private set; }
