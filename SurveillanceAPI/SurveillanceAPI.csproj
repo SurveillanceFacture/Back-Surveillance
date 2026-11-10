@@ -22,11 +22,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Applications\Authentication\" />
-    <Folder Include="Applications\Service\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Interface\" />
-  </ItemGroup>
-
 </Project>

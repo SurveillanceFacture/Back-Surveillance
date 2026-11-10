@@ -14,7 +14,27 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7815de78-8e5c-4a18-89f4-3d4ba32dac5c" name="Changes" comment="" />
+    <list default="true" id="7815de78-8e5c-4a18-89f4-3d4ba32dac5c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Applications/Authentication/ConfiguracoesJwt.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Applications/Authentication/GeradorTokenJwt.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Applications/Authentication/HashSenha.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Applications/Service/LoginService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Applications/Service/UsuarioService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/AutenticacaoController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/UsuarioController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/AlterarSenhaDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/AtualizarUsuarioDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/CriarUsuarioDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/FiltroUsuarioDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/LerUsuarioDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/PaginaDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Persistence/Repository/UsuarioRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interface/IGeradorTokenJwt.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interface/IHashSenha.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interface/IUsuarioRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SurveillanceAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SurveillanceAPI.csproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +67,11 @@
         </map>
       </branch-storage>
     </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="develop" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -79,61 +104,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.7370167943351609" />
-      <entry key="MS500" value="4.810856597204941" />
-      <entry key="S2" value="12.4301528369318" />
-      <entry key="S5" value="19.831398187551503" />
-      <entry key="S10" value="30.18796917493061" />
-      <entry key="S30" value="60.831995969307286" />
-      <entry key="S60" value="81.76533195223276" />
-      <entry key="M2" value="97.66528819202132" />
-      <entry key="M5" value="110.80356984589604" />
-      <entry key="M10" value="117.43509450872655" />
-      <entry key="M15" value="124.90779866022544" />
-      <entry key="M30" value="170.7649497633106" />
-      <entry key="H1" value="300.27490814608313" />
-      <entry key="H2" value="525.6410320534029" />
-      <entry key="H4" value="778.6626299441174" />
-      <entry key="D1" value="1157.5664148208582" />
-      <entry key="W1" value="1247.168003249931" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="3.61468116017549E-217" />
+      <entry key="S2" value="1.0128107993465907E-54" />
+      <entry key="S5" value="4.912749317185247E-22" />
+      <entry key="S10" value="4.307097828640905E-11" />
+      <entry key="S30" value="8.842198688821331E-4" />
+      <entry key="S60" value="0.06666906013468935" />
+      <entry key="M2" value="0.7883456625558009" />
+      <entry key="M5" value="7.820167226996109" />
+      <entry key="M10" value="28.585236895066842" />
+      <entry key="M15" value="48.75780552580632" />
+      <entry key="M30" value="104.95978015147311" />
+      <entry key="H1" value="229.41957324639446" />
+      <entry key="H2" value="477.8177074799097" />
+      <entry key="H4" value="818.1658300125536" />
+      <entry key="D1" value="1437.6093407530007" />
+      <entry key="W1" value="1601.4126463639434" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.536316188769422E-202" />
-      <entry key="MS500" value="4.338066115386497E-41" />
-      <entry key="S2" value="8.261528819423951E-11" />
-      <entry key="S5" value="1.1042002449339692E-4" />
-      <entry key="S10" value="0.01388431216904797" />
-      <entry key="S30" value="0.3751830676927448" />
-      <entry key="S60" value="0.8878173420326285" />
-      <entry key="M2" value="1.5804548760654504" />
-      <entry key="M5" value="2.8296233948279963" />
-      <entry key="M10" value="3.7326296760596884" />
-      <entry key="M15" value="4.31964669853546" />
-      <entry key="M30" value="6.087111371296988" />
-      <entry key="H1" value="10.32773546821812" />
-      <entry key="H2" value="19.567970710375242" />
-      <entry key="H4" value="31.984154336304055" />
-      <entry key="D1" value="52.86319374702797" />
-      <entry key="W1" value="58.07117352275557" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000101496134" />
+      <entry key="S2" value="1.0100371952818046" />
+      <entry key="S5" value="1.1587248588406418" />
+      <entry key="S10" value="1.3984028850807206" />
+      <entry key="S30" value="1.7358244898047268" />
+      <entry key="S60" value="1.8584739047730194" />
+      <entry key="M2" value="1.98591611654311" />
+      <entry key="M5" value="3.1773229439576274" />
+      <entry key="M10" value="6.184076505788186" />
+      <entry key="M15" value="8.903385794271372" />
+      <entry key="M30" value="16.168762192474663" />
+      <entry key="H1" value="28.65617910899125" />
+      <entry key="H2" value="46.4423112854623" />
+      <entry key="H4" value="67.40575322436591" />
+      <entry key="D1" value="104.39386559023508" />
+      <entry key="W1" value="114.22063002578598" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.6855201762070697" />
-      <entry key="MS500" value="4.778832704368758" />
-      <entry key="S2" value="12.3770513532126" />
-      <entry key="S5" value="19.70896248700031" />
-      <entry key="S10" value="30.048127555426053" />
-      <entry key="S30" value="61.044293560439556" />
-      <entry key="S60" value="82.52639062806689" />
-      <entry key="M2" value="99.16286200502417" />
-      <entry key="M5" value="113.59192906331138" />
-      <entry key="M10" value="121.14463758074919" />
-      <entry key="M15" value="129.210519924682" />
-      <entry key="M30" value="176.83999106151484" />
-      <entry key="H1" value="310.5901166348009" />
-      <entry key="H2" value="545.1950532467446" />
-      <entry key="H4" value="810.634847544431" />
-      <entry key="D1" value="1210.4262957309006" />
-      <entry key="W1" value="1305.2386576545912" />
+      <entry key="MS100" value="1.5704837809672258E-11" />
+      <entry key="MS500" value="0.006905686703059261" />
+      <entry key="S2" value="0.2955886390986905" />
+      <entry key="S5" value="0.7478979527062011" />
+      <entry key="S10" value="1.1537562517618778" />
+      <entry key="S30" value="1.6417803796810557" />
+      <entry key="S60" value="1.8751435701760943" />
+      <entry key="M2" value="2.7447200203111883" />
+      <entry key="M5" value="10.969370303652063" />
+      <entry key="M10" value="34.73697620141517" />
+      <entry key="M15" value="57.628925852218764" />
+      <entry key="M30" value="121.09869157153707" />
+      <entry key="H1" value="258.04879803305903" />
+      <entry key="H2" value="524.2364900103272" />
+      <entry key="H4" value="885.5530566024303" />
+      <entry key="D1" value="1541.9980129696878" />
+      <entry key="W1" value="1715.6324535277727" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -150,25 +175,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;#2 on feature/domains&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "feature/login",
+    "last_opened_file_path": "C:/Users/23971603823/Desktop/Surveillance/SurveillanceAPI",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SurveillanceAPI: http">
     <configuration name="SurveillanceAPI: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SurveillanceAPI.csproj" />
