@@ -1,0 +1,212 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2555F195-54D0-13CC-C49F-1B66F2A7EAB1}|SurveillanceAPI.csproj|c:\\users\\23971603823\\desktop\\surveillance\\surveillanceapi\\exceptions\\domainexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2555F195-54D0-13CC-C49F-1B66F2A7EAB1}|SurveillanceAPI.csproj|solutionrelative:exceptions\\domainexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\Empresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Domains\\Empresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Domains\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\Usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Domains\\Usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Applications\\Service\\UsuarioService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Applications\\Service\\UsuarioService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\TipoUsuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Domains\\TipoUsuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\TipoUsuarioEnum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Domains\\TipoUsuarioEnum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\Configuration\\EmpresaConfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infraestructure\\Persistence\\Configuration\\EmpresaConfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\Configuration\\TipoUsuarioConfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infraestructure\\Persistence\\Configuration\\TipoUsuarioConfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\Configuration\\UsuarioConfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infraestructure\\Persistence\\Configuration\\UsuarioConfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\AppDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infraestructure\\Persistence\\AppDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Controllers\\UsuarioController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Controllers\\UsuarioController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UsuarioService.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Applications\\Service\\UsuarioService.cs",
+              "RelativeDocumentMoniker": "Applications\\Service\\UsuarioService.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Applications\\Service\\UsuarioService.cs",
+              "RelativeToolTip": "Applications\\Service\\UsuarioService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-30T12:24:26.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Empresa.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\Empresa.cs",
+              "RelativeDocumentMoniker": "Domains\\Empresa.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\Empresa.cs",
+              "RelativeToolTip": "Domains\\Empresa.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T13:08:01.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TipoUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\TipoUsuario.cs",
+              "RelativeDocumentMoniker": "Domains\\TipoUsuario.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\TipoUsuario.cs",
+              "RelativeToolTip": "Domains\\TipoUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T12:24:42.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TipoUsuarioEnum.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\TipoUsuarioEnum.cs",
+              "RelativeDocumentMoniker": "Domains\\TipoUsuarioEnum.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\TipoUsuarioEnum.cs",
+              "RelativeToolTip": "Domains\\TipoUsuarioEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T13:06:45.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EmpresaConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\Configuration\\EmpresaConfiguration.cs",
+              "RelativeDocumentMoniker": "Infraestructure\\Persistence\\Configuration\\EmpresaConfiguration.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\Configuration\\EmpresaConfiguration.cs",
+              "RelativeToolTip": "Infraestructure\\Persistence\\Configuration\\EmpresaConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T12:13:17.936Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TipoUsuarioConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\Configuration\\TipoUsuarioConfiguration.cs",
+              "RelativeDocumentMoniker": "Infraestructure\\Persistence\\Configuration\\TipoUsuarioConfiguration.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\Configuration\\TipoUsuarioConfiguration.cs",
+              "RelativeToolTip": "Infraestructure\\Persistence\\Configuration\\TipoUsuarioConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T12:13:02.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DomainException.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Exceptions\\DomainException.cs",
+              "RelativeDocumentMoniker": "Exceptions\\DomainException.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Exceptions\\DomainException.cs",
+              "RelativeToolTip": "Exceptions\\DomainException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-30T11:53:37.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\Usuario.cs",
+              "RelativeDocumentMoniker": "Domains\\Usuario.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\Usuario.cs",
+              "RelativeToolTip": "Domains\\Usuario.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAA0wC4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T11:44:13.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UsuarioConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\Configuration\\UsuarioConfiguration.cs",
+              "RelativeDocumentMoniker": "Infraestructure\\Persistence\\Configuration\\UsuarioConfiguration.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\Configuration\\UsuarioConfiguration.cs",
+              "RelativeToolTip": "Infraestructure\\Persistence\\Configuration\\UsuarioConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T12:12:14.291Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Infraestructure\\Persistence\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Infraestructure\\Persistence\\AppDbContext.cs",
+              "RelativeToolTip": "Infraestructure\\Persistence\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T12:11:31.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-30T12:19:42.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\User.cs",
+              "RelativeDocumentMoniker": "Domains\\User.cs",
+              "ToolTip": "C:\\Users\\23971603823\\Desktop\\Surveillance\\SurveillanceAPI\\Domains\\User.cs",
+              "RelativeToolTip": "Domains\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-30T11:47:48.366Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
