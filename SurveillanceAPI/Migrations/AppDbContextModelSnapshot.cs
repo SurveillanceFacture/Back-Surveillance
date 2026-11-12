@@ -24,22 +24,14 @@ namespace SurveillanceAPI.Migrations
 
             modelBuilder.Entity("SurveillanceAPI.Domains.Comparacao", b =>
                 {
-                    b.Property<Guid>("ComparacaoId")
+                    b.Property<long>("ComparacaoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ComparacaoId"));
 
                     b.Property<Guid>("AuditorUsuarioId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CaminhoJson")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("CaminhoXml")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("ChaveDocumento")
                         .IsRequired()
@@ -48,11 +40,6 @@ namespace SurveillanceAPI.Migrations
 
                     b.Property<DateTime>("DataComparacao")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("HashJson")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
 
                     b.Property<string>("HashXml")
                         .IsRequired()
@@ -80,17 +67,22 @@ namespace SurveillanceAPI.Migrations
 
             modelBuilder.Entity("SurveillanceAPI.Domains.Divergencia", b =>
                 {
-                    b.Property<Guid>("DivergenciaId")
+                    b.Property<long>("DivergenciaId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("Campo")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("DivergenciaId"));
+
+                    b.Property<string>("CampoComparado")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<Guid>("ComparacaoId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("CodigoProduto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("ComparacaoId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("DataDeteccao")
                         .HasColumnType("datetime2");
@@ -98,10 +90,16 @@ namespace SurveillanceAPI.Migrations
                     b.Property<DateTime?>("DataResolucao")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Ean")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Gravidade")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("NumeroItem")
+                        .HasColumnType("int");
 
                     b.Property<string>("Observacao")
                         .HasMaxLength(1000)
@@ -116,8 +114,7 @@ namespace SurveillanceAPI.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("ValorJson")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ValorXml")
                         .HasMaxLength(500)
@@ -129,22 +126,24 @@ namespace SurveillanceAPI.Migrations
 
                     b.HasIndex("Status");
 
-                    b.HasIndex("ComparacaoId", "Campo");
+                    b.HasIndex("ComparacaoId", "CampoComparado");
 
                     b.ToTable("Divergencia", (string)null);
                 });
 
             modelBuilder.Entity("SurveillanceAPI.Domains.HistoricoDivergencia", b =>
                 {
-                    b.Property<Guid>("HistoricoDivergenciaId")
+                    b.Property<long>("HistoricoDivergenciaId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("HistoricoDivergenciaId"));
 
                     b.Property<DateTime>("DataAlteracao")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("DivergenciaId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long>("DivergenciaId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Observacao")
                         .HasMaxLength(1000)

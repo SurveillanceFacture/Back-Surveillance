@@ -10,10 +10,10 @@ public class DivergenciaConfiguration : IEntityTypeConfiguration<Divergencia>
     {
         builder.ToTable("Divergencia");
         builder.HasKey(d => d.DivergenciaId);
+        builder.Property(d => d.DivergenciaId).ValueGeneratedOnAdd();
 
         builder.Property(d => d.CampoComparado).IsRequired().HasMaxLength(200);
         builder.Property(d => d.ValorXml).HasMaxLength(500);
-        builder.Property(d => d.ValorJson).HasMaxLength(500);
         builder.Property(d => d.Observacao).HasMaxLength(1000);
         builder.Property(d => d.DataDeteccao).IsRequired();
 

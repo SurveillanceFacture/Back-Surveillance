@@ -10,11 +10,11 @@ namespace SurveillanceAPI.Applications.Authentication;
 
 public record TokenGerado(string Token, DateTime ExpiraEm);
 
-public class TokenJwtTokenGenerator : IGeradorTokenJwt {
+public class GeradorTokenJwt : IGeradorTokenJwt {
     private readonly ConfiguracoesJwt _settings;
     private readonly SigningCredentials _credentials;
 
-    public TokenJwtTokenGenerator(ConfiguracoesJwt settings)
+    public GeradorTokenJwt(ConfiguracoesJwt settings)
     {
         _settings = settings;
 

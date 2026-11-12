@@ -71,7 +71,7 @@ public class UsuarioService
 
         usuario.AlterarNome(dto.NomeUsuario);
         usuario.AlterarEmail(email);
-        usuario.AlterarTipo(dto.TipoUsuarioId);
+        usuario.AlterarTipoUsuario(dto.TipoUsuarioId);
 
         await _repository.SalvarAsync(ct);
 
@@ -138,7 +138,6 @@ public class UsuarioService
         NomeUsuario = u.NomeUsuario,
         Email = u.Email,
         TipoUsuarioId = u.TipoUsuarioId,
-        // Após trocar o tipo ou criar o usuário, a navegação pode não estar carregada: cai para o enum
         TipoUsuario = u.TipoUsuario?.NomeTipoUsuario ?? ((TipoUsuarioEnum)u.TipoUsuarioId).ToString(),
          Status= u.StatusUsuario,
         DataCriacao = u.DataCriacao,

@@ -10,6 +10,7 @@ public class ComparacaoConfiguration : IEntityTypeConfiguration<Comparacao>
     {
         builder.ToTable("Comparacao");
         builder.HasKey(c => c.ComparacaoId);
+        builder.Property(c => c.ComparacaoId).ValueGeneratedOnAdd();
 
         builder.Property(c => c.ChaveDocumento).IsRequired().HasMaxLength(44);
         builder.Property(c => c.HashXml).IsRequired().HasMaxLength(64);

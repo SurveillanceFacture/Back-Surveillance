@@ -4,8 +4,8 @@ namespace SurveillanceAPI.Domains;
 
 public class Divergencia
 {
-    public Guid DivergenciaId { get; private set; }
-    public Guid ComparacaoId { get; private set; }
+    public long DivergenciaId { get; private set; }
+    public long ComparacaoId { get; private set; }
     public int NumeroItem {get; private set;}
     public string? CodigoProduto{get; private set;}
     public string? Ean {get; private set;}
@@ -27,28 +27,21 @@ public class Divergencia
 
     private Divergencia() { }
 
-    internal Divergencia(Guid comparacaoId, string campo, string? valorXml,
-                         string? valorJson, GravidadeDivergencia gravidade)
+    internal Divergencia(string campo, string? valorXml,
+                          GravidadeDivergencia gravidade)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(campo);
-
-        if (comparacaoId == Guid.Empty)
-            throw new DomainException("Comparação inválida.");
-
+        
         if (campo.Trim().Length > 200)
             throw new DomainException("Nome do campo muito longo.");
 
         if (!Enum.IsDefined(gravidade))
             throw new DomainException("Gravidade inválida.");
 
-        if (valorXml == valorJson)
-            throw new DomainException("Os valores são iguais, não há divergência.");
-
-        DivergenciaId = Guid.NewGuid();
-        ComparacaoId = comparacaoId;
+        
+       
         CampoComparado = campo.Trim();
         ValorXml = Truncar(valorXml);
-        ValorJson = Truncar(valorJson);
         Gravidade = gravidade;
         Status = StatusDivergencia.Aberta;
         DataDeteccao = DateTime.UtcNow;
@@ -93,7 +86,7 @@ public class Divergencia
 
     private void RegistrarMudanca(StatusDivergencia novo, Guid usuarioId, string? observacao)
     {
-        _historico.Add(new HistoricoDivergencia(DivergenciaId, Status, novo, usuarioId, observacao));
+        _historico.Add(new HistoricoDivergencia( Status, novo, usuarioId, observacao));
         Status = novo;
     }
 

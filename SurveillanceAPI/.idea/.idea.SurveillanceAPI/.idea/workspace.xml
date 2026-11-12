@@ -15,24 +15,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7815de78-8e5c-4a18-89f4-3d4ba32dac5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Applications/Authentication/ConfiguracoesJwt.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Applications/Authentication/GeradorTokenJwt.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Applications/Authentication/HashSenha.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Applications/Service/LoginService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Applications/Service/UsuarioService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/AutenticacaoController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/UsuarioController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/AlterarSenhaDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/AtualizarUsuarioDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/CriarUsuarioDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/FiltroUsuarioDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/LerUsuarioDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/PaginaDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Persistence/Repository/UsuarioRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interface/IGeradorTokenJwt.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interface/IHashSenha.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interface/IUsuarioRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/RedefinirSenhaDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/ExceptionHandling/DomainExceptionHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/OpenApi/BearerSecuritySchemeTransformer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Persistence/DbSeeder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/surveillanceapi.metadata.v10.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/surveillanceapi.metadata.v10.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/surveillanceapi.projects.v10.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/surveillanceapi.projects.v10.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/surveillanceapi.strings.v10.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/surveillanceapi.strings.v10.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/FileContentIndex/0cbbe841-921a-43a4-9fdc-c1bfde407f9b.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/FileContentIndex/26a02565-bb7b-4baa-ba22-18697560ff28.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/FileContentIndex/6b041808-c59f-4411-9807-35c5b451b822.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/FileContentIndex/eb3723cc-37cb-4ed7-b013-1686e3b9c070.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/v18/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/v18/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/v18/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/v18/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/v18/DocumentLayout.backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/v18/DocumentLayout.backup.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/v18/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/SurveillanceAPI.slnx/v18/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Authentication/GeradorTokenJwt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Authentication/GeradorTokenJwt.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Service/LoginService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Service/AutenticacaoService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Service/UsuarioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Service/UsuarioService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AutenticacaoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AutenticacaoController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/UsuarioController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UsuarioController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Entities/Comparacao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Entities/Comparacao.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Entities/Divergencia.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Entities/Divergencia.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Entities/HistoricoDivergencia.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Entities/HistoricoDivergencia.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Entities/Usuario.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Entities/Usuario.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exceptions/DomainException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/DomainException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Persistence/Configuration/ComparacaoConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Persistence/Configuration/ComparacaoConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Persistence/Configuration/DivergenciaConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Persistence/Configuration/DivergenciaConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Persistence/Configuration/HistoricoDivergenciaConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Persistence/Configuration/HistoricoDivergenciaConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20261106120834_Inicial.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20261106120834_Inicial.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/launchSettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SurveillanceAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SurveillanceAPI.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,61 +121,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.61468116017549E-217" />
-      <entry key="S2" value="1.0128107993465907E-54" />
-      <entry key="S5" value="4.912749317185247E-22" />
-      <entry key="S10" value="4.307097828640905E-11" />
-      <entry key="S30" value="8.842198688821331E-4" />
-      <entry key="S60" value="0.06666906013468935" />
-      <entry key="M2" value="0.7883456625558009" />
-      <entry key="M5" value="7.820167226996109" />
-      <entry key="M10" value="28.585236895066842" />
-      <entry key="M15" value="48.75780552580632" />
-      <entry key="M30" value="104.95978015147311" />
-      <entry key="H1" value="229.41957324639446" />
-      <entry key="H2" value="477.8177074799097" />
-      <entry key="H4" value="818.1658300125536" />
-      <entry key="D1" value="1437.6093407530007" />
-      <entry key="W1" value="1601.4126463639434" />
+      <entry key="MS100" value="4.2246768432460415E-12" />
+      <entry key="MS500" value="0.00922543509718708" />
+      <entry key="S2" value="0.5293594221106145" />
+      <entry key="S5" value="1.3142741548081243" />
+      <entry key="S10" value="1.9109234278573866" />
+      <entry key="S30" value="2.5544491977358" />
+      <entry key="S60" value="2.7649739334082954" />
+      <entry key="M2" value="3.0990550716304317" />
+      <entry key="M5" value="12.849220337044345" />
+      <entry key="M10" value="48.12602056958229" />
+      <entry key="M15" value="86.63636923762434" />
+      <entry key="M30" value="191.97998032903712" />
+      <entry key="H1" value="364.0946866074622" />
+      <entry key="H2" value="649.6128097423132" />
+      <entry key="H4" value="1073.2239726197145" />
+      <entry key="D1" value="2005.8803789022977" />
+      <entry key="W1" value="2285.1977272546455" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000101496134" />
-      <entry key="S2" value="1.0100371952818046" />
-      <entry key="S5" value="1.1587248588406418" />
-      <entry key="S10" value="1.3984028850807206" />
-      <entry key="S30" value="1.7358244898047268" />
-      <entry key="S60" value="1.8584739047730194" />
-      <entry key="M2" value="1.98591611654311" />
-      <entry key="M5" value="3.1773229439576274" />
-      <entry key="M10" value="6.184076505788186" />
-      <entry key="M15" value="8.903385794271372" />
-      <entry key="M30" value="16.168762192474663" />
-      <entry key="H1" value="28.65617910899125" />
-      <entry key="H2" value="46.4423112854623" />
-      <entry key="H4" value="67.40575322436591" />
-      <entry key="D1" value="104.39386559023508" />
-      <entry key="W1" value="114.22063002578598" />
+      <entry key="MS500" value="1.0000007237619934" />
+      <entry key="S2" value="1.0318827710851528" />
+      <entry key="S5" value="1.3847124641668522" />
+      <entry key="S10" value="2.024463643113414" />
+      <entry key="S30" value="3.075378247223603" />
+      <entry key="S60" value="3.492115493727396" />
+      <entry key="M2" value="3.733504508449021" />
+      <entry key="M5" value="3.9782825932781583" />
+      <entry key="M10" value="5.116812296015511" />
+      <entry key="M15" value="6.945384323321833" />
+      <entry key="M30" value="13.5927140579646" />
+      <entry key="H1" value="27.852726616811918" />
+      <entry key="H2" value="52.47167681985866" />
+      <entry key="H4" value="84.85909573212645" />
+      <entry key="D1" value="149.06023499079586" />
+      <entry key="W1" value="167.5826613302767" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.5704837809672258E-11" />
-      <entry key="MS500" value="0.006905686703059261" />
-      <entry key="S2" value="0.2955886390986905" />
-      <entry key="S5" value="0.7478979527062011" />
-      <entry key="S10" value="1.1537562517618778" />
-      <entry key="S30" value="1.6417803796810557" />
-      <entry key="S60" value="1.8751435701760943" />
-      <entry key="M2" value="2.7447200203111883" />
-      <entry key="M5" value="10.969370303652063" />
-      <entry key="M10" value="34.73697620141517" />
-      <entry key="M15" value="57.628925852218764" />
-      <entry key="M30" value="121.09869157153707" />
-      <entry key="H1" value="258.04879803305903" />
-      <entry key="H2" value="524.2364900103272" />
-      <entry key="H4" value="885.5530566024303" />
-      <entry key="D1" value="1541.9980129696878" />
-      <entry key="W1" value="1715.6324535277727" />
+      <entry key="MS100" value="5.408935518327903E-10" />
+      <entry key="MS500" value="0.021117962165212684" />
+      <entry key="S2" value="0.8486989202492616" />
+      <entry key="S5" value="2.1805350230300893" />
+      <entry key="S10" value="3.525231459870101" />
+      <entry key="S30" value="5.417318781779743" />
+      <entry key="S60" value="6.136302127248736" />
+      <entry key="M2" value="6.767964321310825" />
+      <entry key="M5" value="16.799066873977807" />
+      <entry key="M10" value="53.22175109517635" />
+      <entry key="M15" value="93.56055796182414" />
+      <entry key="M30" value="205.54906894747452" />
+      <entry key="H1" value="391.92134806780666" />
+      <entry key="H2" value="702.058579694071" />
+      <entry key="H4" value="1158.060866707564" />
+      <entry key="D1" value="2154.9335914026165" />
+      <entry key="W1" value="2452.7792436065793" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -175,26 +192,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/login",
-    "last_opened_file_path": "C:/Users/23971603823/Desktop/Surveillance/SurveillanceAPI",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.SurveillanceAPI: http.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/login&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/23971603823/Desktop/Surveillance/SurveillanceAPI&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SurveillanceAPI: http">
     <configuration name="SurveillanceAPI: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SurveillanceAPI.csproj" />
@@ -306,7 +324,8 @@
     <MESSAGE value="feat: Update na tabela Divergencia.cs e appsettings.Development.json" />
     <MESSAGE value="squash! feat: Update na tabela Divergencia.cs e appsettings.Development.json" />
     <MESSAGE value="feat: Update Comparacao.cs e ComparacaoConfiguration.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Update Comparacao.cs e ComparacaoConfiguration.cs" />
+    <MESSAGE value="feat: Iniciando a criacao dos endpoints &quot;Login&quot; e &quot;Usuario&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Iniciando a criacao dos endpoints &quot;Login&quot; e &quot;Usuario&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -323,6 +342,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Persistence/DbSeeder.cs</url>
+          <line>30</line>
+          <properties documentPath="C:\Users\23971603823\Desktop\Surveillance\SurveillanceAPI\Infrastructure\Persistence\DbSeeder.cs" containingFunctionPresentation="Method 'SeedAdminAsync'">
+            <startOffsets>
+              <option value="1256" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1257" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

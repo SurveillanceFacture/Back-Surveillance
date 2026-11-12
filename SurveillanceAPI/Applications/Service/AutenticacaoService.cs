@@ -5,13 +5,13 @@ using SurveillanceAPI.Interface;
 
 namespace SurveillanceAPI.Applications.Service;
 
-public class LoginService
+public class AutenticacaoService
 {
     private readonly IUsuarioRepository _repository;
     private readonly IHashSenha _hasher;
     private readonly IGeradorTokenJwt _tokenGenerator;
 
-    public LoginService(
+    public AutenticacaoService(
         IUsuarioRepository repository,
         IHashSenha hasher,
         IGeradorTokenJwt tokenGenerator)

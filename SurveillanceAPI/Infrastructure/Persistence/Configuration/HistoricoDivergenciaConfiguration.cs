@@ -10,7 +10,8 @@ public class HistoricoDivergenciaConfiguration : IEntityTypeConfiguration<Histor
     {
         builder.ToTable("HistoricoDivergencia");
         builder.HasKey(h => h.HistoricoDivergenciaId);
-
+        builder.Property(h => h.HistoricoDivergenciaId).ValueGeneratedOnAdd();
+        
         builder.Property(h => h.StatusAnterior).HasConversion<string>().HasMaxLength(20).IsRequired();
         builder.Property(h => h.StatusNovo).HasConversion<string>().HasMaxLength(20).IsRequired();
         builder.Property(h => h.Observacao).HasMaxLength(1000);

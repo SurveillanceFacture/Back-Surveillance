@@ -14,7 +14,7 @@ namespace SurveillanceAPI.Controllers;
 [Authorize] // qualquer usuário logado; as ações de gestão exigem Administrador (abaixo)
 public class UsuarioController : ControllerBase
 {
-    private const string SoAdmin = nameof(TipoUsuarioEnum.Administrador);
+    private const string Admin = nameof(TipoUsuarioEnum.Administrador);
 
     private readonly UsuarioService _service;
 
@@ -32,7 +32,7 @@ public class UsuarioController : ControllerBase
     // ---------- Gestão (somente Administrador) ----------
 
     [HttpPost]
-    [Authorize(Roles = SoAdmin)]
+    [Authorize(Roles = Admin)]
     [ProducesResponseType(typeof(LerUsuarioDto), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -43,7 +43,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize(Roles = SoAdmin)]
+    [Authorize(Roles = Admin)]
     public async Task<ActionResult<PaginaDto<LerUsuarioDto>>> Listar(
         [FromQuery] FiltroUsuarioDto filtro, CancellationToken ct)
     {
@@ -51,7 +51,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpGet("{id:guid}")]
-    [Authorize(Roles = SoAdmin)]
+    [Authorize(Roles = Admin)]
     [ProducesResponseType(typeof(LerUsuarioDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<LerUsuarioDto>> Obter(Guid id, CancellationToken ct)
@@ -60,7 +60,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPut("{id:guid}")]
-    [Authorize(Roles = SoAdmin)]
+    [Authorize(Roles = Admin)]
     [ProducesResponseType(typeof(LerUsuarioDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -72,7 +72,7 @@ public class UsuarioController : ControllerBase
 
     /// <summary>Desativa o usuário (não apaga: ele tem histórico no sistema).</summary>
     [HttpDelete("{id:guid}")]
-    [Authorize(Roles = SoAdmin)]
+    [Authorize(Roles = Admin)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -83,7 +83,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPost("{id:guid}/reativar")]
-    [Authorize(Roles = SoAdmin)]
+    [Authorize(Roles = Admin)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Reativar(Guid id, CancellationToken ct)
@@ -93,7 +93,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPut("{id:guid}/senha")]
-    [Authorize(Roles = SoAdmin)]
+    [Authorize(Roles = Admin)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> RedefinirSenha(Guid id, RedefinirSenhaDto dto, CancellationToken ct)

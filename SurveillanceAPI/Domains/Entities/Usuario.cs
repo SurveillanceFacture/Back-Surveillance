@@ -1,4 +1,5 @@
-﻿using SurveillanceAPI.Exceptions;
+﻿using System.ComponentModel.DataAnnotations;
+using SurveillanceAPI.Exceptions;
 
 namespace SurveillanceAPI.Domains
 {
@@ -40,7 +41,7 @@ namespace SurveillanceAPI.Domains
 
             UsuarioId = Guid.NewGuid();
             NomeUsuario = nomeUsuario.Trim();
-            Email = email.Trim().ToLowerInvariant();
+            Email = NormalizarEmail(email.Trim().ToLowerInvariant());
             HashSenha = hashSenha;
             TipoUsuarioId = tipoUsuarioId;
             DataCriacao = DateTime.UtcNow;
@@ -54,8 +55,48 @@ namespace SurveillanceAPI.Domains
                 throw new DomainException("Email muito longo.");
             }
 
-            Email = novoEmail.Trim().ToLowerInvariant();
+            Email = NormalizarEmail(novoEmail.Trim().ToLowerInvariant());
         }
+        
+        private static string NormalizarEmail(string email)
+        {
+            var normalizado = email.Trim().ToLowerInvariant();
+
+            if (normalizado.Length > 254)
+                throw new DomainException("Email muito longo.");
+
+            if (!new EmailAddressAttribute().IsValid(normalizado))
+                throw new DomainException("E-mail inválido.");
+
+            return normalizado;
+        }
+
+        public void AlterarNome(string novoNome)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(novoNome);
+            if (novoNome.Trim().Length > 150)
+            {
+                throw new DomainException("Nome muito longo.");
+            }
+
+            NomeUsuario = novoNome;
+        }
+
+        public void AlterarSenha(string novoHashSenha)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(novoHashSenha);
+            HashSenha = novoHashSenha;
+        }
+
+        public void AlterarTipoUsuario(int novoTipoUsuarioId)
+        {
+            if (novoTipoUsuarioId <= 0)
+            {
+                throw new DomainException("Tipo de usuario invalido");
+
+            }
+                TipoUsuarioId = novoTipoUsuarioId;
+    }
         
         public void RegistrarAcesso() => UltimoAcesso = DateTime.UtcNow;
         

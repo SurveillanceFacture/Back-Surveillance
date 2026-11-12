@@ -9,9 +9,9 @@ namespace SurveillanceAPI.Controllers;
 [Route("api/[controller]")]
 public class AutenticacaoController:ControllerBase
 {
-    private readonly LoginService _service;
+    private readonly AutenticacaoService _service;
         
-    public AutenticacaoController(LoginService service)
+    public AutenticacaoController(AutenticacaoService service)
     {
         _service = service;
     }
