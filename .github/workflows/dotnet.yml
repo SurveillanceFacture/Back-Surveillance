@@ -23,6 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore **/*.sln
     - name: Build
-      run: dotnet build **/*.sln --no-restore--configuration Release
+      run: dotnet build  --no-restore--configuration Release
     - name: Test
-      run: dotnet test **/*.sln --no-build --verbosity normal --pass-on-no-matching-tests
+      run: dotnet test  --no-build --verbosity normal --pass-on-no-matching-tests
