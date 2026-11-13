@@ -7,23 +7,16 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
   <component name="CMakeSettings">
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Applications/Service/Upload/LerArquivoService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Applications/Service/Upload/Modelo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dto/UsuarioDto/CorrigirEmailDto.cs" afterDir="false" />
+    <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="refactor: Melhora na redefinicao de senha e email do usuario">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications/Authentication/GeradorTokenJwt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Authentication/GeradorTokenJwt.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications/Service/AutenticacaoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Service/AutenticacaoService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications/Service/UsuarioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Service/UsuarioService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/UsuarioController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UsuarioController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domains/Entities/Usuario.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Entities/Usuario.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dto/LoginDto/LerLoginDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dto/LoginDto/LerLoginDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,61 +72,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.000000001577459" />
-      <entry key="M2" value="1.0002483900130419" />
-      <entry key="M5" value="1.527863809571346" />
-      <entry key="M10" value="9.251946706672287" />
-      <entry key="M15" value="23.363649103489077" />
-      <entry key="M30" value="67.32200625110758" />
-      <entry key="H1" value="121.58698569355627" />
-      <entry key="H2" value="166.6722229251208" />
-      <entry key="H4" value="196.24585589683284" />
-      <entry key="D1" value="225.55276325336396" />
-      <entry key="W1" value="231.06614679676179" />
+      <entry key="MS100" value="1.0000000409943413" />
+      <entry key="MS500" value="1.0341614005611184" />
+      <entry key="S2" value="1.5984486827319122" />
+      <entry key="S5" value="2.281868681976224" />
+      <entry key="S10" value="3.1150095429338718" />
+      <entry key="S30" value="6.53890615905574" />
+      <entry key="S60" value="9.862872035110811" />
+      <entry key="M2" value="12.739680984167261" />
+      <entry key="M5" value="15.875400642980033" />
+      <entry key="M10" value="21.546013247883735" />
+      <entry key="M15" value="30.14094036551889" />
+      <entry key="M30" value="64.89844374872374" />
+      <entry key="H1" value="122.17082562072913" />
+      <entry key="H2" value="178.9631198557032" />
+      <entry key="H4" value="219.96128394175807" />
+      <entry key="D1" value="263.17219582306194" />
+      <entry key="W1" value="271.5695440019088" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="1.588561646975722E-132" />
-      <entry key="S10" value="2.1509921418487156E-66" />
-      <entry key="S30" value="3.0843043704342877E-22" />
-      <entry key="S60" value="3.734810194401356E-11" />
-      <entry key="M2" value="1.410242293267356E-5" />
-      <entry key="M5" value="0.0340582424500841" />
-      <entry key="M10" value="0.530216500983176" />
-      <entry key="M15" value="1.477876039002435" />
-      <entry key="M30" value="4.744773124463666" />
-      <entry key="H1" value="9.195986216992527" />
-      <entry key="H2" value="13.108382887457573" />
-      <entry key="H4" value="15.748261945835075" />
-      <entry key="D1" value="18.40935314605762" />
-      <entry key="W1" value="18.91433856073933" />
+      <entry key="S5" value="5.892349257272066E-236" />
+      <entry key="S10" value="4.1426765664507895E-118" />
+      <entry key="S30" value="1.7811669601395625E-39" />
+      <entry key="S60" value="8.975160759335525E-20" />
+      <entry key="M2" value="6.913223306084213E-10" />
+      <entry key="M5" value="6.432458202623863E-4" />
+      <entry key="M10" value="0.07286695299535681" />
+      <entry key="M15" value="0.393570846881627" />
+      <entry key="M30" value="2.448543972574227" />
+      <entry key="H1" value="6.606090819644838" />
+      <entry key="H2" value="11.110209096464846" />
+      <entry key="H4" value="14.498370274463749" />
+      <entry key="D1" value="18.157370484303264" />
+      <entry key="W1" value="18.87713477559643" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="7.336364062413178E-13" />
-      <entry key="MS500" value="0.003741934446182407" />
-      <entry key="S2" value="0.24732843174580582" />
-      <entry key="S5" value="0.5718862008448176" />
-      <entry key="S10" value="0.7562315788465974" />
-      <entry key="S30" value="0.9110696992321725" />
-      <entry key="S60" value="0.9544997130836681" />
-      <entry key="M2" value="0.9772465345815317" />
-      <entry key="M5" value="1.5520594381215327" />
-      <entry key="M10" value="9.773468978567974" />
-      <entry key="M15" value="24.831418435898474" />
-      <entry key="M30" value="72.05489751275395" />
-      <entry key="H1" value="130.77253186468147" />
-      <entry key="H2" value="179.7734105248491" />
-      <entry key="H4" value="211.9898505973062" />
-      <entry key="D1" value="243.9612921436602" />
-      <entry key="W1" value="249.98036453265195" />
+      <entry key="MS100" value="0.0013066086607307534" />
+      <entry key="MS500" value="0.29877282746710565" />
+      <entry key="S2" value="1.3142577038792447" />
+      <entry key="S5" value="2.154598548607353" />
+      <entry key="S10" value="3.0369756147127287" />
+      <entry key="S30" value="6.469813816549751" />
+      <entry key="S60" value="9.80617707887272" />
+      <entry key="M2" value="12.702025559930808" />
+      <entry key="M5" value="15.857604485442211" />
+      <entry key="M10" value="21.607499831108882" />
+      <entry key="M15" value="30.524592634414308" />
+      <entry key="M30" value="67.33690647141583" />
+      <entry key="H1" value="128.76732296213538" />
+      <entry key="H2" value="190.0661479134846" />
+      <entry key="H4" value="234.45517455803702" />
+      <entry key="D1" value="281.3286600410887" />
+      <entry key="W1" value="290.44654482629653" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -180,4 +173,8 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactor: Melhora na redefinicao de senha e email do usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Melhora na redefinicao de senha e email do usuario" />
+  </component>
 </project>
