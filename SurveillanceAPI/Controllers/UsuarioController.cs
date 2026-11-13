@@ -91,6 +91,16 @@ public class UsuarioController : ControllerBase
         await _service.ReativarAsync(id, ct);
         return NoContent();
     }
+    
+    [HttpPut("{id:guid}/email")]
+    [Authorize(Roles = Admin)]
+    [ProducesResponseType(typeof(LerUsuarioDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<LerUsuarioDto>> CorrigirEmail(Guid id, CorrigirEmailDto dto, CancellationToken ct)
+    {
+        return Ok(await _service.CorrigirEmailAsync(id, dto, UsuarioLogadoId, ct));
+    }
 
     [HttpPut("{id:guid}/senha")]
     [Authorize(Roles = Admin)]

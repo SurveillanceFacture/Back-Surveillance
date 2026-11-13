@@ -261,6 +261,9 @@ namespace SurveillanceAPI.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("DeveTrocarSenha")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(254)
@@ -274,6 +277,9 @@ namespace SurveillanceAPI.Migrations
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
+
+                    b.Property<DateTime?>("SenhaExpiraEm")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("StatusUsuario")
                         .HasColumnType("bit");

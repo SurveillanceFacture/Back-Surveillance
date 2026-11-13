@@ -13,6 +13,7 @@ public record TokenGerado(string Token, DateTime ExpiraEm);
 public class GeradorTokenJwt : IGeradorTokenJwt {
     private readonly ConfiguracoesJwt _settings;
     private readonly SigningCredentials _credentials;
+    public const string ClaimDeveTrocarSenha = "deve_trocar_senha";
 
     public GeradorTokenJwt(ConfiguracoesJwt settings)
     {
@@ -22,21 +23,26 @@ public class GeradorTokenJwt : IGeradorTokenJwt {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.Key));
         _credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
     }
-
+    
     public TokenGerado Gerar(Usuario usuario)
     {
         var agora = DateTime.UtcNow;
         var expiraEm = agora.AddMinutes(_settings.ExpiracaoMinutos);
 
+        var claims = new List<Claim>
+        {
+            new(ClaimTypes.NameIdentifier, usuario.UsuarioId.ToString()),
+            new(ClaimTypes.Name, usuario.NomeUsuario),
+            new(ClaimTypes.Email, usuario.Email),
+            new(ClaimTypes.Role, usuario.TipoUsuario.NomeTipoUsuario)
+        };
+
+        if (usuario.DeveTrocarSenha)
+            claims.Add(new Claim(ClaimDeveTrocarSenha, "true"));
+
         var descriptor = new SecurityTokenDescriptor
         {
-            Subject = new ClaimsIdentity(new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, usuario.UsuarioId.ToString()),
-                new Claim(ClaimTypes.Name, usuario.NomeUsuario),
-                new Claim(ClaimTypes.Email, usuario.Email),
-                new Claim(ClaimTypes.Role, usuario.TipoUsuario.NomeTipoUsuario)
-            }),
+            Subject = new ClaimsIdentity(claims),
             Issuer = _settings.Issuer,
             Audience = _settings.Audience,
             IssuedAt = agora,
@@ -48,4 +54,6 @@ public class GeradorTokenJwt : IGeradorTokenJwt {
         var token = new JsonWebTokenHandler().CreateToken(descriptor);
         return new TokenGerado(token, expiraEm);
     }
+
+   
 }

@@ -11,6 +11,8 @@ public class UsuarioService
 {
     private readonly IUsuarioRepository _repository;
     private readonly IHashSenha _hasher;
+    private readonly ILogger<UsuarioService> _logger;
+    private static readonly TimeSpan ValidadeSenhaTemporaria = TimeSpan.FromHours(48);
 
     public UsuarioService(IUsuarioRepository repository, IHashSenha hasher)
     {
@@ -25,9 +27,11 @@ public class UsuarioService
         var email = Normalizar(dto.Email);
         if (await _repository.EmailExisteAsync(email, null, ct))
             throw new DomainException("E-mail já cadastrado.");
-
-        var usuario = new Usuario(dto.NomeUsuario, email, _hasher.Hash(dto.Senha), dto.TipoUsuarioId);
-
+        
+        var hash = _hasher.Hash(dto.Senha);
+        var usuario = new Usuario(dto.NomeUsuario, email, hash, dto.TipoUsuarioId);
+        usuario.DefinirSenhaTemporaria(hash, ValidadeSenhaTemporaria);
+        
         _repository.Adicionar(usuario);
         await _repository.SalvarAsync(ct);
 
@@ -78,6 +82,28 @@ public class UsuarioService
         return Mapear(usuario);
     }
 
+    public async Task<LerUsuarioDto> CorrigirEmailAsync(Guid id, CorrigirEmailDto dto, Guid adminId,
+            CancellationToken ct)
+        {
+            var usuario = await ObterOuFalharAsync(id, ct);
+            var email = Normalizar(dto.NovoEmail);
+
+            if (email == usuario.Email)
+                throw new DomainException("O novo e-mail é igual ao atual.");
+
+            if (await _repository.EmailExisteAsync(email, id, ct))
+                throw new DomainException("E-mail já cadastrado.");
+
+            var anterior = usuario.Email;
+            usuario.CorrigirEmail(email);          // lança erro se o usuário já acessou
+            await _repository.SalvarAsync(ct);
+
+            _logger.LogInformation("Admin {Admin} corrigiu o e-mail do usuário {Id} de {Antigo} para {Novo}.",
+                adminId, id, anterior, email);
+
+            return Mapear(usuario);
+        }
+
     /// <summary>"Excluir" = desativar. O usuário tem histórico (lojas, comparações, divergências).</summary>
     public async Task DesativarAsync(Guid id, Guid usuarioLogadoId, CancellationToken ct)
     {
@@ -99,7 +125,7 @@ public class UsuarioService
     public async Task RedefinirSenhaAsync(Guid id, RedefinirSenhaDto dto, CancellationToken ct)
     {
         var usuario = await ObterOuFalharAsync(id, ct);
-        usuario.AlterarSenha(_hasher.Hash(dto.NovaSenha));
+        usuario.DefinirSenhaTemporaria(_hasher.Hash(dto.NovaSenha), ValidadeSenhaTemporaria);
         await _repository.SalvarAsync(ct);
     }
 

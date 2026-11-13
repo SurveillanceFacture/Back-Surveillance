@@ -36,7 +36,10 @@ public class AutenticacaoService
         var senhaOk = _hasher.Validar(usuario.HashSenha, dto.Senha);
         if (!senhaOk || !usuario.StatusUsuario)
             throw new DomainException("E-mail ou senha inválidos.");
-
+        
+        if (usuario.SenhaTemporariaExpirada())
+            throw new DomainException("A senha temporária expirou. Solicite uma nova ao administrador.");
+        
         usuario.RegistrarAcesso();
         await _repository.SalvarAsync(ct);
 
@@ -48,7 +51,8 @@ public class AutenticacaoService
             ExpiraEm = token.ExpiraEm,
             UsuarioId = usuario.UsuarioId,
             Nome = usuario.NomeUsuario,
-            TipoUsuario = usuario.TipoUsuario.NomeTipoUsuario
+            TipoUsuario = usuario.TipoUsuario.NomeTipoUsuario,
+            DeveTrocarSenha = usuario.DeveTrocarSenha
         };
     }
 }

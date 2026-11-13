@@ -12,7 +12,8 @@ namespace SurveillanceAPI.Domains
         public DateTime DataCriacao { get; private set; }
         public DateTime? UltimoAcesso { get; private set; } = null!;
         public bool StatusUsuario { get; private set; } = true;
-
+        public bool DeveTrocarSenha { get; private set; }
+        public DateTime? SenhaExpiraEm { get; private set; }
         public int TipoUsuarioId { get; private set; }
         public TipoUsuario TipoUsuario { get; private set; }    
 
@@ -81,11 +82,22 @@ namespace SurveillanceAPI.Domains
 
             NomeUsuario = novoNome;
         }
+        public void DefinirSenhaTemporaria(string novoHashSenha, TimeSpan validade)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(novoHashSenha);
+            if (validade <= TimeSpan.Zero) throw new DomainException("Validade inválida.");
+
+            HashSenha = novoHashSenha;
+            DeveTrocarSenha = true;
+            SenhaExpiraEm = DateTime.UtcNow.Add(validade);
+        }
 
         public void AlterarSenha(string novoHashSenha)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(novoHashSenha);
             HashSenha = novoHashSenha;
+            DeveTrocarSenha = false;
+            SenhaExpiraEm = null;
         }
 
         public void AlterarTipoUsuario(int novoTipoUsuarioId)
@@ -96,12 +108,20 @@ namespace SurveillanceAPI.Domains
 
             }
                 TipoUsuarioId = novoTipoUsuarioId;
-    }
+        }
+
+        public void CorrigirEmail(string novoEmail)
+        {
+            if (UltimoAcesso.HasValue)
+                throw new DomainException("O usuario ja acessou o sistema. Apenas ele pode alterar o e-mail.");
+            
+            AlterarEmail(novoEmail);
+        }
+        
+        public bool SenhaTemporariaExpirada() =>
+            DeveTrocarSenha && SenhaExpiraEm.HasValue && DateTime.UtcNow >= SenhaExpiraEm.Value;
         
         public void RegistrarAcesso() => UltimoAcesso = DateTime.UtcNow;
-        
-        public bool EstaOnline(TimeSpan janela) => 
-            UltimoAcesso.HasValue && DateTime.UtcNow - UltimoAcesso.Value <= janela;
         
         public void Desativar() => StatusUsuario = false;
         public void Ativar() => StatusUsuario = true;
