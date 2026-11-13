@@ -45,6 +45,11 @@ ScaffoldingReadMe.txt
 !.env.example
 
 
+# Visual Studio
+.vs/
+*.user
+*.suo
+
 # Others
 ~$*
 *~
