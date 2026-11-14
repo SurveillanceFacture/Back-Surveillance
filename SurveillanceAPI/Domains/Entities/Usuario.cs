@@ -1,4 +1,5 @@
-﻿using SurveillanceAPI.Exceptions;
+﻿using System.ComponentModel.DataAnnotations;
+using SurveillanceAPI.Exceptions;
 
 namespace SurveillanceAPI.Domains
 {
@@ -11,7 +12,8 @@ namespace SurveillanceAPI.Domains
         public DateTime DataCriacao { get; private set; }
         public DateTime? UltimoAcesso { get; private set; } = null!;
         public bool StatusUsuario { get; private set; } = true;
-
+        public bool DeveTrocarSenha { get; private set; }
+        public DateTime? SenhaExpiraEm { get; private set; }
         public int TipoUsuarioId { get; private set; }
         public TipoUsuario TipoUsuario { get; private set; }    
 
@@ -40,7 +42,7 @@ namespace SurveillanceAPI.Domains
 
             UsuarioId = Guid.NewGuid();
             NomeUsuario = nomeUsuario.Trim();
-            Email = email.Trim().ToLowerInvariant();
+            Email = NormalizarEmail(email.Trim().ToLowerInvariant());
             HashSenha = hashSenha;
             TipoUsuarioId = tipoUsuarioId;
             DataCriacao = DateTime.UtcNow;
@@ -54,13 +56,72 @@ namespace SurveillanceAPI.Domains
                 throw new DomainException("Email muito longo.");
             }
 
-            Email = novoEmail.Trim().ToLowerInvariant();
+            Email = NormalizarEmail(novoEmail.Trim().ToLowerInvariant());
         }
         
-        public void RegistrarAcesso() => UltimoAcesso = DateTime.UtcNow;
+        private static string NormalizarEmail(string email)
+        {
+            var normalizado = email.Trim().ToLowerInvariant();
+
+            if (normalizado.Length > 254)
+                throw new DomainException("Email muito longo.");
+
+            if (!new EmailAddressAttribute().IsValid(normalizado))
+                throw new DomainException("E-mail inválido.");
+
+            return normalizado;
+        }
+
+        public void AlterarNome(string novoNome)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(novoNome);
+            if (novoNome.Trim().Length > 150)
+            {
+                throw new DomainException("Nome muito longo.");
+            }
+
+            NomeUsuario = novoNome;
+        }
+        public void DefinirSenhaTemporaria(string novoHashSenha, TimeSpan validade)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(novoHashSenha);
+            if (validade <= TimeSpan.Zero) throw new DomainException("Validade inválida.");
+
+            HashSenha = novoHashSenha;
+            DeveTrocarSenha = true;
+            SenhaExpiraEm = DateTime.UtcNow.Add(validade);
+        }
+
+        public void AlterarSenha(string novoHashSenha)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(novoHashSenha);
+            HashSenha = novoHashSenha;
+            DeveTrocarSenha = false;
+            SenhaExpiraEm = null;
+        }
+
+        public void AlterarTipoUsuario(int novoTipoUsuarioId)
+        {
+            if (novoTipoUsuarioId <= 0)
+            {
+                throw new DomainException("Tipo de usuario invalido");
+
+            }
+                TipoUsuarioId = novoTipoUsuarioId;
+        }
+
+        public void CorrigirEmail(string novoEmail)
+        {
+            if (UltimoAcesso.HasValue)
+                throw new DomainException("O usuario ja acessou o sistema. Apenas ele pode alterar o e-mail.");
+            
+            AlterarEmail(novoEmail);
+        }
         
-        public bool EstaOnline(TimeSpan janela) => 
-            UltimoAcesso.HasValue && DateTime.UtcNow - UltimoAcesso.Value <= janela;
+        public bool SenhaTemporariaExpirada() =>
+            DeveTrocarSenha && SenhaExpiraEm.HasValue && DateTime.UtcNow >= SenhaExpiraEm.Value;
+        
+        public void RegistrarAcesso() => UltimoAcesso = DateTime.UtcNow;
         
         public void Desativar() => StatusUsuario = false;
         public void Ativar() => StatusUsuario = true;

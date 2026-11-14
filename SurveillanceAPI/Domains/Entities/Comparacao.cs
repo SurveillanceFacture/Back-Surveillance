@@ -4,7 +4,7 @@ namespace SurveillanceAPI.Domains;
 
 public class Comparacao
 {
-    public Guid ComparacaoId { get; private set; }
+    public long ComparacaoId { get; private set; }
     public Guid LojaId { get; private set; }
     public Guid AuditorUsuarioId { get; private set; }   
     public string ChaveDocumento { get; private set; } = null!;
@@ -21,11 +21,9 @@ public class Comparacao
     private Comparacao() { }
 
     public Comparacao(Guid lojaId, Guid auditorUsuarioId, string chaveDocumento,
-                      string hashXml, string hashJson)
+                      string hashXml)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(chaveDocumento);
-        ArgumentException.ThrowIfNullOrWhiteSpace(hashXml);
-        ArgumentException.ThrowIfNullOrWhiteSpace(hashJson);
 
         if (lojaId == Guid.Empty)
             throw new DomainException("Loja inválida.");
@@ -35,8 +33,7 @@ public class Comparacao
 
         if (chaveDocumento.Trim().Length > 44)
             throw new DomainException("Chave do documento inválida.");
-
-        ComparacaoId = Guid.NewGuid();
+        
         LojaId = lojaId;
         AuditorUsuarioId = auditorUsuarioId;
         ChaveDocumento = chaveDocumento.Trim();
@@ -45,10 +42,10 @@ public class Comparacao
         DataComparacao = DateTime.UtcNow;
     }
 
-    public void AdicionarDivergencia(string campo, string? valorXml, string? valorJson,
+    public void AdicionarDivergencia(string campo, string? valorXml,
                                      GravidadeDivergencia gravidade)
     {
-        _divergencias.Add(new Divergencia(ComparacaoId, campo, valorXml, valorJson, gravidade));
+        _divergencias.Add(new Divergencia(campo,valorXml, gravidade));
         Status = StatusComparacao.ComDivergencias;
     }
 }

@@ -14,39 +14,21 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7815de78-8e5c-4a18-89f4-3d4ba32dac5c" name="Changes" comment="" />
+    <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="refactor: Melhora na redefinicao de senha e email do usuario">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <excluded-from-favorite>
-      <branch-storage>
-        <map>
-          <entry type="REMOTE">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$/.." source="origin/main" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </excluded-from-favorite>
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="REMOTE">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$/.." source="origin/develop" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="feature/login" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -64,85 +46,93 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/47f87616cc4440db91dba39140060003f4a750/29/d5c08a4a/ArgumentException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Roaming/Microsoft/UserSecrets/77ac4296-bc2c-484b-88d9-4b48bf3d1dbe/secrets.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Applications/Service/UsuarioService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/AutenticacaoController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/UsuarioController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domains/Entities/Divergencia.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domains/Entities/HistoricoDivergencia.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domains/Entities/Loja.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Entities/TipoUsuario.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domains/Entities/Usuario.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Enums/GravidadeDivergenciaEnum.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Enums/StatusComparacao.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Enums/TipoUsuarioEnum.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Dto/LoginDto/LerLoginDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Exceptions/DomainException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/ExceptionHandling/DomainExceptionHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/OpenApi/BearerSecuritySchemeTransformer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/ComparacaoConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/DivergenciaConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/HistoricoDivergenciaConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/UsuarioConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/obj/Debug/net10.0/.NETCoreApp,Version=v10.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/23971603823/Desktop/Surveillance/SurveillanceAPI/Domains/Entities/Divergencia.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/23971603823/Desktop/Surveillance/SurveillanceAPI/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.7370167943351609" />
-      <entry key="MS500" value="4.810856597204941" />
-      <entry key="S2" value="12.4301528369318" />
-      <entry key="S5" value="19.831398187551503" />
-      <entry key="S10" value="30.18796917493061" />
-      <entry key="S30" value="60.831995969307286" />
-      <entry key="S60" value="81.76533195223276" />
-      <entry key="M2" value="97.66528819202132" />
-      <entry key="M5" value="110.80356984589604" />
-      <entry key="M10" value="117.43509450872655" />
-      <entry key="M15" value="124.90779866022544" />
-      <entry key="M30" value="170.7649497633106" />
-      <entry key="H1" value="300.27490814608313" />
-      <entry key="H2" value="525.6410320534029" />
-      <entry key="H4" value="778.6626299441174" />
-      <entry key="D1" value="1157.5664148208582" />
-      <entry key="W1" value="1247.168003249931" />
+      <entry key="MS100" value="1.0000000409943413" />
+      <entry key="MS500" value="1.0341614005611184" />
+      <entry key="S2" value="1.5984486827319122" />
+      <entry key="S5" value="2.281868681976224" />
+      <entry key="S10" value="3.1150095429338718" />
+      <entry key="S30" value="6.53890615905574" />
+      <entry key="S60" value="9.862872035110811" />
+      <entry key="M2" value="12.739680984167261" />
+      <entry key="M5" value="15.875400642980033" />
+      <entry key="M10" value="21.546013247883735" />
+      <entry key="M15" value="30.14094036551889" />
+      <entry key="M30" value="64.89844374872374" />
+      <entry key="H1" value="122.17082562072913" />
+      <entry key="H2" value="178.9631198557032" />
+      <entry key="H4" value="219.96128394175807" />
+      <entry key="D1" value="263.17219582306194" />
+      <entry key="W1" value="271.5695440019088" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.536316188769422E-202" />
-      <entry key="MS500" value="4.338066115386497E-41" />
-      <entry key="S2" value="8.261528819423951E-11" />
-      <entry key="S5" value="1.1042002449339692E-4" />
-      <entry key="S10" value="0.01388431216904797" />
-      <entry key="S30" value="0.3751830676927448" />
-      <entry key="S60" value="0.8878173420326285" />
-      <entry key="M2" value="1.5804548760654504" />
-      <entry key="M5" value="2.8296233948279963" />
-      <entry key="M10" value="3.7326296760596884" />
-      <entry key="M15" value="4.31964669853546" />
-      <entry key="M30" value="6.087111371296988" />
-      <entry key="H1" value="10.32773546821812" />
-      <entry key="H2" value="19.567970710375242" />
-      <entry key="H4" value="31.984154336304055" />
-      <entry key="D1" value="52.86319374702797" />
-      <entry key="W1" value="58.07117352275557" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="5.892349257272066E-236" />
+      <entry key="S10" value="4.1426765664507895E-118" />
+      <entry key="S30" value="1.7811669601395625E-39" />
+      <entry key="S60" value="8.975160759335525E-20" />
+      <entry key="M2" value="6.913223306084213E-10" />
+      <entry key="M5" value="6.432458202623863E-4" />
+      <entry key="M10" value="0.07286695299535681" />
+      <entry key="M15" value="0.393570846881627" />
+      <entry key="M30" value="2.448543972574227" />
+      <entry key="H1" value="6.606090819644838" />
+      <entry key="H2" value="11.110209096464846" />
+      <entry key="H4" value="14.498370274463749" />
+      <entry key="D1" value="18.157370484303264" />
+      <entry key="W1" value="18.87713477559643" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.6855201762070697" />
-      <entry key="MS500" value="4.778832704368758" />
-      <entry key="S2" value="12.3770513532126" />
-      <entry key="S5" value="19.70896248700031" />
-      <entry key="S10" value="30.048127555426053" />
-      <entry key="S30" value="61.044293560439556" />
-      <entry key="S60" value="82.52639062806689" />
-      <entry key="M2" value="99.16286200502417" />
-      <entry key="M5" value="113.59192906331138" />
-      <entry key="M10" value="121.14463758074919" />
-      <entry key="M15" value="129.210519924682" />
-      <entry key="M30" value="176.83999106151484" />
-      <entry key="H1" value="310.5901166348009" />
-      <entry key="H2" value="545.1950532467446" />
-      <entry key="H4" value="810.634847544431" />
-      <entry key="D1" value="1210.4262957309006" />
-      <entry key="W1" value="1305.2386576545912" />
+      <entry key="MS100" value="0.0013066086607307534" />
+      <entry key="MS500" value="0.29877282746710565" />
+      <entry key="S2" value="1.3142577038792447" />
+      <entry key="S5" value="2.154598548607353" />
+      <entry key="S10" value="3.0369756147127287" />
+      <entry key="S30" value="6.469813816549751" />
+      <entry key="S60" value="9.80617707887272" />
+      <entry key="M2" value="12.702025559930808" />
+      <entry key="M5" value="15.857604485442211" />
+      <entry key="M10" value="21.607499831108882" />
+      <entry key="M15" value="30.524592634414308" />
+      <entry key="M30" value="67.33690647141583" />
+      <entry key="H1" value="128.76732296213538" />
+      <entry key="H2" value="190.0661479134846" />
+      <entry key="H4" value="234.45517455803702" />
+      <entry key="D1" value="281.3286600410887" />
+      <entry key="W1" value="290.44654482629653" />
     </decayedShown>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 2
+  &quot;associatedIndex&quot;: 4
 }</component>
-  <component name="ProjectId" id="3Le1TXs8B4xUTBH6mctEvrDSS7l" />
+  <component name="ProjectId" id="3M0dXKJAK7xPfLPKalcXrkaT2hl" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -150,154 +140,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;#2 on feature/domains&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.SurveillanceAPI: http.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "feature/login",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.smartKeys_rider"
   }
-}</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.SurveillanceAPI: http">
-    <configuration name="SurveillanceAPI: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SurveillanceAPI.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net10.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="http" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="SurveillanceAPI: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SurveillanceAPI.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net10.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="https" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-  </component>
+}]]></component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7815de78-8e5c-4a18-89f4-3d4ba32dac5c" name="Changes" comment="" />
-      <created>1793799731362</created>
+      <changelist id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="" />
+      <created>1794491462885</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1793799731362</updated>
+      <updated>1794491462885</updated>
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="User">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="Henrique" />
-                  <option value="Henrique Reis" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="Henrique" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="*" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="feature/domains" />
-                      </list>
-                    </value>
-                  </entry>
-                  <entry key="user">
-                    <value>
-                      <list>
-                        <option value="Henrique" />
-                        <option value="Henrique Reis" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Update na tabela Divergencia.cs e appsettings.Development.json" />
-    <MESSAGE value="squash! feat: Update na tabela Divergencia.cs e appsettings.Development.json" />
-    <MESSAGE value="feat: Update Comparacao.cs e ComparacaoConfiguration.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Update Comparacao.cs e ComparacaoConfiguration.cs" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
-          <option name="timeStamp" value="2" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
-          <option name="timeStamp" value="3" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="refactor: Melhora na redefinicao de senha e email do usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Melhora na redefinicao de senha e email do usuario" />
   </component>
 </project>

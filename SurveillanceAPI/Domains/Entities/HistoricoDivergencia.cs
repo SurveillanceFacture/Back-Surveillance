@@ -3,8 +3,8 @@
 
 public class HistoricoDivergencia
 {
-    public Guid HistoricoDivergenciaId { get; private set; }
-    public Guid DivergenciaId { get; private set; }
+    public long HistoricoDivergenciaId { get; private set; }
+    public long DivergenciaId { get; private set; }
     public StatusDivergencia StatusAnterior { get; private set; }
     public StatusDivergencia StatusNovo { get; private set; }
     public Guid UsuarioId { get; private set; }
@@ -16,11 +16,9 @@ public class HistoricoDivergencia
 
     private HistoricoDivergencia() { }
 
-    internal HistoricoDivergencia(Guid divergenciaId, StatusDivergencia anterior,
+    internal HistoricoDivergencia( StatusDivergencia anterior,
         StatusDivergencia novo, Guid usuarioId, string? observacao)
     {
-        HistoricoDivergenciaId = Guid.NewGuid();
-        DivergenciaId = divergenciaId;
         StatusAnterior = anterior;
         StatusNovo = novo;
         UsuarioId = usuarioId;
