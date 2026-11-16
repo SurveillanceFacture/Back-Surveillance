@@ -1,0 +1,47 @@
+Index: Dto/LoginDto/LerLoginDto.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Dto/LoginDto/LerLoginDto.cs b/Dto/LoginDto/LerLoginDto.cs
+new file mode 100644
+--- /dev/null	(date 1794232032144)
++++ b/Dto/LoginDto/LerLoginDto.cs	(date 1794232032144)
+@@ -0,0 +1,10 @@
++namespace SurveillanceAPI.Dto;
++
++public class LerLoginDto
++{
++    public string Token { get; init; } = null!;
++    public string Nome { get; init; } = null!;
++    public string TipoUsuario { get; init; } = null!;
++    public Guid UsuarioId { get; init; }
++    public DateTime ExpiraEm { get; init; }
++}
+\ No newline at end of file
+Index: Dto/LoginDto/CriarLoginDto.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Dto/LoginDto/CriarLoginDto.cs b/Dto/LoginDto/CriarLoginDto.cs
+new file mode 100644
+--- /dev/null	(date 1794232032164)
++++ b/Dto/LoginDto/CriarLoginDto.cs	(date 1794232032164)
+@@ -0,0 +1,15 @@
++using System.ComponentModel.DataAnnotations;
++using SurveillanceAPI.Exceptions;
++
++namespace SurveillanceAPI.Dto;
++
++public class CriarLoginDto
++{
++    [Required(ErrorMessage = "O e-mail eh obrigatorio")]
++    [EmailAddress(ErrorMessage = "E-mail invalido")]
++    [StringLength(255)]
++    public string Email { get; init; } = null!;
++    [Required(ErrorMessage = "Senha eh obrigatorio")]
++    [StringLength(128)]
++    public string Senha { get; init; } = null!;
++}
+\ No newline at end of file
