@@ -6,7 +6,7 @@ namespace SurveillanceAPI.Dto.ApiUpload.XML
     {
 
         [JsonPropertyName("comparacaoid")]
-        public Guid ComparacaoId { get; init;  }
+        public long ComparacaoId { get; init;  }
 
         [JsonPropertyName("numero_item")]
         public int? NumeroItem { get; init; }

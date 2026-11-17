@@ -15,7 +15,7 @@ namespace SurveillanceAPI.Services.Engine
             _regras = regras;
         }
 
-        public List<DivergenciasDto> Conciliar(Guid id, List<ItemNotaFiscalDto> itensXML, List<ItemMovimentacaoErpDto> itensERP)
+        public List<DivergenciasDto> Conciliar(long id, List<ItemNotaFiscalDto> itensXML, List<ItemMovimentacaoErpDto> itensERP)
         {
             var Divergencias = new List<DivergenciasDto>();
 
