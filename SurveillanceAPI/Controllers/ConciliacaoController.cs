@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
+using SurveillanceAPI.Domains;
 using SurveillanceAPI.Dto.ApiUpload.Conciliacao;
 using SurveillanceAPI.Dto.ApiUpload.XML;
 using SurveillanceAPI.Services.Engine;
@@ -10,13 +13,18 @@ namespace SurveillanceAPI.Controllers
     [ApiController]
     public class ConciliacaoController : ControllerBase
     {
+        private const string Auditor = nameof(TipoUsuarioEnum.Auditor);
+        
         private readonly ConciliacaoEngine _engine;
         public ConciliacaoController(ConciliacaoEngine engine)
         {
             _engine = engine;
         }
-
+        
         [HttpPost]
+        [Authorize(Roles = Auditor)]
+        [EnableRateLimiting("login")]
+        [AllowAnonymous]
         public IActionResult Conciliar(
             [FromQuery] Guid comparacaoId,
             [FromBody] ConciliacaoRequestDto request,

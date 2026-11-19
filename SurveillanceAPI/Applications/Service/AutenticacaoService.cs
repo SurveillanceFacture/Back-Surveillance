@@ -30,15 +30,15 @@ public class AutenticacaoService
         if (usuario is null)
         {
             _hasher.SimularValidacao(dto.Senha);
-            throw new DomainException("E-mail ou senha inválidos.");
+            throw new DomainException.NaoAutorizadoException("E-mail ou senha inválidos.");
         }
         
         var senhaOk = _hasher.Validar(usuario.HashSenha, dto.Senha);
         if (!senhaOk || !usuario.StatusUsuario)
-            throw new DomainException("E-mail ou senha inválidos.");
+            throw new DomainException.NaoAutorizadoException("E-mail ou senha inválidos.");
         
         if (usuario.SenhaTemporariaExpirada())
-            throw new DomainException("A senha temporária expirou. Solicite uma nova ao administrador.");
+            throw new DomainException.NaoAutorizadoException("A senha temporária expirou. Solicite uma nova ao administrador.");
         
         usuario.RegistrarAcesso();
         await _repository.SalvarAsync(ct);
@@ -53,6 +53,24 @@ public class AutenticacaoService
             Nome = usuario.NomeUsuario,
             TipoUsuario = usuario.TipoUsuario.NomeTipoUsuario,
             DeveTrocarSenha = usuario.DeveTrocarSenha
+        };
+    }
+    
+    public async Task<LerLoginDto> RenovarAsync(Guid usuarioId, CancellationToken ct)
+    {
+        var u = await _repository.ObterPorIdAsync(usuarioId, ct);
+        if (u is null || !u.StatusUsuario || u.SenhaTemporariaExpirada())
+            throw new DomainException.NaoAutorizadoException("Sessão inválida.");
+
+        var token = _tokenGenerator.Gerar(u);
+        return new LerLoginDto
+        {
+            Token = token.Token,
+            ExpiraEm = token.ExpiraEm,
+            UsuarioId = u.UsuarioId,
+            Nome = u.NomeUsuario,
+            TipoUsuario = u.TipoUsuario.NomeTipoUsuario,
+            DeveTrocarSenha = u.DeveTrocarSenha
         };
     }
 }

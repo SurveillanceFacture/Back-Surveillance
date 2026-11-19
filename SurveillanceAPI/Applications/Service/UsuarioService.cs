@@ -12,12 +12,15 @@ public class UsuarioService
     private readonly IUsuarioRepository _repository;
     private readonly IHashSenha _hasher;
     private readonly ILogger<UsuarioService> _logger;
+    private readonly ILojaRepository _loja;
     private static readonly TimeSpan ValidadeSenhaTemporaria = TimeSpan.FromHours(48);
 
-    public UsuarioService(IUsuarioRepository repository, IHashSenha hasher)
+    public UsuarioService(IUsuarioRepository repository, IHashSenha hasher, ILogger<UsuarioService> logger, ILojaRepository loja)
     {
         _repository = repository;
         _hasher = hasher;
+        _logger = logger;
+        _loja = loja;
     }
 
     public async Task<LerUsuarioDto> CriarAsync(CriarUsuarioDto dto, CancellationToken ct)
@@ -65,14 +68,16 @@ public class UsuarioService
 
         ValidarTipo(dto.TipoUsuarioId);
 
-        // Evita o administrador se rebaixar e deixar o sistema sem ninguém com acesso total
         if (id == usuarioLogadoId && dto.TipoUsuarioId != usuario.TipoUsuarioId)
             throw new DomainException("Você não pode alterar o seu próprio tipo de usuário.");
-
+        
         var email = Normalizar(dto.Email);
         if (email != usuario.Email && await _repository.EmailExisteAsync(email, id, ct))
             throw new DomainException("E-mail já cadastrado.");
 
+        if (dto.TipoUsuarioId != usuario.TipoUsuarioId && await _loja.UsuarioVinculadoAsync(id, ct))
+            throw new DomainException.ConflitoException("O usuário é responsável por uma loja ativa e não pode mudar de tipo.");
+        
         usuario.AlterarNome(dto.NomeUsuario);
         usuario.AlterarEmail(email);
         usuario.AlterarTipoUsuario(dto.TipoUsuarioId);
@@ -104,13 +109,14 @@ public class UsuarioService
             return Mapear(usuario);
         }
 
-    /// <summary>"Excluir" = desativar. O usuário tem histórico (lojas, comparações, divergências).</summary>
     public async Task DesativarAsync(Guid id, Guid usuarioLogadoId, CancellationToken ct)
     {
         if (id == usuarioLogadoId)
             throw new DomainException("Você não pode desativar a si mesmo.");
 
         var usuario = await ObterOuFalharAsync(id, ct);
+        if (await _loja.UsuarioVinculadoAsync(id, ct))
+            throw new DomainException.ConflitoException("O usuário é responsável por uma loja ativa. Troque o responsável antes.");
         usuario.Desativar();
         await _repository.SalvarAsync(ct);
     }
@@ -143,7 +149,6 @@ public class UsuarioService
         await _repository.SalvarAsync(ct);
     }
 
-    // ----------------- auxiliares -----------------
 
     private async Task<Usuario> ObterOuFalharAsync(Guid id, CancellationToken ct) =>
         await _repository.ObterPorIdAsync(id, ct)
@@ -151,7 +156,6 @@ public class UsuarioService
 
     private static string Normalizar(string email) => email.Trim().ToLowerInvariant();
 
-    // Os tipos são semeados a partir do enum, então o enum é a fonte da verdade
     private static void ValidarTipo(int tipoUsuarioId)
     {
         if (!Enum.IsDefined((TipoUsuarioEnum)tipoUsuarioId))
@@ -165,7 +169,7 @@ public class UsuarioService
         Email = u.Email,
         TipoUsuarioId = u.TipoUsuarioId,
         TipoUsuario = u.TipoUsuario?.NomeTipoUsuario ?? ((TipoUsuarioEnum)u.TipoUsuarioId).ToString(),
-         Status= u.StatusUsuario,
+        Status= u.StatusUsuario,
         DataCriacao = u.DataCriacao,
         UltimoAcesso = u.UltimoAcesso
     };

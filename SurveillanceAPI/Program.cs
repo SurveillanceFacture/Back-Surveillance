@@ -1,11 +1,12 @@
+using System.Security.Claims;
 using System.Text;
+using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SurveillanceAPI.Applications.Authentication;
 using SurveillanceAPI.Applications.Service;
-using SurveillanceAPI.Applications.Service.Auditoria;
 using SurveillanceAPI.Infraestructure.Persistence;
 using SurveillanceAPI.Infraestructure.Persistence.Repositories;
 using SurveillanceAPI.Inteface;
@@ -15,10 +16,10 @@ using SurveillanceAPI.Services.Engine;
 using SurveillanceAPI.Services.Regras;
 using SurveillanceAPI.Infraestructure.OpenApi;
 using SurveillanceAPI.Infrastructure.ExceptionHandling;
+using SurveillanceAPI.Infrastructure.Persistence.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
-
-
+    
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -42,6 +43,28 @@ builder.Services
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Key)),
             ClockSkew = TimeSpan.Zero
         };
+        options.Events = new JwtBearerEvents
+        {
+            OnTokenValidated = async ctx =>
+            {
+                var p = ctx.Principal!;
+                var repo = ctx.HttpContext.RequestServices.GetRequiredService<IUsuarioRepository>();
+
+                var u = Guid.TryParse(p.FindFirstValue(ClaimTypes.NameIdentifier), out var id)
+                    ? await repo.ObterPorIdAsync(id, ctx.HttpContext.RequestAborted)
+                    : null;
+
+                var pendenteNoToken = p.HasClaim(GeradorTokenJwt.ClaimDeveTrocarSenha, "true");
+
+                if (u is null
+                    || !u.StatusUsuario
+                    || u.TipoUsuario.NomeTipoUsuario != p.FindFirstValue(ClaimTypes.Role)
+                    || u.DeveTrocarSenha != pendenteNoToken)
+                {
+                    ctx.Fail("Token não é mais válido.");
+                }
+            }
+        };
     });
 
 builder.Services.AddAuthorization();
@@ -49,9 +72,11 @@ builder.Services.AddAuthorization();
 builder.Services.AddSingleton<IHashSenha, HashSenha>();
 builder.Services.AddSingleton<IGeradorTokenJwt, GeradorTokenJwt>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<ILojaRepository, LojaRepository>();
 builder.Services.AddScoped<AutenticacaoService>();
 builder.Services.AddScoped<UsuarioService>();
-builder.Services.AddScoped<LeitorArquivosService>(); ;
+builder.Services.AddScoped<LojaService>();
+
 
 builder.Services.AddScoped<IConciliacaoRegra, ValorUnitarioRegra>();
 builder.Services.AddScoped<IConciliacaoRegra, QuantidadeRegra>();
@@ -62,9 +87,33 @@ builder.Services.AddProblemDetails();
 
 
 builder.Services.AddControllers();
+
+var origens = builder.Configuration.GetSection("Cors:Origins").Get<string[]>() ?? [];
+if (!builder.Environment.IsDevelopment() && origens.Length == 0)
+    throw new InvalidOperationException("Cors:Origins não configurado.");
+
+builder.Services.AddCors(o => o.AddDefaultPolicy(p => p
+    .WithOrigins(origens)
+    .WithHeaders("Authorization", "Content-Type")
+    .WithMethods("GET", "POST", "PUT", "DELETE")
+    .SetPreflightMaxAge(TimeSpan.FromMinutes(10))));
+
+
 builder.Services.AddOpenApi(options =>
 {
     options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
+});
+
+builder.Services.AddRateLimiter(o =>
+{
+    o.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    o.AddPolicy("login", ctx => RateLimitPartition.GetFixedWindowLimiter(
+        ctx.Connection.RemoteIpAddress?.ToString() ?? "anon",
+        _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 5,
+            Window = TimeSpan.FromMinutes(1)
+        }));
 });
 
 var app = builder.Build();
@@ -82,6 +131,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthentication();  
 
@@ -106,6 +157,8 @@ app.Use(async (context, next) =>
 
 
 app.UseAuthorization();
+
+app.UseRateLimiter();
 
 app.MapControllers();
 

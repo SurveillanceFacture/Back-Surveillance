@@ -14,9 +14,35 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="refactor: Melhora na redefinicao de senha e email do usuario">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+    <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="refactor: Trocando Guid ComparacaoId por long">
+      <change afterPath="$PROJECT_DIR$/Applications/Service/LojaService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/LojaController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/LojaDto/AtualizarLojaDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/LojaDto/CriarLojaDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/LojaDto/FiltroLojaDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/LojaDto/LerLojaDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Persistence/Repository/LojaRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interface/ILojaRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/shelf/Uncommitted_changes_before_Update_at_09_11_2026_10_22__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/shelf/Uncommitted_changes_before_Update_at_09_11_2026_10_53__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/shelf/Uncommitted_changes_before_revert__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/shelf/Uncommitted_changes_before_revert__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/shelf/Uncommitted_changes_before_revert__Changes_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Service/AutenticacaoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Service/AutenticacaoService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Service/Upload/LerArquivoService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Service/Upload/Modelo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Service/UsuarioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Service/UsuarioService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AutenticacaoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AutenticacaoController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ConciliacaoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ConciliacaoController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/UsuarioController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UsuarioController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Entities/Loja.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Entities/Loja.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exceptions/DomainException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/DomainException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/ExceptionHandling/DomainExceptionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/ExceptionHandling/DomainExceptionHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Persistence/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Persistence/AppDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.Development.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +52,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="feature/login" />
+        <entry key="$PROJECT_DIR$/.." value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -59,8 +85,8 @@
     <setting file="file://$PROJECT_DIR$/Domains/Enums/TipoUsuarioEnum.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Dto/LoginDto/LerLoginDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Exceptions/DomainException.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Infrastructure/ExceptionHandling/DomainExceptionHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Infrastructure/OpenApi/BearerSecuritySchemeTransformer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/ExceptionHandling/DomainExceptionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/OpenApi/BearerSecuritySchemeTransformer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/ComparacaoConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/DivergenciaConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/HistoricoDivergenciaConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
@@ -72,61 +98,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000409943413" />
-      <entry key="MS500" value="1.0341614005611184" />
-      <entry key="S2" value="1.5984486827319122" />
-      <entry key="S5" value="2.281868681976224" />
-      <entry key="S10" value="3.1150095429338718" />
-      <entry key="S30" value="6.53890615905574" />
-      <entry key="S60" value="9.862872035110811" />
-      <entry key="M2" value="12.739680984167261" />
-      <entry key="M5" value="15.875400642980033" />
-      <entry key="M10" value="21.546013247883735" />
-      <entry key="M15" value="30.14094036551889" />
-      <entry key="M30" value="64.89844374872374" />
-      <entry key="H1" value="122.17082562072913" />
-      <entry key="H2" value="178.9631198557032" />
-      <entry key="H4" value="219.96128394175807" />
-      <entry key="D1" value="263.17219582306194" />
-      <entry key="W1" value="271.5695440019088" />
+      <entry key="MS100" value="2.1935558444006045" />
+      <entry key="MS500" value="3.697136959659501" />
+      <entry key="S2" value="7.464272439032575" />
+      <entry key="S5" value="11.633451078993039" />
+      <entry key="S10" value="14.24001760254129" />
+      <entry key="S30" value="16.586182808432753" />
+      <entry key="S60" value="17.271821909273022" />
+      <entry key="M2" value="17.79113191103831" />
+      <entry key="M5" value="21.285288020886224" />
+      <entry key="M10" value="29.25021599084856" />
+      <entry key="M15" value="37.43916921195837" />
+      <entry key="M30" value="62.49154365943944" />
+      <entry key="H1" value="119.04466541440536" />
+      <entry key="H2" value="219.82517490450437" />
+      <entry key="H4" value="333.12557494569376" />
+      <entry key="D1" value="499.4867522398491" />
+      <entry key="W1" value="538.186652108538" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="5.892349257272066E-236" />
-      <entry key="S10" value="4.1426765664507895E-118" />
-      <entry key="S30" value="1.7811669601395625E-39" />
-      <entry key="S60" value="8.975160759335525E-20" />
-      <entry key="M2" value="6.913223306084213E-10" />
-      <entry key="M5" value="6.432458202623863E-4" />
-      <entry key="M10" value="0.07286695299535681" />
-      <entry key="M15" value="0.393570846881627" />
-      <entry key="M30" value="2.448543972574227" />
-      <entry key="H1" value="6.606090819644838" />
-      <entry key="H2" value="11.110209096464846" />
-      <entry key="H4" value="14.498370274463749" />
-      <entry key="D1" value="18.157370484303264" />
-      <entry key="W1" value="18.87713477559643" />
+      <entry key="S2" value="1.4071818111661798E-114" />
+      <entry key="S5" value="2.8998169128775003E-46" />
+      <entry key="S10" value="1.8389706259130358E-23" />
+      <entry key="S30" value="3.7122416733167936E-8" />
+      <entry key="S60" value="2.8973326117744976E-4" />
+      <entry key="M2" value="0.03132665594049488" />
+      <entry key="M5" value="0.6242410625526862" />
+      <entry key="M10" value="1.910758450110701" />
+      <entry key="M15" value="3.0537016629313585" />
+      <entry key="M30" value="5.795532111042785" />
+      <entry key="H1" value="10.028468505256182" />
+      <entry key="H2" value="16.537975448947545" />
+      <entry key="H4" value="23.863659662871527" />
+      <entry key="D1" value="34.91811785365885" />
+      <entry key="W1" value="37.53720758886306" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0013066086607307534" />
-      <entry key="MS500" value="0.29877282746710565" />
-      <entry key="S2" value="1.3142577038792447" />
-      <entry key="S5" value="2.154598548607353" />
-      <entry key="S10" value="3.0369756147127287" />
-      <entry key="S30" value="6.469813816549751" />
-      <entry key="S60" value="9.80617707887272" />
-      <entry key="M2" value="12.702025559930808" />
-      <entry key="M5" value="15.857604485442211" />
-      <entry key="M10" value="21.607499831108882" />
-      <entry key="M15" value="30.524592634414308" />
-      <entry key="M30" value="67.33690647141583" />
-      <entry key="H1" value="128.76732296213538" />
-      <entry key="H2" value="190.0661479134846" />
-      <entry key="H4" value="234.45517455803702" />
-      <entry key="D1" value="281.3286600410887" />
-      <entry key="W1" value="290.44654482629653" />
+      <entry key="MS100" value="2.1241052460566783" />
+      <entry key="MS500" value="3.6658970250881833" />
+      <entry key="S2" value="7.448704635009836" />
+      <entry key="S5" value="11.622580795020433" />
+      <entry key="S10" value="14.23293000397484" />
+      <entry key="S30" value="16.583296672859348" />
+      <entry key="S60" value="17.270565118856787" />
+      <entry key="M2" value="17.82028120471642" />
+      <entry key="M5" value="21.898570932858128" />
+      <entry key="M10" value="31.145532354156508" />
+      <entry key="M15" value="40.47733944319035" />
+      <entry key="M30" value="68.27328572096853" />
+      <entry key="H1" value="129.0611733679186" />
+      <entry key="H2" value="236.35314447227444" />
+      <entry key="H4" value="356.9820019197715" />
+      <entry key="D1" value="534.4031147349305" />
+      <entry key="W1" value="575.7235905186725" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -140,24 +166,85 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.SurveillanceAPI: http.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/login",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.smartKeys_rider"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.SurveillanceAPI: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.SurveillanceAPI: https.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.All in SurveillanceAPI.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/loja&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="All in SurveillanceAPI" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.SurveillanceAPI: https">
+    <configuration name="All in SurveillanceAPI" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/SurveillanceAPI.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="SurveillanceAPI: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SurveillanceAPI.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net10.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="http" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="SurveillanceAPI: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SurveillanceAPI.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net10.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="https" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue=".NET Launch Settings Profile.SurveillanceAPI: https" />
+        <item itemvalue=".NET Launch Settings Profile.SurveillanceAPI: http" />
+        <item itemvalue="HTTP Request.All in SurveillanceAPI" />
+        <item itemvalue="HTTP Request.All in SurveillanceAPI" />
+        <item itemvalue="HTTP Request.All in SurveillanceAPI" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="" />
@@ -173,8 +260,20 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor: Melhora na redefinicao de senha e email do usuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: Melhora na redefinicao de senha e email do usuario" />
+    <MESSAGE value="refactor: Trocando Guid ComparacaoId por long" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Trocando Guid ComparacaoId por long" />
   </component>
 </project>
