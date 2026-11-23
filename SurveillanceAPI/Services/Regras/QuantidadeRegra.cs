@@ -10,8 +10,7 @@ namespace SurveillanceAPI.Services.Regras
 
         public DivergenciasDto? Validar(long comparacaoId, ItemNotaFiscalDto ItemXML, ItemMovimentacaoErpDto ItemERP)
         {
-            decimal diferenca = Math.Abs(ItemXML.Quantidade - ItemERP.Quantidade);
-            if(diferenca > 0.01m)
+            if (ItemXML.Quantidade != ItemERP.Quantidade)
             {
                 return new DivergenciasDto
                 {

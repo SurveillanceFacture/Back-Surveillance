@@ -12,7 +12,7 @@ using SurveillanceAPI.Infraestructure.Persistence;
 namespace SurveillanceAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261111134534_Inicial")]
+    [Migration("20261123133917_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -27,11 +27,8 @@ namespace SurveillanceAPI.Migrations
 
             modelBuilder.Entity("SurveillanceAPI.Domains.Comparacao", b =>
                 {
-                    b.Property<long>("ComparacaoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ComparacaoId"));
+                    b.Property<Guid>("ComparacaoId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("AuditorUsuarioId")
                         .HasColumnType("uniqueidentifier");
@@ -70,11 +67,12 @@ namespace SurveillanceAPI.Migrations
 
             modelBuilder.Entity("SurveillanceAPI.Domains.Divergencia", b =>
                 {
-                    b.Property<long>("DivergenciaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("DivergenciaId")
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("DivergenciaId"));
+                    b.Property<string>("AcaoRecomendada")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("CampoComparado")
                         .IsRequired()
@@ -82,10 +80,11 @@ namespace SurveillanceAPI.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("CodigoProduto")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
-                    b.Property<long>("ComparacaoId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ComparacaoId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DataDeteccao")
                         .HasColumnType("datetime2");
@@ -93,15 +92,24 @@ namespace SurveillanceAPI.Migrations
                     b.Property<DateTime?>("DataResolucao")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Descricao")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<string>("Ean")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Gravidade")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("NumeroItem")
+                    b.Property<decimal>("ImpactoFinanceiro")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("NumeroItem")
                         .HasColumnType("int");
 
                     b.Property<string>("Observacao")
@@ -116,14 +124,22 @@ namespace SurveillanceAPI.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<string>("TipoDivergencia")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("ValorJson")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("ValorXml")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
                     b.HasKey("DivergenciaId");
+
+                    b.HasIndex("Gravidade");
 
                     b.HasIndex("ResolvidoPorUsuarioId");
 
@@ -145,8 +161,8 @@ namespace SurveillanceAPI.Migrations
                     b.Property<DateTime>("DataAlteracao")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("DivergenciaId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("DivergenciaId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Observacao")
                         .HasMaxLength(1000)
@@ -264,6 +280,9 @@ namespace SurveillanceAPI.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("DeveTrocarSenha")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(254)
@@ -277,6 +296,9 @@ namespace SurveillanceAPI.Migrations
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
+
+                    b.Property<DateTime?>("SenhaExpiraEm")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("StatusUsuario")
                         .HasColumnType("bit");

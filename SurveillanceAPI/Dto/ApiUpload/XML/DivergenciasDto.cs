@@ -38,6 +38,9 @@ namespace SurveillanceAPI.Dto.ApiUpload.XML
         [JsonPropertyName("gravidade")]
         public string Gravidade { get; init; } = string.Empty;
 
+        [JsonPropertyName("impacto_financeiro")]
+        public decimal ImpactoFinanceiro { get; set; }
+
         [JsonPropertyName("data_deteccao")]
         public DateTimeOffset DataDeteccao { get; init; } = DateTimeOffset.UtcNow;
     

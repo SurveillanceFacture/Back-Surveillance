@@ -36,6 +36,8 @@ namespace SurveillanceAPI.Migrations
                     DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UltimoAcesso = table.Column<DateTime>(type: "datetime2", nullable: true),
                     StatusUsuario = table.Column<bool>(type: "bit", nullable: false),
+                    DeveTrocarSenha = table.Column<bool>(type: "bit", nullable: false),
+                    SenhaExpiraEm = table.Column<DateTime>(type: "datetime2", nullable: true),
                     TipoUsuarioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -89,8 +91,7 @@ namespace SurveillanceAPI.Migrations
                 name: "Comparacao",
                 columns: table => new
                 {
-                    ComparacaoId = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ComparacaoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LojaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AuditorUsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ChaveDocumento = table.Column<string>(type: "nvarchar(44)", maxLength: 44, nullable: false),
@@ -119,17 +120,20 @@ namespace SurveillanceAPI.Migrations
                 name: "Divergencia",
                 columns: table => new
                 {
-                    DivergenciaId = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ComparacaoId = table.Column<long>(type: "bigint", nullable: false),
-                    NumeroItem = table.Column<int>(type: "int", nullable: false),
-                    CodigoProduto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Ean = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DivergenciaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ComparacaoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NumeroItem = table.Column<int>(type: "int", nullable: true),
+                    CodigoProduto = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Ean = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    TipoDivergencia = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CampoComparado = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     ValorXml = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    ValorJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ValorJson = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    ImpactoFinanceiro = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     Gravidade = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Descricao = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    AcaoRecomendada = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     DataDeteccao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ResolvidoPorUsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     DataResolucao = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -158,7 +162,7 @@ namespace SurveillanceAPI.Migrations
                 {
                     HistoricoDivergenciaId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DivergenciaId = table.Column<long>(type: "bigint", nullable: false),
+                    DivergenciaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StatusAnterior = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     StatusNovo = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     UsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -211,6 +215,11 @@ namespace SurveillanceAPI.Migrations
                 name: "IX_Divergencia_ComparacaoId_CampoComparado",
                 table: "Divergencia",
                 columns: new[] { "ComparacaoId", "CampoComparado" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Divergencia_Gravidade",
+                table: "Divergencia",
+                column: "Gravidade");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Divergencia_ResolvidoPorUsuarioId",

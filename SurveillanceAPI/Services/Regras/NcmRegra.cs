@@ -19,7 +19,7 @@ namespace SurveillanceAPI.Services.Regras
                     Ean = ItemXML.Ean,
                     ValorXML = ItemXML.NCM,
                     ValorERP = ItemERP.NCM,
-                    Gravidade = "critica",
+                    Gravidade = "Critica",
                     DataDeteccao = DateTimeOffset.UtcNow
                 };
             }

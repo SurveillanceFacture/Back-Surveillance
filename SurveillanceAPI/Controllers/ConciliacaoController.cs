@@ -1,10 +1,13 @@
+<<<<<<< HEAD
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+=======
+﻿using Microsoft.AspNetCore.Mvc;
+>>>>>>> 2381a74 (feat: add impact calculation and unit test)
 using SurveillanceAPI.Dto.ApiUpload.Conciliacao;
-using SurveillanceAPI.Dto.ApiUpload.XML;
 using SurveillanceAPI.Services.Engine;
 
 namespace SurveillanceAPI.Controllers
