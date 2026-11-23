@@ -14,35 +14,8 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="refactor: Trocando Guid ComparacaoId por long">
-      <change afterPath="$PROJECT_DIR$/Applications/Service/LojaService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/LojaController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dto/LojaDto/AtualizarLojaDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dto/LojaDto/CriarLojaDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dto/LojaDto/FiltroLojaDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dto/LojaDto/LerLojaDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Persistence/Repository/LojaRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interface/ILojaRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/shelf/Uncommitted_changes_before_Update_at_09_11_2026_10_22__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/shelf/Uncommitted_changes_before_Update_at_09_11_2026_10_53__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/shelf/Uncommitted_changes_before_revert__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/shelf/Uncommitted_changes_before_revert__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/shelf/Uncommitted_changes_before_revert__Changes_2.xml" beforeDir="false" />
+    <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="refactor: Ajuste no Cors origin">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications/Service/AutenticacaoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Service/AutenticacaoService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications/Service/Upload/LerArquivoService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications/Service/Upload/Modelo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications/Service/UsuarioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Service/UsuarioService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/AutenticacaoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AutenticacaoController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/ConciliacaoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ConciliacaoController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/UsuarioController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UsuarioController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domains/Entities/Loja.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Entities/Loja.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/DomainException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/DomainException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/ExceptionHandling/DomainExceptionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/ExceptionHandling/DomainExceptionHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Persistence/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Persistence/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.Development.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,61 +71,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.1935558444006045" />
-      <entry key="MS500" value="3.697136959659501" />
-      <entry key="S2" value="7.464272439032575" />
-      <entry key="S5" value="11.633451078993039" />
-      <entry key="S10" value="14.24001760254129" />
-      <entry key="S30" value="16.586182808432753" />
-      <entry key="S60" value="17.271821909273022" />
-      <entry key="M2" value="17.79113191103831" />
-      <entry key="M5" value="21.285288020886224" />
-      <entry key="M10" value="29.25021599084856" />
-      <entry key="M15" value="37.43916921195837" />
-      <entry key="M30" value="62.49154365943944" />
-      <entry key="H1" value="119.04466541440536" />
-      <entry key="H2" value="219.82517490450437" />
-      <entry key="H4" value="333.12557494569376" />
-      <entry key="D1" value="499.4867522398491" />
-      <entry key="W1" value="538.186652108538" />
+      <entry key="MS100" value="1.0086089354976746" />
+      <entry key="MS500" value="1.4360090037451831" />
+      <entry key="S2" value="2.3273574289079595" />
+      <entry key="S5" value="3.5415027154179453" />
+      <entry key="S10" value="5.513188085454128" />
+      <entry key="S30" value="12.047758837734714" />
+      <entry key="S60" value="18.509949773010398" />
+      <entry key="M2" value="24.414868648996066" />
+      <entry key="M5" value="29.57036550532448" />
+      <entry key="M10" value="32.86409519946551" />
+      <entry key="M15" value="37.41818014853952" />
+      <entry key="M30" value="58.235416444943965" />
+      <entry key="H1" value="110.8607266814608" />
+      <entry key="H2" value="213.49375956478588" />
+      <entry key="H4" value="341.98393926738663" />
+      <entry key="D1" value="549.8752409610092" />
+      <entry key="W1" value="600.9198342701791" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.4071818111661798E-114" />
-      <entry key="S5" value="2.8998169128775003E-46" />
-      <entry key="S10" value="1.8389706259130358E-23" />
-      <entry key="S30" value="3.7122416733167936E-8" />
-      <entry key="S60" value="2.8973326117744976E-4" />
-      <entry key="M2" value="0.03132665594049488" />
-      <entry key="M5" value="0.6242410625526862" />
-      <entry key="M10" value="1.910758450110701" />
-      <entry key="M15" value="3.0537016629313585" />
-      <entry key="M30" value="5.795532111042785" />
-      <entry key="H1" value="10.028468505256182" />
-      <entry key="H2" value="16.537975448947545" />
-      <entry key="H4" value="23.863659662871527" />
-      <entry key="D1" value="34.91811785365885" />
-      <entry key="W1" value="37.53720758886306" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="2.4867504562575578E-256" />
+      <entry key="S10" value="1.7029645446991337E-128" />
+      <entry key="S30" value="3.6183717141761404E-43" />
+      <entry key="S60" value="9.045588431829364E-22" />
+      <entry key="M2" value="5.535199415778439E-11" />
+      <entry key="M5" value="1.9689742065367687E-4" />
+      <entry key="M10" value="0.033935139262113244" />
+      <entry key="M15" value="0.20786873358932914" />
+      <entry key="M30" value="1.5120794068804997" />
+      <entry key="H1" value="5.122420844432668" />
+      <entry key="H2" value="11.819596845376616" />
+      <entry key="H4" value="20.174241107805113" />
+      <entry key="D1" value="33.954253480755916" />
+      <entry key="W1" value="37.38740299795462" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.1241052460566783" />
-      <entry key="MS500" value="3.6658970250881833" />
-      <entry key="S2" value="7.448704635009836" />
-      <entry key="S5" value="11.622580795020433" />
-      <entry key="S10" value="14.23293000397484" />
-      <entry key="S30" value="16.583296672859348" />
-      <entry key="S60" value="17.270565118856787" />
-      <entry key="M2" value="17.82028120471642" />
-      <entry key="M5" value="21.898570932858128" />
-      <entry key="M10" value="31.145532354156508" />
-      <entry key="M15" value="40.47733944319035" />
-      <entry key="M30" value="68.27328572096853" />
-      <entry key="H1" value="129.0611733679186" />
-      <entry key="H2" value="236.35314447227444" />
-      <entry key="H4" value="356.9820019197715" />
-      <entry key="D1" value="534.4031147349305" />
-      <entry key="W1" value="575.7235905186725" />
+      <entry key="MS100" value="0.9743098546702587" />
+      <entry key="MS500" value="1.426758941515216" />
+      <entry key="S2" value="2.3239474220226812" />
+      <entry key="S5" value="3.539459689722848" />
+      <entry key="S10" value="5.511556814380727" />
+      <entry key="S30" value="12.046544890993799" />
+      <entry key="S60" value="18.509011725844097" />
+      <entry key="M2" value="24.41423666910611" />
+      <entry key="M5" value="29.570240357281342" />
+      <entry key="M10" value="32.897550175785135" />
+      <entry key="M15" value="37.62479463214469" />
+      <entry key="M30" value="59.74369742397332" />
+      <entry key="H1" value="115.97687560837268" />
+      <entry key="H2" value="225.30609922960545" />
+      <entry key="H4" value="362.152005057468" />
+      <entry key="D1" value="583.8277761440083" />
+      <entry key="W1" value="638.3069675028589" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -274,6 +247,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor: Melhora na redefinicao de senha e email do usuario" />
     <MESSAGE value="refactor: Trocando Guid ComparacaoId por long" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: Trocando Guid ComparacaoId por long" />
+    <MESSAGE value="refactor: Preparacao de login e usuario para consumo" />
+    <MESSAGE value="refactor: Ajuste no Cors origin" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Ajuste no Cors origin" />
   </component>
 </project>
