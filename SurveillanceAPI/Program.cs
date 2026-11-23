@@ -17,6 +17,7 @@ using SurveillanceAPI.Services.Regras;
 using SurveillanceAPI.Infraestructure.OpenApi;
 using SurveillanceAPI.Infrastructure.ExceptionHandling;
 using SurveillanceAPI.Infrastructure.Persistence.Repository;
+using SurveillanceAPI.Applications.Groq;
 
 var builder = WebApplication.CreateBuilder(args);
     
@@ -114,6 +115,22 @@ builder.Services.AddRateLimiter(o =>
             PermitLimit = 5,
             Window = TimeSpan.FromMinutes(1)
         }));
+});
+
+builder.Services.Configure<GroqOptions>(options =>
+{
+    options.ApiKey = Environment.GetEnvironmentVariable("GROQ_API_KEY") ?? string.Empty;
+    options.Model = Environment.GetEnvironmentVariable("GROQ_MODEL") ?? "openai/gpt-oss-20b";
+
+    var enviarValores = Environment.GetEnvironmentVariable("GROQ_SEND_VALUES");
+    options.EnviarValoresOriginais =
+        bool.TryParse(enviarValores, out var habilitado) && habilitado;
+});
+
+builder.Services.AddHttpClient<IGroqDivergenciaService, IGroqDivergenciaService>(client =>
+{
+    client.BaseAddress = new Uri("https://api.groq.com/openai/v1/");
+    client.Timeout = TimeSpan.FromSeconds(45);
 });
 
 var app = builder.Build();

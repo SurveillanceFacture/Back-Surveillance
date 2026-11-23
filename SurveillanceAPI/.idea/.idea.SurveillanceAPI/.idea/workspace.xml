@@ -15,7 +15,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="refactor: Ajuste no Cors origin">
+      <change afterPath="$PROJECT_DIR$/Applications/Groq/GroqDivergenciaService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Applications/Groq/GroqOptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/DivergenciaController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/DivergenciaDto/DivergenciaEntradaDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/DivergenciaDto/DivergenciaExplicadaDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/DivergenciaDto/ExplicarDivergenciasRequestDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/DivergenciaDto/ExplicarDivergenciasResponseDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exceptions/GroqExceptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interface/IGroqDivergenciaService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,10 +53,11 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/47f87616cc4440db91dba39140060003f4a750/29/d5c08a4a/ArgumentException.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Roaming/Microsoft/UserSecrets/77ac4296-bc2c-484b-88d9-4b48bf3d1dbe/secrets.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Applications/Groq/GroqDivergenciaService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Applications/Groq/GroqOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Applications/Service/UsuarioService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/AutenticacaoController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/DivergenciaController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/UsuarioController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Entities/Divergencia.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Entities/HistoricoDivergencia.cs" root0="FORCE_HIGHLIGHTING" />
@@ -56,77 +67,85 @@
     <setting file="file://$PROJECT_DIR$/Domains/Enums/GravidadeDivergenciaEnum.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Enums/StatusComparacao.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Enums/TipoUsuarioEnum.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Dto/DivergenciaDto/DivergenciaEntradaDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Dto/DivergenciaDto/DivergenciaExplicadaDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Dto/DivergenciaDto/ExplicarDivergenciasRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Dto/DivergenciaDto/ExplicarDivergenciasResponseDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Dto/LoginDto/LerLoginDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Exceptions/DomainException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Exceptions/GroqExceptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/ExceptionHandling/DomainExceptionHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/OpenApi/BearerSecuritySchemeTransformer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/ComparacaoConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/DivergenciaConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/HistoricoDivergenciaConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/UsuarioConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Interface/IGroqDivergenceService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/obj/Debug/net10.0/.NETCoreApp,Version=v10.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0086089354976746" />
-      <entry key="MS500" value="1.4360090037451831" />
-      <entry key="S2" value="2.3273574289079595" />
-      <entry key="S5" value="3.5415027154179453" />
-      <entry key="S10" value="5.513188085454128" />
-      <entry key="S30" value="12.047758837734714" />
-      <entry key="S60" value="18.509949773010398" />
-      <entry key="M2" value="24.414868648996066" />
-      <entry key="M5" value="29.57036550532448" />
-      <entry key="M10" value="32.86409519946551" />
-      <entry key="M15" value="37.41818014853952" />
-      <entry key="M30" value="58.235416444943965" />
-      <entry key="H1" value="110.8607266814608" />
-      <entry key="H2" value="213.49375956478588" />
-      <entry key="H4" value="341.98393926738663" />
-      <entry key="D1" value="549.8752409610092" />
-      <entry key="W1" value="600.9198342701791" />
+      <entry key="MS100" value="2.707619860170629E-97" />
+      <entry key="MS500" value="4.8586715139978E-20" />
+      <entry key="S2" value="1.484668125261778E-5" />
+      <entry key="S5" value="0.011715386715187627" />
+      <entry key="S10" value="0.11349590003756707" />
+      <entry key="S30" value="1.5788037986221748" />
+      <entry key="S60" value="6.158608812524914" />
+      <entry key="M2" value="19.836056817586844" />
+      <entry key="M5" value="59.73648642229453" />
+      <entry key="M10" value="97.81632858142355" />
+      <entry key="M15" value="119.86744613822471" />
+      <entry key="M30" value="160.33926050008802" />
+      <entry key="H1" value="221.77029543524077" />
+      <entry key="H2" value="329.5106393113568" />
+      <entry key="H4" value="467.0342487800388" />
+      <entry key="D1" value="698.3877850325074" />
+      <entry key="W1" value="756.5948985898646" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="2.4867504562575578E-256" />
-      <entry key="S10" value="1.7029645446991337E-128" />
-      <entry key="S30" value="3.6183717141761404E-43" />
-      <entry key="S60" value="9.045588431829364E-22" />
-      <entry key="M2" value="5.535199415778439E-11" />
-      <entry key="M5" value="1.9689742065367687E-4" />
-      <entry key="M10" value="0.033935139262113244" />
-      <entry key="M15" value="0.20786873358932914" />
-      <entry key="M30" value="1.5120794068804997" />
-      <entry key="H1" value="5.122420844432668" />
-      <entry key="H2" value="11.819596845376616" />
-      <entry key="H4" value="20.174241107805113" />
-      <entry key="D1" value="33.954253480755916" />
-      <entry key="W1" value="37.38740299795462" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000036078779988" />
+      <entry key="S2" value="1.0532857886153175" />
+      <entry key="S5" value="1.4527582687248017" />
+      <entry key="S10" value="2.0739137640408916" />
+      <entry key="S30" value="3.504852412812439" />
+      <entry key="S60" value="4.684802996354522" />
+      <entry key="M2" value="6.394385036000236" />
+      <entry key="M5" value="11.663715522025385" />
+      <entry key="M10" value="17.752931709601615" />
+      <entry key="M15" value="21.227151537865844" />
+      <entry key="M30" value="26.524409430517604" />
+      <entry key="H1" value="32.26403856072103" />
+      <entry key="H2" value="40.19341932901945" />
+      <entry key="H4" value="49.609295803167484" />
+      <entry key="D1" value="65.3164131239205" />
+      <entry key="W1" value="69.28870973615645" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9743098546702587" />
-      <entry key="MS500" value="1.426758941515216" />
-      <entry key="S2" value="2.3239474220226812" />
-      <entry key="S5" value="3.539459689722848" />
-      <entry key="S10" value="5.511556814380727" />
-      <entry key="S30" value="12.046544890993799" />
-      <entry key="S60" value="18.509011725844097" />
-      <entry key="M2" value="24.41423666910611" />
-      <entry key="M5" value="29.570240357281342" />
-      <entry key="M10" value="32.897550175785135" />
-      <entry key="M15" value="37.62479463214469" />
-      <entry key="M30" value="59.74369742397332" />
-      <entry key="H1" value="115.97687560837268" />
-      <entry key="H2" value="225.30609922960545" />
-      <entry key="H4" value="362.152005057468" />
-      <entry key="D1" value="583.8277761440083" />
-      <entry key="W1" value="638.3069675028589" />
+      <entry key="MS100" value="0.03081977201541747" />
+      <entry key="MS500" value="0.498616827487479" />
+      <entry key="S2" value="0.8808363899145963" />
+      <entry key="S5" value="1.3489855383728244" />
+      <entry key="S10" value="2.08968746224422" />
+      <entry key="S30" value="5.0032241109819" />
+      <entry key="S60" value="10.76339874167899" />
+      <entry key="M2" value="26.148328337824402" />
+      <entry key="M5" value="71.31630329859323" />
+      <entry key="M10" value="115.49993139145808" />
+      <entry key="M15" value="141.03793395646042" />
+      <entry key="M30" value="186.82670247141988" />
+      <entry key="H1" value="254.01017199543963" />
+      <entry key="H2" value="369.6874697274274" />
+      <entry key="H4" value="516.6324722309623" />
+      <entry key="D1" value="763.701578788687" />
+      <entry key="W1" value="825.8832062684141" />
     </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -139,26 +158,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.SurveillanceAPI: http.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.SurveillanceAPI: https.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.All in SurveillanceAPI.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/loja&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.SurveillanceAPI: http.executor": "Run",
+    ".NET Launch Settings Profile.SurveillanceAPI: https.executor": "Run",
+    "HTTP Request.All in SurveillanceAPI.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "feature/loja-consumo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "SolutionBuilderGeneralOptionsPage"
   }
-}</component>
+}]]></component>
   <component name="RunDashboard">
     <option name="configurationStatuses">
       <map>
