@@ -8,7 +8,7 @@ namespace SurveillanceAPI.Services.Regras
     {
         public string NomeCampo => "Unidade";
 
-        public DivergenciasDto? Validar(Guid comparacaoID, ItemNotaFiscalDto ItemXML, ItemMovimentacaoErpDto ItemERP)
+        public DivergenciasDto? Validar(long comparacaoID, ItemNotaFiscalDto ItemXML, ItemMovimentacaoErpDto ItemERP)
         {
             var unidadeXml = ItemXML.Unidade?.Trim().ToUpperInvariant();
             var unidadeErp = ItemERP.Unidade?.Trim().ToUpperInvariant();

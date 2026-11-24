@@ -14,7 +14,7 @@ namespace SurveillanceAPI.Test
             var itemXml = new ItemNotaFiscalDto { Unidade = "CX" };
             var itemErp = new ItemMovimentacaoErpDto { Unidade = "UN" };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+            var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.NotNull(resultado);
             Assert.Equal("CX", resultado.ValorXML);
@@ -27,7 +27,7 @@ namespace SurveillanceAPI.Test
             var itemXml = new ItemNotaFiscalDto { Unidade = "CX" };
             var itemErp = new ItemMovimentacaoErpDto { Unidade = "UN" };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+            var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.NotNull(resultado);
             Assert.Equal("Media", resultado.Gravidade);
@@ -39,7 +39,7 @@ namespace SurveillanceAPI.Test
             var itemXml = new ItemNotaFiscalDto { Unidade = "UN" };
             var itemErp = new ItemMovimentacaoErpDto { Unidade = "UN" };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+            var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.Null(resultado);
         }

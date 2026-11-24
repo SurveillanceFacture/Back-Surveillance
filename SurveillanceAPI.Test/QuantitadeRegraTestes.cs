@@ -18,7 +18,7 @@ namespace SurveillanceAPI.Test
           var itemXml = new ItemNotaFiscalDto { Quantidade = 1.49m };
           var itemErp = new ItemMovimentacaoErpDto { Quantidade = 1.50m };
 
-          var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+          var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.NotNull(resultado);
             Assert.Equal(itemXml.Quantidade.ToString(), resultado.ValorXML);
@@ -35,7 +35,7 @@ namespace SurveillanceAPI.Test
             var itemXml = new ItemNotaFiscalDto { Quantidade = 1.49m };
             var itemErp = new ItemMovimentacaoErpDto { Quantidade = 1.50m };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+            var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.NotNull(resultado);
             Assert.Equal("Critica", resultado.Gravidade);
@@ -52,7 +52,7 @@ namespace SurveillanceAPI.Test
             var itemXml = new ItemNotaFiscalDto { Quantidade = 1.49m };
             var itemErp = new ItemMovimentacaoErpDto { Quantidade = 1.49m };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+            var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.Null(resultado);
 

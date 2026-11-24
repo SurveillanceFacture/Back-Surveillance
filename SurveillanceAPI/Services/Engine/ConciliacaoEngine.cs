@@ -4,7 +4,7 @@ using SurveillanceAPI.Interfaces;
 
 namespace SurveillanceAPI.Services.Engine;
 
-public class ConciliacaoEngine 
+public class ConciliacaoEngine
 {
     private readonly IEnumerable<IConciliacaoRegra> _regras;
 
@@ -13,7 +13,7 @@ public class ConciliacaoEngine
         _regras = regras;
     }
 
-    public List<DivergenciasDto> Conciliar(Guid id, List<ItemNotaFiscalDto> itensXML, List<ItemMovimentacaoErpDto> itensERP)
+    public List<DivergenciasDto> Conciliar(long id, List<ItemNotaFiscalDto> itensXML, List<ItemMovimentacaoErpDto> itensERP)
     {
         var divergencias = new List<DivergenciasDto>();
         var eansXml = itensXML.Select(x => x.Ean).ToHashSet();
@@ -22,15 +22,7 @@ public class ConciliacaoEngine
         {
             var itemErp = itensERP.FirstOrDefault(erp => erp.Ean == itemXml.Ean);
 
-<<<<<<< HEAD
-        public List<DivergenciasDto> Conciliar(long id, List<ItemNotaFiscalDto> itensXML, List<ItemMovimentacaoErpDto> itensERP)
-        {
-            var Divergencias = new List<DivergenciasDto>();
-
-            foreach (var itemXml in itensXML)
-=======
             if (itemErp == null)
->>>>>>> 2381a74 (feat: add impact calculation and unit test)
             {
                 divergencias.Add(new DivergenciasDto
                 {
@@ -80,5 +72,4 @@ public class ConciliacaoEngine
 
         return divergencias;
     }
-
 }
