@@ -6,7 +6,7 @@ namespace SurveillanceAPI.Interfaces
     public interface IConciliacaoRegra
     {
         public string NomeCampo { get; }
-        public DivergenciasDto? Validar(Guid comparacaoID, ItemNotaFiscalDto ItemXML, ItemMovimentacaoErpDto ItemERP);
+        public DivergenciasDto? Validar(long comparacaoId, ItemNotaFiscalDto ItemXML, ItemMovimentacaoErpDto ItemERP);
         
                     
     }

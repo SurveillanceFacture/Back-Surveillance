@@ -10,10 +10,16 @@ public class DivergenciaConfiguration : IEntityTypeConfiguration<Divergencia>
     {
         builder.ToTable("Divergencia");
         builder.HasKey(d => d.DivergenciaId);
-        builder.Property(d => d.DivergenciaId).ValueGeneratedOnAdd();
-
+        builder.Property(d => d.DivergenciaId).ValueGeneratedNever();
+        builder.Property(d => d.CodigoProduto).HasMaxLength(500);
+        builder.Property(d => d.Ean).HasMaxLength(500);
+        builder.Property(d => d.TipoDivergencia).IsRequired().HasMaxLength(100);
         builder.Property(d => d.CampoComparado).IsRequired().HasMaxLength(200);
         builder.Property(d => d.ValorXml).HasMaxLength(500);
+        builder.Property(d => d.ValorJson).HasMaxLength(500);
+        builder.Property(d => d.ImpactoFinanceiro).HasPrecision(18, 2).IsRequired();
+        builder.Property(d => d.Descricao).HasMaxLength(500);
+        builder.Property(d => d.AcaoRecomendada).HasMaxLength(500);
         builder.Property(d => d.Observacao).HasMaxLength(1000);
         builder.Property(d => d.DataDeteccao).IsRequired();
 
@@ -25,7 +31,6 @@ public class DivergenciaConfiguration : IEntityTypeConfiguration<Divergencia>
             .HasForeignKey(d => d.ResolvidoPorUsuarioId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // Divergencia -> Historico: configurada só aqui
         builder.HasMany(d => d.Historico)
             .WithOne(h => h.Divergencia)
             .HasForeignKey(h => h.DivergenciaId)
@@ -34,5 +39,6 @@ public class DivergenciaConfiguration : IEntityTypeConfiguration<Divergencia>
 
         builder.HasIndex(d => new { d.ComparacaoId, d.CampoComparado });
         builder.HasIndex(d => d.Status);
+        builder.HasIndex(d => d.Gravidade);
     }
 }

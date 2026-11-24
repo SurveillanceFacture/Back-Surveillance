@@ -13,6 +13,9 @@ namespace SurveillanceAPI.Dto.ApiUpload.ERP
         [JsonPropertyName("unidade")]
         public string Unidade { get; init; } = string.Empty;
 
+        [JsonPropertyName("cfop")]
+        public string CFOP { get; init; } = string.Empty;
+
         [JsonPropertyName("ean")]
         public string Ean { get; init; } = string.Empty;
 

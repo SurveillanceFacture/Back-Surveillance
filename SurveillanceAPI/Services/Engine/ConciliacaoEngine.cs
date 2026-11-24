@@ -1,66 +1,84 @@
 ﻿using SurveillanceAPI.Dto.ApiUpload.ERP;
 using SurveillanceAPI.Dto.ApiUpload.XML;
 using SurveillanceAPI.Interfaces;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography.X509Certificates;
 
-namespace SurveillanceAPI.Services.Engine
+namespace SurveillanceAPI.Services.Engine;
+
+public class ConciliacaoEngine 
 {
-    public class ConciliacaoEngine
+    private readonly IEnumerable<IConciliacaoRegra> _regras;
+
+    public ConciliacaoEngine(IEnumerable<IConciliacaoRegra> regras)
     {
-        private readonly IEnumerable<IConciliacaoRegra> _regras;
+        _regras = regras;
+    }
 
-        public ConciliacaoEngine(IEnumerable<IConciliacaoRegra> regras)
+    public List<DivergenciasDto> Conciliar(Guid id, List<ItemNotaFiscalDto> itensXML, List<ItemMovimentacaoErpDto> itensERP)
+    {
+        var divergencias = new List<DivergenciasDto>();
+        var eansXml = itensXML.Select(x => x.Ean).ToHashSet();
+
+        foreach (var itemXml in itensXML)
         {
-            _regras = regras;
-        }
+            var itemErp = itensERP.FirstOrDefault(erp => erp.Ean == itemXml.Ean);
 
-        public List<DivergenciasDto> Conciliar(Guid id, List<ItemNotaFiscalDto> itensXML, List<ItemMovimentacaoErpDto> itensERP)
+<<<<<<< HEAD
+        public List<DivergenciasDto> Conciliar(long id, List<ItemNotaFiscalDto> itensXML, List<ItemMovimentacaoErpDto> itensERP)
         {
             var Divergencias = new List<DivergenciasDto>();
 
             foreach (var itemXml in itensXML)
+=======
+            if (itemErp == null)
+>>>>>>> 2381a74 (feat: add impact calculation and unit test)
             {
-                var itemErp = itensERP.FirstOrDefault(erp => erp.Ean == itemXml.Ean);
-
-                if (itemErp == null)
+                divergencias.Add(new DivergenciasDto
                 {
-                    Divergencias.Add(new DivergenciasDto
-                    {
-                        ComparacaoId = id,
-                        NumeroItem = itemXml.NumeroItem,
-                        CodigoProduto = itemXml.CodigoProduto,
-                        Ean = itemXml.Ean,
-                        TipoDivergencia = "ItemNaoLancadoNoErp",
-                        CampoComparado = "NumeroItem",
-                        ValorXML = $"Presente em (Ean{itemXml.Ean})",
-                        ValorERP = "Não Encontrado",
-                        Gravidade = "Alta",
-                        Descricao = $"O Item '{itemXml.Descricao}' (Ean:{itemXml.Ean}) consta na nota fiscal, mas não foi lancada no Erp.",
-                        AcaoRecomendada = "Dar entrada manual no item no sistema Erp."
+                    ComparacaoId = id,
+                    NumeroItem = itemXml.NumeroItem,
+                    CodigoProduto = itemXml.CodigoProduto,
+                    Ean = itemXml.Ean,
+                    TipoDivergencia = "ItemNaoLancadoNoErp",
+                    CampoComparado = "NumeroItem",
+                    ValorXML = $"Presente em (Ean:{itemXml.Ean})",
+                    ValorERP = "Não Encontrado",
+                    Gravidade = "Alta",
+                    Descricao = $"O item '{itemXml.Descricao}' (Ean:{itemXml.Ean}) consta na nota fiscal, mas não foi lançado no ERP.",
+                    AcaoRecomendada = "Dar entrada manual no item no sistema ERP."
+                });
+                continue;
+            }
 
-                    });
-                    continue;
-                }
-
-
-                foreach (var regra in _regras)
+            foreach (var regra in _regras)
+            {
+                var divergencia = regra.Validar(id, itemXml, itemErp);
+                if (divergencia != null)
                 {
-                    var divergencia = regra.Validar(id, itemXml, itemErp);
-
-                    if (divergencia != null)
-                    {
-                        Divergencias.Add(divergencia);
-
-                    }
-
-
-
-
+                    divergencias.Add(divergencia);
                 }
             }
-                    return Divergencias;
         }
-    }
-}
 
+        foreach (var itemErp in itensERP)
+        {
+            if (!eansXml.Contains(itemErp.Ean))
+            {
+                divergencias.Add(new DivergenciasDto
+                {
+                    ComparacaoId = id,
+                    Ean = itemErp.Ean,
+                    TipoDivergencia = "ItemSemNotaFiscal",
+                    CampoComparado = "Ean",
+                    ValorXML = "Não Encontrado",
+                    ValorERP = $"Presente em (Ean:{itemErp.Ean})",
+                    Gravidade = "Critica",
+                    Descricao = $"O item (Ean:{itemErp.Ean}) consta no ERP, mas não possui nota fiscal válida correspondente (possível venda cancelada).",
+                    AcaoRecomendada = "Conferir status da nota e estornar a movimentação no ERP."
+                });
+            }
+        }
+
+        return divergencias;
+    }
+
+}

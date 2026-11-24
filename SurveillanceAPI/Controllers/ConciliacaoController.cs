@@ -1,13 +1,20 @@
-﻿using Microsoft.AspNetCore.Http;
+<<<<<<< HEAD
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+=======
+﻿using Microsoft.AspNetCore.Mvc;
+>>>>>>> 2381a74 (feat: add impact calculation and unit test)
 using SurveillanceAPI.Dto.ApiUpload.Conciliacao;
-using SurveillanceAPI.Dto.ApiUpload.XML;
 using SurveillanceAPI.Services.Engine;
 
 namespace SurveillanceAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles="Auditor")]
     public class ConciliacaoController : ControllerBase
     {
         private readonly ConciliacaoEngine _engine;
@@ -18,9 +25,9 @@ namespace SurveillanceAPI.Controllers
 
         [HttpPost]
         public IActionResult Conciliar(
-            [FromQuery] Guid comparacaoId,
+            [FromQuery] long comparacaoId,
             [FromBody] ConciliacaoRequestDto request,
-            [FromQuery] int limite = 10)
+            [FromQuery,Range(1,100)] int limite = 10)
         {
 
             var divergencias = _engine.Conciliar(comparacaoId, request.ItensXml, request.ItensErp);

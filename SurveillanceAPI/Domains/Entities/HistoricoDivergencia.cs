@@ -4,7 +4,7 @@
 public class HistoricoDivergencia
 {
     public long HistoricoDivergenciaId { get; private set; }
-    public long DivergenciaId { get; private set; }
+    public Guid DivergenciaId { get; private set; }
     public StatusDivergencia StatusAnterior { get; private set; }
     public StatusDivergencia StatusNovo { get; private set; }
     public Guid UsuarioId { get; private set; }

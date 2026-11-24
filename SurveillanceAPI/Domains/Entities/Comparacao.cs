@@ -4,9 +4,9 @@ namespace SurveillanceAPI.Domains;
 
 public class Comparacao
 {
-    public long ComparacaoId { get; private set; }
+    public Guid ComparacaoId { get; private set; }
     public Guid LojaId { get; private set; }
-    public Guid AuditorUsuarioId { get; private set; }   
+    public Guid AuditorUsuarioId { get; private set; }
     public string ChaveDocumento { get; private set; } = null!;
     public string HashXml { get; private set; } = null!;
     public StatusComparacao Status { get; private set; }
@@ -33,7 +33,8 @@ public class Comparacao
 
         if (chaveDocumento.Trim().Length > 44)
             throw new DomainException("Chave do documento inválida.");
-        
+
+        ComparacaoId = Guid.NewGuid();
         LojaId = lojaId;
         AuditorUsuarioId = auditorUsuarioId;
         ChaveDocumento = chaveDocumento.Trim();
@@ -42,10 +43,32 @@ public class Comparacao
         DataComparacao = DateTime.UtcNow;
     }
 
-    public void AdicionarDivergencia(string campo, string? valorXml,
-                                     GravidadeDivergencia gravidade)
+    public decimal ImpactoFinanceiroTotal => _divergencias.Sum(d => d.ImpactoFinanceiro);
+
+    public void AdicionarDivergencia(
+        string tipoDivergencia,
+        string campo,
+        string? valorXml,
+        string? valorErp,
+        decimal impactoFinanceiro,
+        GravidadeDivergencia gravidade,
+        int? numeroItem = null,
+        string? codigoProduto = null,
+        string? ean = null)
     {
-        _divergencias.Add(new Divergencia(campo,valorXml, gravidade));
+        var divergencia = new Divergencia(
+            ComparacaoId,
+            tipoDivergencia,
+            campo,
+            valorXml,
+            valorErp,
+            impactoFinanceiro,
+            gravidade,
+            numeroItem,
+            codigoProduto,
+            ean);
+
+        _divergencias.Add(divergencia);
         Status = StatusComparacao.ComDivergencias;
     }
 }
