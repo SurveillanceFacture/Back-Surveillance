@@ -14,7 +14,7 @@ namespace SurveillanceAPI.Test
             var itemXml = new ItemNotaFiscalDto { CodigoProduto = "FORN-1045" };
             var itemErp = new ItemMovimentacaoErpDto { CodigoProduto = "INT-9920" };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+            var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.NotNull(resultado);
             Assert.Equal(itemXml.CodigoProduto, resultado.ValorXML);
@@ -27,7 +27,7 @@ namespace SurveillanceAPI.Test
             var itemXml = new ItemNotaFiscalDto { CodigoProduto = "FORN-1045" };
             var itemErp = new ItemMovimentacaoErpDto { CodigoProduto = "INT-9920" };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+            var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.NotNull(resultado);
             Assert.Equal("Baixa", resultado.Gravidade);
@@ -39,7 +39,7 @@ namespace SurveillanceAPI.Test
             var itemXml = new ItemNotaFiscalDto { CodigoProduto = "FORN-1045" };
             var itemErp = new ItemMovimentacaoErpDto { CodigoProduto = "FORN-1045" };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+            var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.Null(resultado);
         }

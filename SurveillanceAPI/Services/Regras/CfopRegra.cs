@@ -9,7 +9,7 @@ namespace SurveillanceAPI.Services.Regras
     {
         public string NomeCampo => "CFOP";
 
-        public DivergenciasDto? Validar(Guid comparacaoId, ItemNotaFiscalDto ItemXML, ItemMovimentacaoErpDto ItemERP) 
+        public DivergenciasDto? Validar(long comparacaoId, ItemNotaFiscalDto ItemXML, ItemMovimentacaoErpDto ItemERP) 
         { 
           if(ItemXML.CFOP != ItemERP.CFOP)
             {

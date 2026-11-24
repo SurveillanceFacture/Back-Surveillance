@@ -4,7 +4,7 @@ namespace SurveillanceAPI.Domains;
 
 public class Comparacao
 {
-    public Guid ComparacaoId { get; private set; }
+    public long ComparacaoId { get; private set; }
     public Guid LojaId { get; private set; }
     public Guid AuditorUsuarioId { get; private set; }
     public string ChaveDocumento { get; private set; } = null!;
@@ -34,7 +34,6 @@ public class Comparacao
         if (chaveDocumento.Trim().Length > 44)
             throw new DomainException("Chave do documento inválida.");
 
-        ComparacaoId = Guid.NewGuid();
         LojaId = lojaId;
         AuditorUsuarioId = auditorUsuarioId;
         ChaveDocumento = chaveDocumento.Trim();

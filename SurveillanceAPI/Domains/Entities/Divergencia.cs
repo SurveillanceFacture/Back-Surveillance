@@ -5,7 +5,7 @@ namespace SurveillanceAPI.Domains;
 public class Divergencia
 {
     public Guid DivergenciaId { get; private set; }
-    public Guid ComparacaoId { get; private set; }
+    public long ComparacaoId { get; private set; }
     public int? NumeroItem { get; private set; }
     public string? CodigoProduto { get; private set; }
     public string? Ean { get; private set; }
@@ -32,7 +32,7 @@ public class Divergencia
     private Divergencia() { }
 
     internal Divergencia(
-        Guid comparacaoId,
+        long comparacaoId,
         string tipoDivergencia,
         string campo,
         string? valorXml,

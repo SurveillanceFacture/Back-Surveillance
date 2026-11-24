@@ -15,7 +15,7 @@ namespace SurveillanceAPI.Test
             var ItemXml = new ItemNotaFiscalDto { NCM  = "84713012" };
             var ItemErp = new ItemMovimentacaoErpDto {NCM = "85171231"};
 
-            var resultatdo = _regra.Validar(Guid.NewGuid(), ItemXml, ItemErp);
+            var resultatdo = _regra.Validar(1, ItemXml, ItemErp);
 
             Assert.NotNull(resultatdo);
             Assert.Equal("84713012", resultatdo.ValorXML);
@@ -29,7 +29,7 @@ namespace SurveillanceAPI.Test
             var ItemXml = new ItemNotaFiscalDto { NCM = "84713012" };
             var ItemErp = new ItemMovimentacaoErpDto { NCM = "85171231" };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), ItemXml, ItemErp);
+            var resultado = _regra.Validar(1, ItemXml, ItemErp);
 
 
             Assert.NotNull(resultado);
@@ -47,7 +47,7 @@ namespace SurveillanceAPI.Test
             var ItemXml = new ItemNotaFiscalDto { NCM = "84713012" };
             var ItemErp = new ItemMovimentacaoErpDto { NCM = "84713012" };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), ItemXml, ItemErp);
+            var resultado = _regra.Validar(1, ItemXml, ItemErp);
 
             Assert.Null(resultado);
 

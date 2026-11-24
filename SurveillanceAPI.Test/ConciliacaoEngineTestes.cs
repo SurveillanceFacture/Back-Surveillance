@@ -55,7 +55,7 @@ namespace SurveillanceAPI.Test
                 }
             };
 
-            var resultado = engine.Conciliar(Guid.NewGuid(), itensXml, itensErp);
+            var resultado = engine.Conciliar(1, itensXml, itensErp);
 
             Assert.Empty(resultado);
         }
@@ -64,7 +64,7 @@ namespace SurveillanceAPI.Test
         public void Conciliar_QuandoItemNaoExistirNoErp_DeveRetornarItemNaoLancadoNoErp()
         {
             var engine = CriarEngine();
-            var comparacaoId = Guid.NewGuid();
+            long comparacaoId = 1;
             var itensXml = new List<ItemNotaFiscalDto>
             {
                 new() { NumeroItem = 1, CodigoProduto = "FORN-1045", Descricao = "Arroz 5kg", Ean = "7891000100103" }
@@ -83,7 +83,7 @@ namespace SurveillanceAPI.Test
         public void Conciliar_QuandoItemDoErpNaoTiverNota_DeveRetornarItemSemNotaFiscal()
         {
             var engine = CriarEngine();
-            var comparacaoId = Guid.NewGuid();
+            long comparacaoId = 1;
             var itensXml = new List<ItemNotaFiscalDto>();
             var itensErp = new List<ItemMovimentacaoErpDto>
             {
@@ -130,7 +130,7 @@ namespace SurveillanceAPI.Test
                 }
             };
 
-            var resultado = engine.Conciliar(Guid.NewGuid(), itensXml, itensErp);
+            var resultado = engine.Conciliar(1, itensXml, itensErp);
 
             Assert.Equal(3, resultado.Count);
             Assert.Contains(resultado, d => d.CampoComparado == "CFOP");

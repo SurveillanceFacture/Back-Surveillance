@@ -14,7 +14,7 @@ namespace SurveillanceAPI.Test
             var itemXml = new ItemNotaFiscalDto { CFOP = "5102" };
             var itemErp = new ItemMovimentacaoErpDto { CFOP = "5405" };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+            var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.NotNull(resultado);
             Assert.Equal(itemXml.CFOP, resultado.ValorXML);
@@ -27,7 +27,7 @@ namespace SurveillanceAPI.Test
             var itemXml = new ItemNotaFiscalDto { CFOP = "5102" };
             var itemErp = new ItemMovimentacaoErpDto { CFOP = "5405" };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+            var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.NotNull(resultado);
             Assert.Equal("Alta", resultado.Gravidade);
@@ -39,7 +39,7 @@ namespace SurveillanceAPI.Test
             var itemXml = new ItemNotaFiscalDto { CFOP = "5102" };
             var itemErp = new ItemMovimentacaoErpDto { CFOP = "5102" };
 
-            var resultado = _regra.Validar(Guid.NewGuid(), itemXml, itemErp);
+            var resultado = _regra.Validar(1, itemXml, itemErp);
 
             Assert.Null(resultado);
         }
