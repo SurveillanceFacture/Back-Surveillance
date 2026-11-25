@@ -16,6 +16,10 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         builder.HasIndex(u => u.Email).IsUnique();
         builder.Property(u => u.HashSenha).IsRequired();
         builder.Property(u => u.DataCriacao).IsRequired();
+        builder.Property(u => u.HashTokenRedefinicao).HasMaxLength(64);
+        builder.HasIndex(u => u.HashTokenRedefinicao)
+            .IsUnique()
+            .HasFilter("[HashTokenRedefinicao] IS NOT NULL");
 
         builder.HasOne(u => u.TipoUsuario)
             .WithMany()

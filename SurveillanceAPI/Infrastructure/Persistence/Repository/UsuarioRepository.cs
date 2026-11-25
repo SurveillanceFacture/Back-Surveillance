@@ -25,6 +25,11 @@ public class UsuarioRepository : IUsuarioRepository
             .Include(u => u.TipoUsuario)
             .FirstOrDefaultAsync(u => u.UsuarioId == id, ct);
 
+    public Task<Usuario?> ObterPorHashTokenRedefinicaoAsync(string hashToken, CancellationToken ct) =>
+        _db.Usuarios
+            .Include(u => u.TipoUsuario)
+            .FirstOrDefaultAsync(u => u.HashTokenRedefinicao == hashToken, ct);
+
     public Task<bool> EmailExisteAsync(string email, Guid? ignorarUsuarioId, CancellationToken ct) =>
         _db.Usuarios.AnyAsync(
             u => u.Email == email && (ignorarUsuarioId == null || u.UsuarioId != ignorarUsuarioId.Value),

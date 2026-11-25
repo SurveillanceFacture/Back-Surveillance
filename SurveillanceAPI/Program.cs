@@ -2,11 +2,15 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using SurveillanceAPI.Applications.Authentication;
 using SurveillanceAPI.Applications.Service;
+using SurveillanceAPI.Domains;
 using SurveillanceAPI.Infraestructure.Persistence;
 using SurveillanceAPI.Infraestructure.Persistence.Repositories;
 using SurveillanceAPI.Inteface;
@@ -17,10 +21,24 @@ using SurveillanceAPI.Services.Regras;
 using SurveillanceAPI.Infraestructure.OpenApi;
 using SurveillanceAPI.Infrastructure.ExceptionHandling;
 using SurveillanceAPI.Infrastructure.Persistence.Repository;
-using SurveillanceAPI.Applications.Groq;
+using SurveillanceAPI.Services.Email;
 
 var builder = WebApplication.CreateBuilder(args);
-    
+
+// Em hospedagem na nuvem a API fica atrás de proxy/load balancer. Sem isto, RemoteIpAddress é o IP do proxy
+// e o rate limit passa a valer para TODOS os usuários juntos. Só habilite se a API NÃO for exposta direto à internet.
+var usarForwardedHeaders = builder.Configuration.GetValue<bool>("ForwardedHeaders:Habilitado");
+if (usarForwardedHeaders)
+{
+    builder.Services.Configure<ForwardedHeadersOptions>(o =>
+    {
+        o.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+        o.ForwardLimit = 1;
+        o.KnownNetworks.Clear();
+        o.KnownProxies.Clear();
+    });
+}
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -56,11 +74,13 @@ builder.Services
                     : null;
 
                 var pendenteNoToken = p.HasClaim(GeradorTokenJwt.ClaimDeveTrocarSenha, "true");
+                var emitidoEm = (ctx.SecurityToken as JsonWebToken)?.IssuedAt;
 
                 if (u is null
                     || !u.StatusUsuario
                     || u.TipoUsuario.NomeTipoUsuario != p.FindFirstValue(ClaimTypes.Role)
-                    || u.DeveTrocarSenha != pendenteNoToken)
+                    || u.DeveTrocarSenha != pendenteNoToken
+                    || SenhaAlteradaDepoisDoToken(u, emitidoEm))
                 {
                     ctx.Fail("Token não é mais válido.");
                 }
@@ -74,6 +94,12 @@ builder.Services.AddSingleton<IHashSenha, HashSenha>();
 builder.Services.AddSingleton<IGeradorTokenJwt, GeradorTokenJwt>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<ILojaRepository, LojaRepository>();
+builder.Services.AddEmailSender(builder.Configuration, builder.Environment);
+
+if (!builder.Environment.IsDevelopment()
+    && string.IsNullOrWhiteSpace(builder.Configuration[$"{RedefinicaoSenhaOptions.SectionName}:UrlBase"]))
+    throw new InvalidOperationException("RedefinicaoSenha:UrlBase não configurado.");
+
 builder.Services.AddScoped<AutenticacaoService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<LojaService>();
@@ -108,32 +134,17 @@ builder.Services.AddOpenApi(options =>
 builder.Services.AddRateLimiter(o =>
 {
     o.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
-    o.AddPolicy("login", ctx => RateLimitPartition.GetFixedWindowLimiter(
-        ctx.Connection.RemoteIpAddress?.ToString() ?? "anon",
-        _ => new FixedWindowRateLimiterOptions
-        {
-            PermitLimit = 5,
-            Window = TimeSpan.FromMinutes(1)
-        }));
-});
 
-builder.Services.Configure<GroqOptions>(options =>
-{
-    options.ApiKey = Environment.GetEnvironmentVariable("GROQ_API_KEY") ?? string.Empty;
-    options.Model = Environment.GetEnvironmentVariable("GROQ_MODEL") ?? "openai/gpt-oss-20b";
-
-    var enviarValores = Environment.GetEnvironmentVariable("GROQ_SEND_VALUES");
-    options.EnviarValoresOriginais =
-        bool.TryParse(enviarValores, out var habilitado) && habilitado;
-});
-
-builder.Services.AddHttpClient<IGroqDivergenciaService, IGroqDivergenciaService>(client =>
-{
-    client.BaseAddress = new Uri("https://api.groq.com/openai/v1/");
-    client.Timeout = TimeSpan.FromSeconds(45);
+    // Uma política por endpoint: cada uma tem o seu próprio balde por IP.
+    AdicionarPoliticaPorIp(o, "login", permitir: 5, janela: TimeSpan.FromMinutes(1));
+    AdicionarPoliticaPorIp(o, "esqueci-senha", permitir: 3, janela: TimeSpan.FromMinutes(10));
+    AdicionarPoliticaPorIp(o, "redefinir-senha", permitir: 10, janela: TimeSpan.FromMinutes(10));
 });
 
 var app = builder.Build();
+
+if (usarForwardedHeaders)
+    app.UseForwardedHeaders();
 
 app.UseExceptionHandler();
 
@@ -181,6 +192,31 @@ app.MapControllers();
 
 app.Run();
 
+
+static void AdicionarPoliticaPorIp(RateLimiterOptions o, string nome, int permitir, TimeSpan janela) =>
+    o.AddPolicy(nome, ctx => RateLimitPartition.GetFixedWindowLimiter(
+        ctx.Connection.RemoteIpAddress?.ToString() ?? "anon",
+        _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = permitir,
+            Window = janela
+        }));
+
+// Tokens emitidos antes da última troca de senha deixam de valer.
+static bool SenhaAlteradaDepoisDoToken(Usuario u, DateTime? emitidoEm)
+{
+    if (u.SenhaAlteradaEm is not { } alteradaEm)
+        return false;
+
+    // Sem 'iat' não há como provar que o token é posterior à troca: nega.
+    if (emitidoEm is null)
+        return true;
+
+    // O 'iat' tem precisão de segundos; trunca a data da troca para não derrubar
+    // um token emitido no mesmo segundo, logo depois da troca.
+    var limite = alteradaEm.Ticks - alteradaEm.Ticks % TimeSpan.TicksPerSecond;
+    return emitidoEm.Value.Ticks < limite;
+}
 
 static bool RotaPermitidaComSenhaPendente(HttpRequest r)
 {

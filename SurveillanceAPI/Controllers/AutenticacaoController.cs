@@ -29,6 +29,28 @@ public class AutenticacaoController:ControllerBase
         return Ok(resultado);
     }
     
+    [HttpPost("esqueci-senha")]
+    [AllowAnonymous]
+    [EnableRateLimiting("esqueci-senha")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> EsqueciSenha(EsqueciSenhaDto dto, CancellationToken ct)
+    {
+        await _service.SolicitarRedefinicaoAsync(dto, ct);
+        return NoContent();
+    }
+
+    [HttpPost("redefinir-senha")]
+    [AllowAnonymous]
+    [EnableRateLimiting("redefinir-senha")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> RedefinirSenha(RedefinirSenhaComTokenDto dto, CancellationToken ct)
+    {
+        await _service.RedefinirComTokenAsync(dto, ct);
+        return NoContent();
+    }
+
     [HttpPost("renovar")]
     [Authorize]
     public async Task<ActionResult<LerLoginDto>> Renovar(CancellationToken ct)
