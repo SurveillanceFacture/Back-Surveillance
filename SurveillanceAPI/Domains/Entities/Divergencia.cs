@@ -4,16 +4,20 @@ namespace SurveillanceAPI.Domains;
 
 public class Divergencia
 {
-    public long DivergenciaId { get; private set; }
+    public Guid DivergenciaId { get; private set; }
     public long ComparacaoId { get; private set; }
-    public int NumeroItem {get; private set;}
-    public string? CodigoProduto{get; private set;}
-    public string? Ean {get; private set;}
-    public string? CampoComparado { get; private set; } = null!;
+    public int? NumeroItem { get; private set; }
+    public string? CodigoProduto { get; private set; }
+    public string? Ean { get; private set; }
+    public string TipoDivergencia { get; private set; } = string.Empty;
+    public string? CampoComparado { get; private set; }
     public string? ValorXml { get; private set; }
     public string? ValorJson { get; private set; }
+    public decimal ImpactoFinanceiro { get; private set; }
     public GravidadeDivergencia Gravidade { get; private set; }
     public StatusDivergencia Status { get; private set; }
+    public string? Descricao { get; private set; }
+    public string? AcaoRecomendada { get; private set; }
     public DateTime DataDeteccao { get; private set; }
     public Guid? ResolvidoPorUsuarioId { get; private set; }
     public DateTime? DataResolucao { get; private set; }
@@ -27,24 +31,49 @@ public class Divergencia
 
     private Divergencia() { }
 
-    internal Divergencia(string campo, string? valorXml,
-                          GravidadeDivergencia gravidade)
+    internal Divergencia(
+        long comparacaoId,
+        string tipoDivergencia,
+        string campo,
+        string? valorXml,
+        string? valorErp,
+        decimal impactoFinanceiro,
+        GravidadeDivergencia gravidade,
+        int? numeroItem = null,
+        string? codigoProduto = null,
+        string? ean = null)
     {
+        ArgumentException.ThrowIfNullOrWhiteSpace(tipoDivergencia);
         ArgumentException.ThrowIfNullOrWhiteSpace(campo);
-        
+
         if (campo.Trim().Length > 200)
             throw new DomainException("Nome do campo muito longo.");
+
+        if (impactoFinanceiro < 0)
+            throw new DomainException("Impacto financeiro não pode ser negativo.");
 
         if (!Enum.IsDefined(gravidade))
             throw new DomainException("Gravidade inválida.");
 
-        
-       
+        DivergenciaId = Guid.NewGuid();
+        ComparacaoId = comparacaoId;
+        TipoDivergencia = tipoDivergencia.Trim();
         CampoComparado = campo.Trim();
         ValorXml = Truncar(valorXml);
+        ValorJson = Truncar(valorErp);
+        ImpactoFinanceiro = Math.Round(impactoFinanceiro, 2);
         Gravidade = gravidade;
+        NumeroItem = numeroItem;
+        CodigoProduto = Truncar(codigoProduto);
+        Ean = Truncar(ean);
         Status = StatusDivergencia.Aberta;
         DataDeteccao = DateTime.UtcNow;
+    }
+
+    public void PreencherAnaliseIA(string? descricao, string? acaoRecomendada)
+    {
+        Descricao = Truncar(descricao);
+        AcaoRecomendada = Truncar(acaoRecomendada);
     }
 
     public void IniciarAnalise(Guid usuarioId)
@@ -86,7 +115,7 @@ public class Divergencia
 
     private void RegistrarMudanca(StatusDivergencia novo, Guid usuarioId, string? observacao)
     {
-        _historico.Add(new HistoricoDivergencia( Status, novo, usuarioId, observacao));
+        _historico.Add(new HistoricoDivergencia(Status, novo, usuarioId, observacao));
         Status = novo;
     }
 

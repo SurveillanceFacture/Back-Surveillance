@@ -42,6 +42,15 @@
       <change beforePath="$PROJECT_DIR$/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SurveillanceAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SurveillanceAPI.csproj" afterDir="false" />
+    <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="refactor: Melhora na redefinicao de senha e email do usuario">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ConciliacaoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ConciliacaoController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dto/ApiUpload/XML/DivergenciasDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dto/ApiUpload/XML/DivergenciasDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/IConciliacaoRegra.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/IConciliacaoRegra.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Engine/ConciliacaoEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Engine/ConciliacaoEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Regras/NcmRegra.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Regras/NcmRegra.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Regras/QuantidadeRegra.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Regras/QuantidadeRegra.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Regras/ValorUnitarioRegra.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Regras/ValorUnitarioRegra.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

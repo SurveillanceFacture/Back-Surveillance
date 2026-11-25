@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../SurveillanceAPI.Test/SurveillanceAPI.Test.csproj" Id="18ebb1f5-97e9-409d-9f38-626cb3fbd2ec" />
   <Project Path="SurveillanceAPI.csproj" />
 </Solution>

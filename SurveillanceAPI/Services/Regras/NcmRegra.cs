@@ -8,7 +8,7 @@ namespace SurveillanceAPI.Services.Regras
     {
         public string NomeCampo => "NCM";
 
-        public DivergenciasDto? Validar(Guid comparacaoID, ItemNotaFiscalDto ItemXML, ItemMovimentacaoErpDto ItemERP)
+        public DivergenciasDto? Validar(long comparacaoId, ItemNotaFiscalDto ItemXML, ItemMovimentacaoErpDto ItemERP)
         {
             if(ItemXML.NCM != ItemERP.NCM)
             {
@@ -19,7 +19,7 @@ namespace SurveillanceAPI.Services.Regras
                     Ean = ItemXML.Ean,
                     ValorXML = ItemXML.NCM,
                     ValorERP = ItemERP.NCM,
-                    Gravidade = "critica",
+                    Gravidade = "Critica",
                     DataDeteccao = DateTimeOffset.UtcNow
                 };
             }

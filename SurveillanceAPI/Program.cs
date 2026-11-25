@@ -16,7 +16,6 @@ using SurveillanceAPI.Infraestructure.Persistence.Repositories;
 using SurveillanceAPI.Inteface;
 using SurveillanceAPI.Interface;
 using SurveillanceAPI.Interfaces;
-using SurveillanceAPI.Services.Engine;
 using SurveillanceAPI.Services.Regras;
 using SurveillanceAPI.Infraestructure.OpenApi;
 using SurveillanceAPI.Infrastructure.ExceptionHandling;
@@ -108,6 +107,11 @@ builder.Services.AddScoped<LojaService>();
 builder.Services.AddScoped<IConciliacaoRegra, ValorUnitarioRegra>();
 builder.Services.AddScoped<IConciliacaoRegra, QuantidadeRegra>();
 builder.Services.AddScoped<IConciliacaoRegra, NcmRegra>();
+builder.Services.AddScoped<IConciliacaoRegra, UnidadeMedidaRegra>();
+builder.Services.AddScoped<IConciliacaoRegra, CfopRegra>();
+builder.Services.AddScoped<IConciliacaoRegra, CodigoProdutoRegra>();
+
+
 builder.Services.AddScoped<ConciliacaoEngine>();
 builder.Services.AddExceptionHandler<DomainExceptionHandler>();
 builder.Services.AddProblemDetails();

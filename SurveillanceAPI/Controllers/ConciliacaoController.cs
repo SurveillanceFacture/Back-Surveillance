@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
@@ -11,6 +11,7 @@ namespace SurveillanceAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles="Auditor")]
     public class ConciliacaoController : ControllerBase
     {
         private const string Auditor = nameof(TipoUsuarioEnum.Auditor);
@@ -26,9 +27,9 @@ namespace SurveillanceAPI.Controllers
         [EnableRateLimiting("login")]
         [AllowAnonymous]
         public IActionResult Conciliar(
-            [FromQuery] Guid comparacaoId,
+            [FromQuery] long comparacaoId,
             [FromBody] ConciliacaoRequestDto request,
-            [FromQuery] int limite = 10)
+            [FromQuery,Range(1,100)] int limite = 10)
         {
 
             var divergencias = _engine.Conciliar(comparacaoId, request.ItensXml, request.ItensErp);

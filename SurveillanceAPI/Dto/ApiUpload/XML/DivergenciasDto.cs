@@ -6,7 +6,7 @@ namespace SurveillanceAPI.Dto.ApiUpload.XML
     {
 
         [JsonPropertyName("comparacaoid")]
-        public Guid ComparacaoId { get; init;  }
+        public long ComparacaoId { get; init;  }
 
         [JsonPropertyName("numero_item")]
         public int? NumeroItem { get; init; }
@@ -37,6 +37,9 @@ namespace SurveillanceAPI.Dto.ApiUpload.XML
 
         [JsonPropertyName("gravidade")]
         public string Gravidade { get; init; } = string.Empty;
+
+        [JsonPropertyName("impacto_financeiro")]
+        public decimal ImpactoFinanceiro { get; set; }
 
         [JsonPropertyName("data_deteccao")]
         public DateTimeOffset DataDeteccao { get; init; } = DateTimeOffset.UtcNow;

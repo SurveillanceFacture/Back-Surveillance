@@ -8,10 +8,9 @@ namespace SurveillanceAPI.Services.Regras
     {
         public string NomeCampo => "ValorUnitario";
 
-        public DivergenciasDto? Validar(Guid comparacaoID, ItemNotaFiscalDto ItemXML, ItemMovimentacaoErpDto ItemERP)
+        public DivergenciasDto? Validar(long comparacaoId, ItemNotaFiscalDto ItemXML, ItemMovimentacaoErpDto ItemERP)
         {
-            decimal diferanca = Math.Abs(ItemXML.ValorUnitario - ItemERP.ValorUnitario);
-            if(diferanca > 0.01m)
+            if (ItemXML.ValorUnitario != ItemERP.ValorUnitario)
             {
                 return new DivergenciasDto
                 {
