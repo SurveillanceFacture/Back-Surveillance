@@ -13,11 +13,14 @@ public class DomainExceptionHandler : IExceptionHandler
         if (exception is not DomainException domain)
             return false;
 
+        // DomainExceptionHandler.cs
         var (status, titulo) = domain switch
         {
-            DomainException.NaoEncontradoException => (StatusCodes.Status404NotFound, "Não encontrado"),
-            DomainException.ConflitoException      => (StatusCodes.Status409Conflict, "Conflito"),
-            _                      => (StatusCodes.Status400BadRequest, "Requisição inválida")
+            DomainException.NaoEncontradoException => (404, "Não encontrado"),
+            DomainException.ConflitoException      => (409, "Conflito"),
+            DomainException.NaoAutorizadoException => (401, "Não autorizado"),
+            DomainException.ProibidoException      => (403, "Acesso negado"),
+            _                                      => (400, "Requisição inválida")
         };
 
         context.Response.StatusCode = status;

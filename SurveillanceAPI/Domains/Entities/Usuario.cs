@@ -14,6 +14,9 @@ namespace SurveillanceAPI.Domains
         public bool StatusUsuario { get; private set; } = true;
         public bool DeveTrocarSenha { get; private set; }
         public DateTime? SenhaExpiraEm { get; private set; }
+        public DateTime? SenhaAlteradaEm { get; private set; }
+        public string? HashTokenRedefinicao { get; private set; }
+        public DateTime? TokenRedefinicaoExpiraEm { get; private set; }
         public int TipoUsuarioId { get; private set; }
         public TipoUsuario TipoUsuario { get; private set; }    
 
@@ -90,6 +93,8 @@ namespace SurveillanceAPI.Domains
             HashSenha = novoHashSenha;
             DeveTrocarSenha = true;
             SenhaExpiraEm = DateTime.UtcNow.Add(validade);
+            SenhaAlteradaEm = DateTime.UtcNow;
+            InvalidarTokenRedefinicao();
         }
 
         public void AlterarSenha(string novoHashSenha)
@@ -98,6 +103,28 @@ namespace SurveillanceAPI.Domains
             HashSenha = novoHashSenha;
             DeveTrocarSenha = false;
             SenhaExpiraEm = null;
+            SenhaAlteradaEm = DateTime.UtcNow;
+            InvalidarTokenRedefinicao();
+        }
+
+        public void GerarTokenRedefinicao(string hashToken, TimeSpan validade)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(hashToken);
+            if (validade <= TimeSpan.Zero) throw new DomainException("Validade inválida.");
+
+            HashTokenRedefinicao = hashToken;
+            TokenRedefinicaoExpiraEm = DateTime.UtcNow.Add(validade);
+        }
+
+        public bool TokenRedefinicaoValido() =>
+            HashTokenRedefinicao is not null
+            && TokenRedefinicaoExpiraEm.HasValue
+            && DateTime.UtcNow < TokenRedefinicaoExpiraEm.Value;
+
+        public void InvalidarTokenRedefinicao()
+        {
+            HashTokenRedefinicao = null;
+            TokenRedefinicaoExpiraEm = null;
         }
 
         public void AlterarTipoUsuario(int novoTipoUsuarioId)

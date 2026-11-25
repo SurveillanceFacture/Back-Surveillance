@@ -8,6 +8,8 @@ public interface IUsuarioRepository
     
     Task<Usuario?> ObterPorIdAsync(Guid id, CancellationToken ct);
 
+    Task<Usuario?> ObterPorHashTokenRedefinicaoAsync(string hashToken, CancellationToken ct);
+
     Task<bool> EmailExisteAsync(string email, Guid? ignorarUsuarioId, CancellationToken ct);
 
     Task<(IReadOnlyList<Usuario> Itens, int Total)> ListarAsync(

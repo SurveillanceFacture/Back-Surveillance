@@ -24,6 +24,7 @@ namespace SurveillanceAPI.Domains
             string razaoSocial,
             string cnpj,
             Guid auditorUsuarioId,
+            Guid gerenteUsuarioId,
             Guid criadoPorUsuarioId)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(razaoSocial);
@@ -40,6 +41,9 @@ namespace SurveillanceAPI.Domains
             if (auditorUsuarioId == Guid.Empty)
                 throw new DomainException("Auditor inválido.");
 
+            if (gerenteUsuarioId == Guid.Empty)
+                throw new DomainException("Gerente inválido.");
+
             if (criadoPorUsuarioId == Guid.Empty)
                 throw new DomainException("Usuário criador inválido.");
 
@@ -48,6 +52,7 @@ namespace SurveillanceAPI.Domains
             Cnpj = cnpjLimpo;
             AuditorUsuarioId = auditorUsuarioId;
             CriadoPorUsuarioId = criadoPorUsuarioId;
+            GerenteUsuarioId = gerenteUsuarioId; 
             DataCriacao = DateTime.UtcNow;
         }
 
@@ -59,16 +64,31 @@ namespace SurveillanceAPI.Domains
             AuditorUsuarioId = novoAuditorUsuarioId;
         }
 
+        public void TrocarGerente(Guid novoGerenteUsuarioId)
+        {
+            if (novoGerenteUsuarioId == Guid.Empty)
+                throw new DomainException("Gerente inválido.");
+            
+            GerenteUsuarioId = novoGerenteUsuarioId;
+        }
+        
+        public void AlterarRazaoSocial(string razaoSocial)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(razaoSocial);
+
+            if (razaoSocial.Trim().Length > 180)
+                throw new DomainException("Razão social muito longa.");
+
+            RazaoSocial = razaoSocial.Trim();
+        }
+
         public void Desativar() => StatusLoja = false;
         public void Ativar() => StatusLoja = true;
 
-        public bool CnpjCorresponde(string? outroCnpj) =>
-            !string.IsNullOrWhiteSpace(outroCnpj) && Cnpj == NormalizarCnpj(outroCnpj);
-
         public static string NormalizarCnpj(string cnpj) =>
             new string(cnpj.Where(char.IsLetterOrDigit).ToArray()).ToUpperInvariant();
-
-        private static bool CnpjValido(string cnpj)
+        
+        public static bool CnpjValido(string cnpj)
         {
             if (cnpj.Length != 14 || cnpj.Distinct().Count() == 1)
                 return false;
