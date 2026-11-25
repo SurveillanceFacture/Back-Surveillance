@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using System.ComponentModel.DataAnnotations;
 using SurveillanceAPI.Domains;
 using SurveillanceAPI.Dto.ApiUpload.Conciliacao;
 using SurveillanceAPI.Dto.ApiUpload.XML;
@@ -29,7 +30,8 @@ namespace SurveillanceAPI.Controllers
         public IActionResult Conciliar(
             [FromQuery] long comparacaoId,
             [FromBody] ConciliacaoRequestDto request,
-            [FromQuery,Range(1,100)] int limite = 10)
+            [FromQuery, System.ComponentModel.DataAnnotations.Range(1, 100)]
+            int limite = 10        
         {
 
             var divergencias = _engine.Conciliar(comparacaoId, request.ItensXml, request.ItensErp);
