@@ -10,12 +10,26 @@ namespace SurveillanceAPI.Services.Impacto
             List<ItemNotaFiscalDto> itensXML,
             List<ItemMovimentacaoErpDto> itensERP)
         {
+            if (divergencias is null || divergencias.Count == 0)
+                return divergencias ?? [];
+
+            var listaXml = itensXML ?? [];
+            var listaErp = itensERP ?? [];
+
             foreach (var divergencia in divergencias)
             {
-                var itemXml = itensXML.FirstOrDefault(x => x.Ean == divergencia.Ean);
-                var itemErp = itensERP.FirstOrDefault(e => e.Ean == divergencia.Ean);
+                var eanBusca = divergencia.Ean?.Trim();
 
-                divergencia.ImpactoFinanceiro = Math.Round(CalcularValor(divergencia, itemXml, itemErp), 2);
+                var itemXml = !string.IsNullOrWhiteSpace(eanBusca)
+     ? listaXml.FirstOrDefault(x => string.Equals(x.Ean?.Trim(), eanBusca, StringComparison.OrdinalIgnoreCase))
+     : null;
+
+                var itemErp = !string.IsNullOrWhiteSpace(eanBusca)
+                    ? listaErp.FirstOrDefault(e => string.Equals(e.Ean?.Trim(), eanBusca, StringComparison.OrdinalIgnoreCase))
+                    : null;
+
+                var valorBruto = CalcularValor(divergencia, itemXml, itemErp);
+                divergencia.ImpactoFinanceiro = Math.Round(valorBruto, 2, MidpointRounding.AwayFromZero);
             }
 
             return divergencias;
@@ -27,10 +41,10 @@ namespace SurveillanceAPI.Services.Impacto
             ItemMovimentacaoErpDto? itemErp)
         {
             if (divergencia.TipoDivergencia == "ItemNaoLancadoNoErp" && itemXml != null)
-                return itemXml.Quantidade * itemXml.ValorUnitario;
+                return Math.Abs(itemXml.Quantidade * itemXml.ValorUnitario);
 
             if (divergencia.TipoDivergencia == "ItemSemNotaFiscal" && itemErp != null)
-                return itemErp.Quantidade * itemErp.ValorUnitario;
+                return Math.Abs(itemErp.Quantidade * itemErp.ValorUnitario);
 
             if (itemXml == null || itemErp == null)
                 return 0m;
@@ -41,7 +55,7 @@ namespace SurveillanceAPI.Services.Impacto
 
                 "Quantidade" => Math.Abs(itemXml.Quantidade - itemErp.Quantidade) * itemXml.ValorUnitario,
 
-                "NCM" or "CFOP" => itemXml.Quantidade * itemXml.ValorUnitario,
+                "NCM" or "CFOP" => Math.Abs(itemXml.Quantidade * itemXml.ValorUnitario),
 
                 "Unidade" or "CodigoProduto" => 0m,
 

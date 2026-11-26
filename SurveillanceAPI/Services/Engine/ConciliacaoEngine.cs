@@ -1,16 +1,19 @@
 ﻿using SurveillanceAPI.Dto.ApiUpload.ERP;
 using SurveillanceAPI.Dto.ApiUpload.XML;
 using SurveillanceAPI.Interfaces;
+using SurveillanceAPI.Services.Impacto;
 
 namespace SurveillanceAPI.Services.Engine;
 
 public class ConciliacaoEngine
 {
     private readonly IEnumerable<IConciliacaoRegra> _regras;
+    private readonly CalculadoraImpactoService _calculadoraImpacto;
 
-    public ConciliacaoEngine(IEnumerable<IConciliacaoRegra> regras)
+    public ConciliacaoEngine(IEnumerable<IConciliacaoRegra> regras, CalculadoraImpactoService calculadoraImpacto)
     {
         _regras = regras;
+        _calculadoraImpacto = calculadoraImpacto;
     }
 
     public List<DivergenciasDto> Conciliar(long id, List<ItemNotaFiscalDto> itensXML, List<ItemMovimentacaoErpDto> itensERP)
@@ -70,6 +73,6 @@ public class ConciliacaoEngine
             }
         }
 
-        return divergencias;
+        return _calculadoraImpacto.CalcularImpactos(divergencias, itensXML, itensERP);
     }
 }

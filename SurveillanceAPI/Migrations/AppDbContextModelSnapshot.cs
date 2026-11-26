@@ -24,8 +24,8 @@ namespace SurveillanceAPI.Migrations
 
             modelBuilder.Entity("SurveillanceAPI.Domains.Comparacao", b =>
                 {
-                    b.Property<Guid>("ComparacaoId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long>("ComparacaoId")
+                        .HasColumnType("bigint");
 
                     b.Property<Guid>("AuditorUsuarioId")
                         .HasColumnType("uniqueidentifier");
@@ -80,8 +80,8 @@ namespace SurveillanceAPI.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<Guid>("ComparacaoId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<long>("ComparacaoId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("DataDeteccao")
                         .HasColumnType("datetime2");

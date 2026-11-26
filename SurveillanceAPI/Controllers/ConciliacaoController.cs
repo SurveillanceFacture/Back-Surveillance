@@ -1,10 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SurveillanceAPI.Dto.ApiUpload.Conciliacao;
-using SurveillanceAPI.Dto.ApiUpload.XML;
 using SurveillanceAPI.Services.Engine;
 
 namespace SurveillanceAPI.Controllers
@@ -29,7 +26,7 @@ namespace SurveillanceAPI.Controllers
 
             var divergencias = _engine.Conciliar(comparacaoId, request.ItensXml, request.ItensErp);
 
-            var resultadoLimitado = divergencias.Take(limite).ToList();
+            var resultadoLimitado = divergencias.OrderByDescending(d => d.ImpactoFinanceiro).Take(limite).ToList();
 
             return Ok(resultadoLimitado);
 
