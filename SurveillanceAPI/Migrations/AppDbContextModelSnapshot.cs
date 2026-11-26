@@ -289,6 +289,10 @@ namespace SurveillanceAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("HashTokenRedefinicao")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
                     b.Property<string>("NomeUsuario")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -303,6 +307,9 @@ namespace SurveillanceAPI.Migrations
                     b.Property<int>("TipoUsuarioId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("TokenRedefinicaoExpiraEm")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime?>("UltimoAcesso")
                         .HasColumnType("datetime2");
 
@@ -310,6 +317,10 @@ namespace SurveillanceAPI.Migrations
 
                     b.HasIndex("Email")
                         .IsUnique();
+
+                    b.HasIndex("HashTokenRedefinicao")
+                        .IsUnique()
+                        .HasFilter("[HashTokenRedefinicao] IS NOT NULL");
 
                     b.HasIndex("TipoUsuarioId");
 

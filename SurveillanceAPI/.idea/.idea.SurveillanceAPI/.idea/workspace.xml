@@ -14,6 +14,34 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="feat: prototipo de integracao com IA">
+      <change afterPath="$PROJECT_DIR$/Dto/LoginDto/EsqueciSenhaDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dto/LoginDto/RedefinirSenhaComTokenDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interface/IEmailSender.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Email/ApiEmailSender.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Email/EmailOptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Email/EmailServiceCollectionExtension.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Email/SmtpEmailSender.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Groq/GroqDivergenciaService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Groq/GroqOptions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Service/AutenticacaoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Service/AutenticacaoService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AutenticacaoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AutenticacaoController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/DivergenciaController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Entities/Usuario.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Entities/Usuario.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Enums/GravidadeDivergenciaEnum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Enums/GravidadeDivergenciaEnum.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exceptions/GroqExceptions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Persistence/Configuration/UsuarioConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Persistence/Configuration/UsuarioConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Persistence/Repository/UsuarioRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Persistence/Repository/UsuarioRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/IGroqDivergenciaService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/IUsuarioRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/IUsuarioRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20261111134534_Inicial.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20261111134534_Inicial.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20261113113746_SenhaTemporaria.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20261113113746_SenhaTemporaria.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SurveillanceAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SurveillanceAPI.csproj" afterDir="false" />
     <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="refactor: Melhora na redefinicao de senha e email do usuario">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/ConciliacaoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ConciliacaoController.cs" afterDir="false" />
@@ -32,7 +60,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="feature/login" />
+        <entry key="$PROJECT_DIR$/.." value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -43,17 +71,19 @@
     &quot;assignee&quot;: &quot;HenriqueBRM&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/SurveillanceFacture/Back-Surveillance.git&quot;,
-    &quot;accountId&quot;: &quot;7fd766ec-ad5c-48e1-a7f7-da743cc3d549&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/SurveillanceFacture/Back-Surveillance.git",
+    "accountId": "7fd766ec-ad5c-48e1-a7f7-da743cc3d549"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/47f87616cc4440db91dba39140060003f4a750/29/d5c08a4a/ArgumentException.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Roaming/Microsoft/UserSecrets/77ac4296-bc2c-484b-88d9-4b48bf3d1dbe/secrets.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../SurveillanceAPI.Test/NcmRegraTestes.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Applications/Groq/GroqDivergenciaService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Applications/Groq/GroqOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Applications/Service/UsuarioService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/AutenticacaoController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/DivergenciaController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/UsuarioController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Entities/Divergencia.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Entities/HistoricoDivergencia.cs" root0="FORCE_HIGHLIGHTING" />
@@ -63,77 +93,90 @@
     <setting file="file://$PROJECT_DIR$/Domains/Enums/GravidadeDivergenciaEnum.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Enums/StatusComparacao.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domains/Enums/TipoUsuarioEnum.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Dto/DivergenciaDto/DivergenciaEntradaDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Dto/DivergenciaDto/DivergenciaExplicadaDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Dto/DivergenciaDto/ExplicarDivergenciasResponseDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Dto/LoginDto/EsqueciSenhaDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Dto/LoginDto/LerLoginDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Dto/LoginDto/RedefinirSenhaComTokenDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Exceptions/DomainException.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Infrastructure/ExceptionHandling/DomainExceptionHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Infrastructure/OpenApi/BearerSecuritySchemeTransformer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Exceptions/GroqExceptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/ExceptionHandling/DomainExceptionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/OpenApi/BearerSecuritySchemeTransformer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/ComparacaoConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/DivergenciaConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/HistoricoDivergenciaConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Persistence/Configuration/UsuarioConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Interface/IEmailSender.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/obj/Debug/net10.0/.NETCoreApp,Version=v10.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Email/ApiEmailSender.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Email/EmailOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Email/EmailServiceCollectionExtension.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/Email/SmtpEmailSender.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="6.342570701926747E-13" />
-      <entry key="MS500" value="0.0038897840520058175" />
-      <entry key="S2" value="0.37572834802848887" />
-      <entry key="S5" value="1.1160150236022497" />
-      <entry key="S10" value="1.8008397492212909" />
-      <entry key="S30" value="3.7741923621665796" />
-      <entry key="S60" value="6.494799745975127" />
-      <entry key="M2" value="11.207265197838575" />
-      <entry key="M5" value="21.871705251478446" />
-      <entry key="M10" value="32.84763678658051" />
-      <entry key="M15" value="42.91698487052147" />
-      <entry key="M30" value="77.86917290345328" />
-      <entry key="H1" value="136.31530642223987" />
-      <entry key="H2" value="196.33806959159793" />
-      <entry key="H4" value="240.66368533621747" />
-      <entry key="D1" value="288.114831039996" />
-      <entry key="W1" value="297.413628455125" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000000004" />
+      <entry key="S2" value="1.000212582721263" />
+      <entry key="S5" value="1.0510777763698618" />
+      <entry key="S10" value="1.3191956277301329" />
+      <entry key="S30" value="2.124933528434796" />
+      <entry key="S60" value="3.5357516477904047" />
+      <entry key="M2" value="8.171351512840607" />
+      <entry key="M5" value="17.811576642313938" />
+      <entry key="M10" value="31.69885248727037" />
+      <entry key="M15" value="51.60072774642154" />
+      <entry key="M30" value="114.79010265592757" />
+      <entry key="H1" value="211.17313955346444" />
+      <entry key="H2" value="348.7188613422249" />
+      <entry key="H4" value="514.3969505996791" />
+      <entry key="D1" value="797.9353565052727" />
+      <entry key="W1" value="870.889309339421" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0000000000033298" />
-      <entry key="S30" value="1.0001493274141968" />
-      <entry key="S60" value="1.0122199596642838" />
-      <entry key="M2" value="1.1105439264448371" />
-      <entry key="M5" value="1.4146067097193444" />
-      <entry key="M10" value="1.6855902592048648" />
-      <entry key="M15" value="2.0175000039398365" />
-      <entry key="M30" value="3.8988408129401746" />
-      <entry key="H1" value="7.9522455527943325" />
-      <entry key="H2" value="12.57254259264427" />
-      <entry key="H4" value="16.149103632066605" />
-      <entry key="D1" value="20.084543284025425" />
-      <entry key="W1" value="20.86631809273564" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="7.1141869753733755E-171" />
+      <entry key="S10" value="1.451298189514827E-85" />
+      <entry key="S30" value="1.44430324832283E-28" />
+      <entry key="S60" value="3.0073616647042253E-14" />
+      <entry key="M2" value="5.123254697543284E-7" />
+      <entry key="M5" value="0.01691748437267574" />
+      <entry key="M10" value="0.6761133560309706" />
+      <entry key="M15" value="2.4028390172451974" />
+      <entry key="M30" value="8.924054227013286" />
+      <entry key="H1" value="18.71444563459168" />
+      <entry key="H2" value="30.61146210175487" />
+      <entry key="H4" value="43.293990949982906" />
+      <entry key="D1" value="63.85081140194663" />
+      <entry key="W1" value="69.06443884739352" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.06886906974228815" />
-      <entry key="MS500" value="0.5861151484066812" />
-      <entry key="S2" value="1.1243514115641517" />
-      <entry key="S5" value="1.9069127581280887" />
-      <entry key="S10" value="2.6478480757409986" />
-      <entry key="S30" value="4.681176159919866" />
-      <entry key="S60" value="7.432361854673737" />
-      <entry key="M2" value="12.25959517196304" />
-      <entry key="M5" value="23.247290856925478" />
-      <entry key="M10" value="34.507089054055406" />
-      <entry key="M15" value="44.913692512544905" />
-      <entry key="M30" value="81.75217320118624" />
-      <entry key="H1" value="144.2549405978043" />
-      <entry key="H2" value="208.9017878356036" />
-      <entry key="H4" value="256.807418826819" />
-      <entry key="D1" value="308.19830480710925" />
-      <entry key="W1" value="318.27978881995006" />
+      <entry key="MS100" value="0.9201876506248751" />
+      <entry key="MS500" value="0.9835020740262486" />
+      <entry key="S2" value="0.9960322235144164" />
+      <entry key="S5" value="1.0454863414209565" />
+      <entry key="S10" value="1.304811977567714" />
+      <entry key="S30" value="2.1082724299869997" />
+      <entry key="S60" value="3.5242421150949785" />
+      <entry key="M2" value="8.164465741845227" />
+      <entry key="M5" value="17.82519926591024" />
+      <entry key="M10" value="32.37040364470279" />
+      <entry key="M15" value="53.99556290055173" />
+      <entry key="M30" value="123.70053406835078" />
+      <entry key="H1" value="229.8727837666362" />
+      <entry key="H2" value="379.31722698634724" />
+      <entry key="H4" value="557.6810269292121" />
+      <entry key="D1" value="861.7835621457941" />
+      <entry key="W1" value="939.9533408947498" />
     </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -146,24 +189,85 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.SurveillanceAPI: http.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/upload",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.smartKeys_rider"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.SurveillanceAPI: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.SurveillanceAPI: https.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.All in SurveillanceAPI.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/loja-consumo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="All in SurveillanceAPI" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.SurveillanceAPI: https">
+    <configuration name="All in SurveillanceAPI" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/SurveillanceAPI.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="SurveillanceAPI: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SurveillanceAPI.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net10.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="http" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="SurveillanceAPI: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SurveillanceAPI.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net10.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="https" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue=".NET Launch Settings Profile.SurveillanceAPI: https" />
+        <item itemvalue=".NET Launch Settings Profile.SurveillanceAPI: http" />
+        <item itemvalue="HTTP Request.All in SurveillanceAPI" />
+        <item itemvalue="HTTP Request.All in SurveillanceAPI" />
+        <item itemvalue="HTTP Request.All in SurveillanceAPI" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="" />
@@ -179,8 +283,23 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor: Melhora na redefinicao de senha e email do usuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: Melhora na redefinicao de senha e email do usuario" />
+    <MESSAGE value="refactor: Trocando Guid ComparacaoId por long" />
+    <MESSAGE value="refactor: Preparacao de login e usuario para consumo" />
+    <MESSAGE value="refactor: Ajuste no Cors origin" />
+    <MESSAGE value="feat: prototipo de integracao com IA" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: prototipo de integracao com IA" />
   </component>
 </project>

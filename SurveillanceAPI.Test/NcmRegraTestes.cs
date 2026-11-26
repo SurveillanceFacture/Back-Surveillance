@@ -1,4 +1,3 @@
-﻿using SurveillanceAPI.Applications.Service.Auditoria;
 using SurveillanceAPI.Dto.ApiUpload.ERP;
 using SurveillanceAPI.Dto.ApiUpload.XML;
 using SurveillanceAPI.Services.Regras;

@@ -13,5 +13,10 @@
         {
             public ConflitoException(string message) : base(message) { }
         }
+        public class NaoAutorizadoException : DomainException
+        { public NaoAutorizadoException(string m) : base(m) { } }
+
+        public class ProibidoException : DomainException
+        { public ProibidoException(string m) : base(m) { } }
     }
 }
