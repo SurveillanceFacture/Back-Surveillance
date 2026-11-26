@@ -31,7 +31,7 @@ public class LojaController : ControllerBase
 
     [HttpPost]
     [Authorize(Roles = Admin)]
-    [EnableRateLimiting("login")]
+    [EnableRateLimiting("admin")]
     [ProducesResponseType(typeof(LerLojaDto), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]

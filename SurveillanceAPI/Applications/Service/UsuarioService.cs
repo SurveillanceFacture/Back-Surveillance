@@ -71,15 +71,16 @@ public class UsuarioService
         if (id == usuarioLogadoId && dto.TipoUsuarioId != usuario.TipoUsuarioId)
             throw new DomainException("Você não pode alterar o seu próprio tipo de usuário.");
         
-        var email = Normalizar(dto.Email);
-        if (email != usuario.Email && await _repository.EmailExisteAsync(email, id, ct))
-            throw new DomainException("E-mail já cadastrado.");
+        // E-mail não é mais alterado aqui: o único caminho é PUT /api/usuarios/{id}/email.
+        // Se o front ainda mandar um e-mail diferente do atual, falha com mensagem clara
+        // (em vez de ignorar em silêncio e parecer que salvou).
+        if (!string.IsNullOrWhiteSpace(dto.Email) && Normalizar(dto.Email) != usuario.Email)
+            throw new DomainException("Para trocar o e-mail use PUT /api/usuarios/{id}/email.");
 
         if (dto.TipoUsuarioId != usuario.TipoUsuarioId && await _loja.UsuarioVinculadoAsync(id, ct))
             throw new DomainException.ConflitoException("O usuário é responsável por uma loja ativa e não pode mudar de tipo.");
         
         usuario.AlterarNome(dto.NomeUsuario);
-        usuario.AlterarEmail(email);
         usuario.AlterarTipoUsuario(dto.TipoUsuarioId);
 
         await _repository.SalvarAsync(ct);
@@ -149,6 +150,59 @@ public class UsuarioService
         await _repository.SalvarAsync(ct);
     }
 
+
+    // ---------- Autoatendimento: nome e e-mail do próprio usuário, sempre com a senha atual ----------
+
+    public async Task<LerUsuarioDto> AlterarMeuNomeAsync(
+        Guid usuarioLogadoId, AlterarMeuNomeDto dto, CancellationToken ct)
+    {
+        var usuario = await ObterOuFalharAsync(usuarioLogadoId, ct);
+        ConferirSenhaAtual(usuario, dto.SenhaAtual);
+
+        var novoNome = dto.NovoNome.Trim();
+        if (novoNome == usuario.NomeUsuario)
+            throw new DomainException("O novo nome é igual ao atual.");
+
+        usuario.AlterarNome(novoNome);
+        await _repository.SalvarAsync(ct);
+
+        _logger.LogInformation("Usuário {Id} alterou o próprio nome.", usuarioLogadoId);
+
+        return Mapear(usuario);
+    }
+
+    public async Task<LerUsuarioDto> AlterarMeuEmailAsync(
+        Guid usuarioLogadoId, AlterarMeuEmailDto dto, CancellationToken ct)
+    {
+        var usuario = await ObterOuFalharAsync(usuarioLogadoId, ct);
+
+        // A senha vem ANTES de qualquer checagem de e-mail: quem não sabe a senha não descobre
+        // quais e-mails já estão cadastrados.
+        ConferirSenhaAtual(usuario, dto.SenhaAtual);
+
+        var email = Normalizar(dto.NovoEmail);
+
+        if (email == usuario.Email)
+            throw new DomainException("O novo e-mail é igual ao atual.");
+
+        if (await _repository.EmailExisteAsync(email, usuarioLogadoId, ct))
+            throw new DomainException("E-mail já cadastrado.");
+
+        var anterior = usuario.Email;
+        usuario.AlterarEmail(email);
+        await _repository.SalvarAsync(ct);
+
+        _logger.LogInformation("Usuário {Id} alterou o próprio e-mail de {Antigo} para {Novo}.",
+            usuarioLogadoId, anterior, email);
+
+        return Mapear(usuario);
+    }
+
+    private void ConferirSenhaAtual(Usuario usuario, string senhaAtual)
+    {
+        if (!_hasher.Validar(usuario.HashSenha, senhaAtual))
+            throw new DomainException("Senha atual incorreta.");
+    }
 
     private async Task<Usuario> ObterOuFalharAsync(Guid id, CancellationToken ct) =>
         await _repository.ObterPorIdAsync(id, ct)

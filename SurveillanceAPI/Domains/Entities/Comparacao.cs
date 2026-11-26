@@ -43,9 +43,16 @@ public class Comparacao
     }
 
     public void AdicionarDivergencia(string campo, string? valorXml,
-                                     GravidadeDivergencia gravidade)
+        GravidadeDivergencia gravidade)
     {
         _divergencias.Add(new Divergencia(campo,valorXml, gravidade));
+        Status = StatusComparacao.ComDivergencias;
+    }
+
+    public void AdicionarDivergencia(int numeroItem, string? codigoProduto, string? ean, string campo,
+        string? valorXml, string? valorErp, GravidadeDivergencia gravidade)
+    {
+        _divergencias.Add(new Divergencia(numeroItem, codigoProduto, ean, campo, valorXml, valorErp, gravidade));
         Status = StatusComparacao.ComDivergencias;
     }
 }

@@ -22,6 +22,9 @@ using SurveillanceAPI.Infraestructure.OpenApi;
 using SurveillanceAPI.Infrastructure.ExceptionHandling;
 using SurveillanceAPI.Infrastructure.Persistence.Repository;
 using SurveillanceAPI.Services.Email;
+using SurveillanceAPI.Applications.Correcao;
+using SurveillanceAPI.Applications.Transcricao;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -109,6 +112,30 @@ builder.Services.AddScoped<IConciliacaoRegra, ValorUnitarioRegra>();
 builder.Services.AddScoped<IConciliacaoRegra, QuantidadeRegra>();
 builder.Services.AddScoped<IConciliacaoRegra, NcmRegra>();
 builder.Services.AddScoped<ConciliacaoEngine>();
+
+// ---- IA (Groq) e correção autorizada ----
+builder.Services
+    .AddOptions<GroqOptions>()
+    .Bind(builder.Configuration.GetSection(GroqOptions.SectionName))
+    .PostConfigure(o =>
+    {
+        // Recomendado: user-secrets (Groq:ApiKey). A variável antiga continua valendo.
+        if (string.IsNullOrWhiteSpace(o.ApiKey))
+            o.ApiKey = Environment.GetEnvironmentVariable("GROQ_API_KEY") ?? string.Empty;
+    })
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
+
+builder.Services.AddHttpClient<IGroqChatClient, GroqChatClient>((sp, client) =>
+{
+    var o = sp.GetRequiredService<IOptions<GroqOptions>>().Value;
+    client.BaseAddress = new Uri(o.BaseUrl.EndsWith('/') ? o.BaseUrl : o.BaseUrl + "/");
+    client.Timeout = TimeSpan.FromSeconds(o.TimeoutSegundos);
+});
+
+builder.Services.AddScoped<ITranscritorDivergencias, TranscritorDivergencias>();
+builder.Services.AddScoped<AnalisadorDocumento>();
+builder.Services.AddScoped<CorrecaoService>();
 builder.Services.AddExceptionHandler<DomainExceptionHandler>();
 builder.Services.AddProblemDetails();
 
@@ -134,11 +161,32 @@ builder.Services.AddOpenApi(options =>
 builder.Services.AddRateLimiter(o =>
 {
     o.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    
+    o.OnRejected = async (ctx, ct) =>
+    {
+        if (ctx.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retry))
+            ctx.HttpContext.Response.Headers.RetryAfter = ((int)Math.Ceiling(retry.TotalSeconds)).ToString();
 
-    // Uma política por endpoint: cada uma tem o seu próprio balde por IP.
+        await ctx.HttpContext.Response.WriteAsJsonAsync(
+            new ProblemDetails
+            {
+                Status = StatusCodes.Status429TooManyRequests,
+                Title = "Muitas requisições",
+                Detail = "Você fez muitas requisições em pouco tempo. Tente novamente em instantes."
+            },
+            options: null,
+            contentType: "application/problem+json",
+            cancellationToken: ct);
+    };
     AdicionarPoliticaPorIp(o, "login", permitir: 5, janela: TimeSpan.FromMinutes(1));
     AdicionarPoliticaPorIp(o, "esqueci-senha", permitir: 3, janela: TimeSpan.FromMinutes(10));
     AdicionarPoliticaPorIp(o, "redefinir-senha", permitir: 10, janela: TimeSpan.FromMinutes(10));
+    AdicionarPoliticaPorUsuario(o, "conciliacao", permitir: 30, janela: TimeSpan.FromMinutes(1));
+    AdicionarPoliticaPorUsuario(o, "ia", permitir: 10, janela: TimeSpan.FromMinutes(1));
+    o.AddPolicy("perfil", ctx => RateLimitPartition.GetFixedWindowLimiter(
+        ctx.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? ctx.Connection.RemoteIpAddress?.ToString() ?? "anon",
+        _ => new FixedWindowRateLimiterOptions { PermitLimit = 5, Window = TimeSpan.FromMinutes(10) }));
+    AdicionarPoliticaPorUsuario(o, "admin", permitir: 30, janela: TimeSpan.FromMinutes(1));
 });
 
 var app = builder.Build();
@@ -217,6 +265,14 @@ static bool SenhaAlteradaDepoisDoToken(Usuario u, DateTime? emitidoEm)
     var limite = alteradaEm.Ticks - alteradaEm.Ticks % TimeSpan.TicksPerSecond;
     return emitidoEm.Value.Ticks < limite;
 }
+
+// Por usuário autenticado (o rate limiter roda depois do UseAuthorization); sem login, cai no IP.
+static void AdicionarPoliticaPorUsuario(RateLimiterOptions o, string nome, int permitir, TimeSpan janela) =>
+    o.AddPolicy(nome, ctx => RateLimitPartition.GetFixedWindowLimiter(
+        ctx.User.FindFirstValue(ClaimTypes.NameIdentifier)
+            ?? ctx.Connection.RemoteIpAddress?.ToString()
+            ?? "anon",
+        _ => new FixedWindowRateLimiterOptions { PermitLimit = permitir, Window = janela }));
 
 static bool RotaPermitidaComSenhaPendente(HttpRequest r)
 {

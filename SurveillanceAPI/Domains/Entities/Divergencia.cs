@@ -47,6 +47,17 @@ public class Divergencia
         DataDeteccao = DateTime.UtcNow;
     }
 
+    // Usado pela análise de documento: guarda também o item, o EAN e o valor do ERP.
+    internal Divergencia(int numeroItem, string? codigoProduto, string? ean, string campo,
+                         string? valorXml, string? valorErp, GravidadeDivergencia gravidade)
+        : this(campo, valorXml, gravidade)
+    {
+        NumeroItem = numeroItem;
+        CodigoProduto = codigoProduto?.Trim();
+        Ean = ean?.Trim();
+        ValorJson = Truncar(valorErp);
+    }
+
     public void IniciarAnalise(Guid usuarioId)
     {
         if (Status != StatusDivergencia.Aberta)

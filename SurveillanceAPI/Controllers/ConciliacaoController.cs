@@ -23,12 +23,11 @@ namespace SurveillanceAPI.Controllers
         
         [HttpPost]
         [Authorize(Roles = Auditor)]
-        [EnableRateLimiting("login")]
-        [AllowAnonymous]
+        [EnableRateLimiting("conciliacao")]
         public IActionResult Conciliar(
             [FromQuery] Guid comparacaoId,
             [FromBody] ConciliacaoRequestDto request,
-            [FromQuery] int limite = 10)
+            [FromQuery, System.ComponentModel.DataAnnotations.Range(1,500)] int limite = 10)
         {
 
             var divergencias = _engine.Conciliar(comparacaoId, request.ItensXml, request.ItensErp);

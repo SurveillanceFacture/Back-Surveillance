@@ -65,6 +65,92 @@ namespace SurveillanceAPI.Migrations
                     b.ToTable("Comparacao", (string)null);
                 });
 
+            modelBuilder.Entity("SurveillanceAPI.Domains.CorrecaoErp", b =>
+                {
+                    b.Property<Guid>("CorrecaoErpId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AlteracoesJson")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("AplicadaEm")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("AplicadaPorUsuarioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<long>("ComparacaoId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CriadaEm")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Ean")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("ExpiraEm")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Explicacao")
+                        .IsRequired()
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
+
+                    b.Property<bool>("ExplicacaoGeradaPorIa")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("HashErp")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<string>("HashErpDepois")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<string>("IdLancamento")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("IndiceItem")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("LojaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("NumeroItem")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<Guid>("UsuarioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CorrecaoErpId");
+
+                    b.HasIndex("AplicadaPorUsuarioId");
+
+                    b.HasIndex("ComparacaoId");
+
+                    b.HasIndex("LojaId");
+
+                    b.HasIndex("UsuarioId", "Status");
+
+                    b.ToTable("CorrecaoErp", (string)null);
+                });
+
             modelBuilder.Entity("SurveillanceAPI.Domains.Divergencia", b =>
                 {
                     b.Property<long>("DivergenciaId")
@@ -331,6 +417,34 @@ namespace SurveillanceAPI.Migrations
                     b.Navigation("Auditor");
 
                     b.Navigation("Loja");
+                });
+
+            modelBuilder.Entity("SurveillanceAPI.Domains.CorrecaoErp", b =>
+                {
+                    b.HasOne("SurveillanceAPI.Domains.Usuario", null)
+                        .WithMany()
+                        .HasForeignKey("AplicadaPorUsuarioId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("SurveillanceAPI.Domains.Comparacao", "Comparacao")
+                        .WithMany()
+                        .HasForeignKey("ComparacaoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SurveillanceAPI.Domains.Loja", null)
+                        .WithMany()
+                        .HasForeignKey("LojaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SurveillanceAPI.Domains.Usuario", null)
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Comparacao");
                 });
 
             modelBuilder.Entity("SurveillanceAPI.Domains.Divergencia", b =>

@@ -1,4 +1,5 @@
-﻿using SurveillanceAPI.Dto.ApiUpload.ERP;
+﻿using System.Globalization;
+using SurveillanceAPI.Dto.ApiUpload.ERP;
 using SurveillanceAPI.Dto.ApiUpload.XML;
 using SurveillanceAPI.Interfaces;
 
@@ -18,15 +19,11 @@ namespace SurveillanceAPI.Services.Regras
                     NumeroItem = ItemXML.NumeroItem,
                     CampoComparado = NomeCampo,
                     Ean = ItemXML.Ean,
-                    ValorXML = ItemXML.ValorUnitario.ToString(),
-                    ValorERP = ItemERP.ValorUnitario.ToString(),
+                    ValorXML = ItemXML.ValorUnitario.ToString(CultureInfo.InvariantCulture),
+                    ValorERP = ItemERP.ValorUnitario.ToString(CultureInfo.InvariantCulture),
                     Gravidade = "Critica",
                     DataDeteccao = DateTimeOffset.UtcNow
-
-
-
                 };
-
             }
             return null;
         }

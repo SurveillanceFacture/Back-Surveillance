@@ -14,6 +14,7 @@ public class AppDbContext : DbContext
     public DbSet<Comparacao> Comparacoes => Set<Comparacao>();
     public DbSet<Divergencia> Divergencias => Set<Divergencia>();
     public DbSet<HistoricoDivergencia> HistoricosDivergencia => Set<HistoricoDivergencia>();
+    public DbSet<CorrecaoErp> CorrecoesErp => Set<CorrecaoErp>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
