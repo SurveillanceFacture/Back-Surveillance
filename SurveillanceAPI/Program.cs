@@ -1,7 +1,3 @@
-using System.Security.Claims;
-using System.Text;
-using SurveillanceAPI.Services.Engine;
-using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
@@ -11,17 +7,17 @@ using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using SurveillanceAPI.Applications.Authentication;
 using SurveillanceAPI.Applications.Service;
-using SurveillanceAPI.Domains;
+using SurveillanceAPI.Infraestructure.OpenApi;
 using SurveillanceAPI.Infraestructure.Persistence;
 using SurveillanceAPI.Infraestructure.Persistence.Repositories;
+using SurveillanceAPI.Infrastructure.ExceptionHandling;
 using SurveillanceAPI.Inteface;
 using SurveillanceAPI.Interface;
 using SurveillanceAPI.Interfaces;
+using SurveillanceAPI.Services.Engine;
+using SurveillanceAPI.Services.Impacto;
 using SurveillanceAPI.Services.Regras;
-using SurveillanceAPI.Infraestructure.OpenApi;
-using SurveillanceAPI.Infrastructure.ExceptionHandling;
-using SurveillanceAPI.Infrastructure.Persistence.Repository;
-using SurveillanceAPI.Services.Email;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -114,6 +110,7 @@ builder.Services.AddScoped<IConciliacaoRegra, CodigoProdutoRegra>();
 
 
 builder.Services.AddScoped<ConciliacaoEngine>();
+builder.Services.AddScoped<CalculadoraImpactoService>();
 builder.Services.AddExceptionHandler<DomainExceptionHandler>();
 builder.Services.AddProblemDetails();
 
