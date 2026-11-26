@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 namespace SurveillanceAPI.Applications.Transcricao;
 
 // Valida o CONTEÚDO devolvido pela IA (o schema só garante o formato).
-// Regra central: todo número do texto precisa existir nos fatos daquele item.
 public static class ValidadorTranscricao
 {
     private static readonly Regex Numeros =
