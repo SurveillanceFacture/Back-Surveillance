@@ -82,10 +82,24 @@ public sealed class DivergenciaRestanteDto
 public sealed class AplicacaoCorrecaoResponseDto
 {
     public int CorrecoesAplicadas { get; init; }
-    public int DivergenciasResolvidas { get; init; }
+    public int DivergenciasComCorrecaoGerada { get; init; }
     public string HashErpDepois { get; init; } = string.Empty;
     public IReadOnlyList<DivergenciaRestanteDto> Restantes { get; init; } = [];
 
     // Cópia corrigida do JSON do ERP, pronta para o auditor baixar e importar de volta no ERP.
     public JsonNode? ErpCorrigido { get; init; }
+}
+
+public sealed class ConfirmarCorrecoesRequestDto
+{
+    [Range(1, long.MaxValue)] public long ComparacaoId { get; set; }
+    [Required] public NotaFiscalDto? NotaFiscal { get; set; }
+    [ValidateNever] public JsonNode? Erp { get; set; }   // o ERP DEPOIS da importação
+}
+
+public sealed class ConfirmacaoCorrecaoResponseDto
+{
+    public int Confirmadas { get; init; }
+    public int Reabertas { get; init; }
+    public IReadOnlyList<DivergenciaRestanteDto> Restantes { get; init; } = [];
 }

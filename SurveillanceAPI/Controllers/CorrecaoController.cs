@@ -22,9 +22,7 @@ public class CorrecaoController : ControllerBase
         Guid.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out var id)
             ? id
             : throw new DomainException("Credenciais Invalidas");
-
-    // Passo 1: o código calcula as correções possíveis e a IA (opcional) explica em linguagem simples.
-    // Nada é alterado aqui. As propostas expiram em 30 minutos.
+    
     [HttpPost("propor")]
     [EnableRateLimiting("ia")]
     [RequestSizeLimit(30_000_000)]
@@ -37,8 +35,7 @@ public class CorrecaoController : ControllerBase
         return Ok(await _service.ProporAsync(UsuarioLogadoId, request, ct));
     }
 
-    // Passo 2: o auditor autoriza explicitamente cada proposta (por id). O servidor revalida tudo e devolve
-    // uma CÓPIA corrigida do JSON do ERP para o auditor importar de volta. O XML nunca é alterado.
+    
     [HttpPost("aplicar")]
     [EnableRateLimiting("conciliacao")]
     [RequestSizeLimit(30_000_000)]
@@ -50,5 +47,17 @@ public class CorrecaoController : ControllerBase
         [FromBody] AplicarCorrecoesRequestDto request, CancellationToken ct)
     {
         return Ok(await _service.AplicarAsync(UsuarioLogadoId, request, ct));
+    }
+    
+    [HttpPost("confirmar")]
+    [EnableRateLimiting("conciliacao")]
+    [RequestSizeLimit(30_000_000)]
+    [ProducesResponseType(typeof(ConfirmacaoCorrecaoResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<ActionResult<ConfirmacaoCorrecaoResponseDto>> Confirmar(
+        [FromBody] ConfirmarCorrecoesRequestDto request, CancellationToken ct)
+    {
+        return Ok(await _service.ConfirmarAsync(UsuarioLogadoId, request, ct));
     }
 }

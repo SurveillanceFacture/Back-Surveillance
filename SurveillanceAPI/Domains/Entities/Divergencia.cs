@@ -68,6 +68,26 @@ public class Divergencia
 
         RegistrarMudanca(StatusDivergencia.EmAnalise, usuarioId, null);
     }
+    
+    public void MarcarCorrecaoGerada(Guid usuarioId, string? observacao = null)
+    {
+        if (Status is not (StatusDivergencia.Aberta or StatusDivergencia.EmAnalise))
+            throw new DomainException("Só divergências abertas ou em análise podem ter correção gerada.");
+        if (usuarioId == Guid.Empty)
+            throw new DomainException("Usuário inválido.");
+
+        RegistrarMudanca(StatusDivergencia.CorrecaoGerada, usuarioId, observacao);
+    }
+
+    public void Reabrir(Guid usuarioId, string? observacao = null)
+    {
+        if (Status != StatusDivergencia.CorrecaoGerada)
+            throw new DomainException("Só divergências com correção gerada podem ser reabertas.");
+        if (usuarioId == Guid.Empty)
+            throw new DomainException("Usuário inválido.");
+
+        RegistrarMudanca(StatusDivergencia.Aberta, usuarioId, observacao);
+    }
 
     public void Resolver(Guid usuarioId, string? observacao = null) =>
         Fechar(StatusDivergencia.Resolvida, usuarioId, observacao);

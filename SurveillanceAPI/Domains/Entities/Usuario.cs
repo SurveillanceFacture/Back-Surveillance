@@ -83,7 +83,7 @@ namespace SurveillanceAPI.Domains
                 throw new DomainException("Nome muito longo.");
             }
 
-            NomeUsuario = novoNome;
+            NomeUsuario = novoNome.Trim();
         }
         public void DefinirSenhaTemporaria(string novoHashSenha, TimeSpan validade)
         {

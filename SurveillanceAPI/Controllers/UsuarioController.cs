@@ -100,6 +100,7 @@ public class UsuarioController : ControllerBase
     /// <summary>Único caminho para trocar o e-mail de outro usuário (admin). Registra no log quem trocou.</summary>
     [HttpPut("{id:guid}/email")]
     [Authorize(Roles = Admin)]
+    [EnableRateLimiting("perfil")]
     [ProducesResponseType(typeof(LerUsuarioDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -110,6 +111,7 @@ public class UsuarioController : ControllerBase
  
     [HttpPut("{id:guid}/senha")]
     [Authorize(Roles = Admin)]
+    [EnableRateLimiting("perfil")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> RedefinirSenha(Guid id, RedefinirSenhaDto dto, CancellationToken ct)

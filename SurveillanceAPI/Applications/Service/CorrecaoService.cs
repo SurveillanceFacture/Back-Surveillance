@@ -40,8 +40,6 @@ public class CorrecaoService
         _log = log;
     }
 
-    // ------------------------------------------------------------------ PROPOR
-
     public async Task<PropostaCorrecaoResponseDto> ProporAsync(
         Guid usuarioId, PropostaCorrecaoRequestDto req, CancellationToken ct)
     {
@@ -171,7 +169,7 @@ public class CorrecaoService
         };
     }
 
-    // ------------------------------------------------------------------ APLICAR
+   
 
     public async Task<AplicacaoCorrecaoResponseDto> AplicarAsync(
         Guid usuarioId, AplicarCorrecoesRequestDto req, CancellationToken ct)
@@ -188,7 +186,7 @@ public class CorrecaoService
             .Where(c => ids.Contains(c.CorrecaoErpId))
             .ToListAsync(ct);
 
-        // Mesma resposta para "não existe" e "é de outro usuário": não revela a existência de propostas alheias.
+        
         if (propostas.Count != ids.Count || propostas.Any(p => p.UsuarioId != usuarioId))
             throw new DomainException.NaoEncontradoException("Proposta não encontrada.");
 
@@ -214,11 +212,10 @@ public class CorrecaoService
         ValidarLojaDoErp(erpOriginal, loja);
         var antes = _analisador.Analisar(nota, erpOriginal);
 
-        // Escreve numa CÓPIA; o original do cliente nunca é tocado.
         var copia = erpNode.DeepClone();
         ErpJsonPatcher.Aplicar(copia, propostas);
 
-        // Conferência: o motor roda de novo no JSON corrigido.
+        
         var depois = _analisador.Analisar(nota, LerErp(copia));
 
         var chavesAntes = antes.Divergencias.Select(ChaveDe).ToHashSet();
@@ -241,7 +238,7 @@ public class CorrecaoService
             .Where(d => d.ComparacaoId == comparacao.ComparacaoId)
             .ToListAsync(ct);
 
-        var resolvidas = 0;
+        var geradas = 0;
         foreach (var p in propostas)
         {
             foreach (var alteracao in p.Alteracoes().Where(a => !a.Derivada))
@@ -253,8 +250,8 @@ public class CorrecaoService
                     if (d.CampoComparado != alteracao.CampoComparado) continue;
                     if ((d.Ean ?? string.Empty) != (p.Ean ?? string.Empty)) continue;
 
-                    d.Resolver(usuarioId, $"Corrigido no JSON do ERP (correção {p.CorrecaoErpId}).");
-                    resolvidas++;
+                    d.MarcarCorrecaoGerada(usuarioId, $"Correção {p.CorrecaoErpId} gerada; aguardando confirmação do ERP.");
+                    geradas++;
                 }
             }
 
@@ -272,12 +269,12 @@ public class CorrecaoService
 
         _log.LogInformation(
             "Correções aplicadas: usuario={Usuario} comparacao={Comparacao} propostas={Propostas} resolvidas={Resolvidas}",
-            usuarioId, comparacao.ComparacaoId, propostas.Count, resolvidas);
+            usuarioId, comparacao.ComparacaoId, propostas.Count, geradas);
 
         return new AplicacaoCorrecaoResponseDto
         {
             CorrecoesAplicadas = propostas.Count,
-            DivergenciasResolvidas = resolvidas,
+            DivergenciasComCorrecaoGerada = geradas,
             HashErpDepois = hashDepois,
             Restantes = depois.Divergencias
                 .Select(a => new DivergenciaRestanteDto
@@ -289,6 +286,69 @@ public class CorrecaoService
                 })
                 .ToList(),
             ErpCorrigido = copia
+        };
+    }
+    
+    public async Task<ConfirmacaoCorrecaoResponseDto> ConfirmarAsync(
+    Guid usuarioId, ConfirmarCorrecoesRequestDto req, CancellationToken ct)
+    {
+        var nota = req.NotaFiscal ?? throw new DomainException("Envie a nota fiscal.");
+        var erpNode = req.Erp ?? throw new DomainException("Envie o JSON do ERP já importado.");
+        ValidarNota(nota);
+
+        var loja = await ObterLojaDoAuditorAsync(usuarioId, nota, ct);
+
+        var comparacao = await _db.Comparacoes
+                             .Include(c => c.Divergencias)
+                             .FirstOrDefaultAsync(c => c.ComparacaoId == req.ComparacaoId && c.LojaId == loja.LojaId, ct)
+                         ?? throw new DomainException.NaoEncontradoException("Análise não encontrada.");
+
+        if (HashNota(nota) != comparacao.HashXml)
+        throw new DomainException.ConflitoException("A nota enviada é diferente da que foi analisada.");
+
+        var erp = LerErp(erpNode);
+        ValidarLojaDoErp(erp, loja);
+
+        var atual = _analisador.Analisar(nota, erp);
+        var chavesAtuais = atual.Divergencias.Select(ChaveDe).ToHashSet();
+
+        var pendentes = comparacao.Divergencias
+            .Where(d => d.Status == StatusDivergencia.CorrecaoGerada)
+            .ToList();
+
+        int confirmadas = 0, reabertas = 0;
+        foreach (var d in pendentes)
+        {
+            if (chavesAtuais.Contains((d.Ean ?? string.Empty, d.CampoComparado ?? string.Empty)))
+            {
+                d.Reabrir(usuarioId, "O ERP reenviado ainda contém esta divergência.");
+               reabertas++;
+            }
+            else
+            { 
+                d.Resolver(usuarioId, "Confirmado: ausente no ERP reenviado.");
+                confirmadas++;
+            }
+        }
+        
+        comparacao.RecalcularStatus();
+
+        await _db.SaveChangesAsync(ct);
+
+        _log.LogInformation("Confirmação: comparacao={C} confirmadas={Ok} reabertas={Re}",
+        comparacao.ComparacaoId, confirmadas, reabertas);
+
+        return new ConfirmacaoCorrecaoResponseDto
+        {
+            Confirmadas = confirmadas,
+            Reabertas = reabertas,
+            Restantes = atual.Divergencias.Select(a => new DivergenciaRestanteDto
+            {
+                NumeroItem = a.Divergencia.NumeroItem,
+                Ean = a.Divergencia.Ean,
+                Campo = a.Divergencia.CampoComparado,
+                Gravidade = a.Divergencia.Gravidade
+            }).ToList()
         };
     }
 

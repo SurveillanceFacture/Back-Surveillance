@@ -14,22 +14,21 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="feat: integracao da IA e resetar senha por email">
-      <change afterPath="$PROJECT_DIR$/../SurveillanceAPI.Test/AnalisadorDocumentoTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SurveillanceAPI.Test/ErpJsonPatcherTests.cs" afterDir="false" />
+    <list default="true" id="754964cb-d9a6-4653-816f-f727731935b0" name="Changes" comment="feat:">
+      <change afterPath="$PROJECT_DIR$/../SurveillanceAPI.Test/DivergenciaStatusTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/Debug/net10.0/SurveillanceAPI.Test.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/Debug/net10.0/SurveillanceAPI.Test.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/Debug/net10.0/SurveillanceAPI.Test.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/Debug/net10.0/SurveillanceAPI.Test.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/Debug/net10.0/SurveillanceAPI.Test.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/Debug/net10.0/SurveillanceAPI.Test.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/Debug/net10.0/SurveillanceAPI.Test.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/Debug/net10.0/SurveillanceAPI.Test.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/SurveillanceAPI.Test.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/SurveillanceAPI.Test.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../SurveillanceAPI.Test/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurveillanceAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications/Correcao/AnalisadorDocumento.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Correcao/AnalisadorDocumento.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applications/Correcao/Modelos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Correcao/Modelos.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Applications/Service/CorrecaoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/Service/CorrecaoService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SurveillanceAPI.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/SurveillanceAPI.slnx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/CorrecaoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CorrecaoController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/UsuarioController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UsuarioController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Entities/Comparacao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Entities/Comparacao.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Entities/Divergencia.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Entities/Divergencia.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Entities/Usuario.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Entities/Usuario.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Enums/StatusComparacao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Enums/StatusComparacao.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domains/Enums/StatusDivergencia.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Enums/StatusDivergencia.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dto/CorrecaoDto/CorrecaoDtos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dto/CorrecaoDto/CorrecaoDtos.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +58,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../SurveillanceAPI.Test/AnalisadorDocumentoTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../SurveillanceAPI.Test/DivergenciaStatusTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../SurveillanceAPI.Test/ErpJsonPatcherTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Applications/Correcao/AnalisadorDocumento.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Applications/Correcao/ErpJsonPatcher.cs" root0="FORCE_HIGHLIGHTING" />
@@ -120,61 +120,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.5070733142576018" />
-      <entry key="MS500" value="3.523393277495337" />
-      <entry key="S2" value="5.153786740437261" />
-      <entry key="S5" value="5.63724382986605" />
-      <entry key="S10" value="5.814290871308908" />
-      <entry key="S30" value="6.031048999852213" />
-      <entry key="S60" value="8.231888568272016" />
-      <entry key="M2" value="21.444106579062858" />
-      <entry key="M5" value="82.12332113388867" />
-      <entry key="M10" value="167.60389635510276" />
-      <entry key="M15" value="227.5341381046547" />
-      <entry key="M30" value="336.55063610884116" />
-      <entry key="H1" value="462.0727772568332" />
-      <entry key="H2" value="640.7697961565132" />
-      <entry key="H4" value="879.3240767559122" />
-      <entry key="D1" value="1363.4657702260076" />
-      <entry key="W1" value="1503.248233152284" />
+      <entry key="MS100" value="2.535759791119084E-22" />
+      <entry key="MS500" value="4.795364481613649E-5" />
+      <entry key="S2" value="0.08321572582727318" />
+      <entry key="S5" value="0.3698981537535489" />
+      <entry key="S10" value="0.6083176929521987" />
+      <entry key="S30" value="1.1234214143970775" />
+      <entry key="S60" value="2.822324513151794" />
+      <entry key="M2" value="6.364297281724951" />
+      <entry key="M5" value="16.14289668309809" />
+      <entry key="M10" value="30.002395472564917" />
+      <entry key="M15" value="48.005025011625776" />
+      <entry key="M30" value="127.01509099769002" />
+      <entry key="H1" value="280.8049428632522" />
+      <entry key="H2" value="507.7207852487424" />
+      <entry key="H4" value="797.2679576611459" />
+      <entry key="D1" value="1386.4871471447261" />
+      <entry key="W1" value="1559.880092614503" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.77178173508442E-178" />
-      <entry key="S2" value="3.6484009075007024E-45" />
-      <entry key="S5" value="1.6781895870890383E-18" />
-      <entry key="S10" value="1.2954495694889242E-9" />
-      <entry key="S30" value="0.0010901179822039493" />
-      <entry key="S60" value="0.03301693477904861" />
-      <entry key="M2" value="0.18170562673770288" />
-      <entry key="M5" value="0.5056624798706384" />
-      <entry key="M10" value="0.7341938710230875" />
-      <entry key="M15" value="0.9314436898856707" />
-      <entry key="M30" value="1.9289662219999641" />
-      <entry key="H1" value="6.00587757597143" />
-      <entry key="H2" value="16.87656661647407" />
-      <entry key="H4" value="33.81192926575914" />
-      <entry key="D1" value="68.98299350694187" />
-      <entry key="W1" value="79.13143965028216" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0000000000000002" />
+      <entry key="S30" value="1.0000121583883679" />
+      <entry key="S60" value="1.0059914231525675" />
+      <entry key="M2" value="1.1338024426550128" />
+      <entry key="M5" value="1.866465610733675" />
+      <entry key="M10" value="2.6995472006599237" />
+      <entry key="M15" value="3.3015629837741667" />
+      <entry key="M30" value="4.799958830639673" />
+      <entry key="H1" value="8.307161980220767" />
+      <entry key="H2" value="17.926879095094883" />
+      <entry key="H4" value="34.8500973127334" />
+      <entry key="D1" value="73.89868419794824" />
+      <entry key="W1" value="85.78747158685302" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.4422785450183062" />
-      <entry key="MS500" value="3.4898768369337327" />
-      <entry key="S2" value="5.141126816279558" />
-      <entry key="S5" value="5.631667870264059" />
-      <entry key="S10" value="5.811408895803734" />
-      <entry key="S30" value="6.030838087146291" />
-      <entry key="S60" value="8.261540971624273" />
-      <entry key="M2" value="21.618470311175418" />
-      <entry key="M5" value="82.62076952011338" />
-      <entry key="M10" value="168.33184618596198" />
-      <entry key="M15" value="228.46046139070185" />
-      <entry key="M30" value="338.4752682750031" />
-      <entry key="H1" value="468.0729895929135" />
-      <entry key="H2" value="657.6386416550199" />
-      <entry key="H4" value="913.1280518663707" />
-      <entry key="D1" value="1432.4459293354978" />
-      <entry key="W1" value="1582.3792039600862" />
+      <entry key="MS100" value="8.936069921543125E-5" />
+      <entry key="MS500" value="0.1549905127151271" />
+      <entry key="S2" value="0.6995363513946424" />
+      <entry key="S5" value="1.1792094656961212" />
+      <entry key="S10" value="1.5021391934362318" />
+      <entry key="S30" value="2.08469532741513" />
+      <entry key="S60" value="3.8080598028831494" />
+      <entry key="M2" value="7.485810832577451" />
+      <entry key="M5" value="17.999272924536925" />
+      <entry key="M10" value="32.69343773331517" />
+      <entry key="M15" value="51.29896433714401" />
+      <entry key="M30" value="131.80853190846724" />
+      <entry key="H1" value="289.1056947581637" />
+      <entry key="H2" value="525.640109620476" />
+      <entry key="H4" value="832.1102242713304" />
+      <entry key="D1" value="1460.3828699272256" />
+      <entry key="W1" value="1645.6670670532853" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -304,6 +304,7 @@
     <MESSAGE value="feat: prototipo de integracao com IA" />
     <MESSAGE value="feat: prototipo de integracao resetar senha" />
     <MESSAGE value="feat: integracao da IA e resetar senha por email" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: integracao da IA e resetar senha por email" />
+    <MESSAGE value="feat: Patcher e AnalisadorDocumento.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Patcher e AnalisadorDocumento.cs" />
   </component>
 </project>

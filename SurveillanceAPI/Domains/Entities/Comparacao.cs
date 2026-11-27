@@ -55,4 +55,17 @@ public class Comparacao
         _divergencias.Add(new Divergencia(numeroItem, codigoProduto, ean, campo, valorXml, valorErp, gravidade));
         Status = StatusComparacao.ComDivergencias;
     }
+    
+    public void RecalcularStatus()
+    {
+        if (_divergencias.Count == 0)
+        {
+            Status = StatusComparacao.Conforme;
+            return;
+        }
+
+        Status = _divergencias.All(d => d.Status is StatusDivergencia.Resolvida or StatusDivergencia.Justificada)
+            ? StatusComparacao.Regularizada
+            : StatusComparacao.ComDivergencias;
+    }
 }
