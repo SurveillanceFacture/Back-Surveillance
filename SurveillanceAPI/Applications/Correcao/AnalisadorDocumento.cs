@@ -21,6 +21,9 @@ public sealed class AnalisadorDocumento
     private static readonly Regex Ncm8Digitos =
         new("^[0-9]{8}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
+    private static bool EanValido(string ean) =>
+        ean.Length is 8 or 12 or 13 or 14 && ean.All(char.IsAsciiDigit);
+    
     private readonly ConciliacaoEngine _engine;
 
     public AnalisadorDocumento(ConciliacaoEngine engine) => _engine = engine;
@@ -39,10 +42,10 @@ public sealed class AnalisadorDocumento
 
     public AnaliseDocumento Analisar(NotaFiscalDto nota, MovimentacaoErpDto erp)
     {
-        var chave = Digitos.Somente(nota.ChaveAcesso);
+        var chave = ChaveDfe.Normalizar(nota.ChaveAcesso);
 
         var lancamentos = erp.Movimentacoes
-            .Where(m => Digitos.Somente(m.Documento?.Chave) == chave)
+            .Where(m => ChaveDfe.Normalizar(m.Documento?.Chave) == chave)
             .ToList();
 
         if (lancamentos.Count == 0)
@@ -101,8 +104,16 @@ public sealed class AnalisadorDocumento
             c.Motivo = MotivosSemCorrecao.ItemAusente;
             return c;
         }
-
+        
+       
+        
         var ean = d.Ean ?? string.Empty;
+        if (!EanValido(ean))
+        {
+            c.Motivo = MotivosSemCorrecao.SemGtin;
+            return c;
+        }
+        
         var xmlItens = nota.Itens.Where(i => i.Ean == ean).ToList();
         var erpItens = itensErp.Where(x => x.Item.Ean == ean).ToList();
 

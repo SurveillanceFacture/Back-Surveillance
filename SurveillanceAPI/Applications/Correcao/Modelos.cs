@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using SurveillanceAPI.Domains;
 using SurveillanceAPI.Dto.ApiUpload.XML;
 
@@ -32,6 +33,33 @@ public static class MotivosSemCorrecao
     public const string ValorInvalido = "o valor da nota é zero ou negativo";
     public const string TotalNaoConfere = "o valor total da nota não confere com quantidade × valor unitário";
     public const string SemRegra = "não há regra de correção automática para este campo";
+    public const string SemGtin = "o item não tem EAN (GTIN) válido e não dá para localizá-lo com segurança no ERP";
+}
+
+// Chave de acesso de DF-e: 44 posições. Desde 01/07/2026 (NT 2026.004) o trecho do CNPJ do emitente
+// pode ter letras, então a chave NÃO é mais um número: [0-9]{6}[A-Z0-9]{12}[0-9]{26}.
+public static class ChaveDfe
+{
+    private static readonly Regex Formato =
+        new("^[0-9]{6}[A-Z0-9]{12}[0-9]{26}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+    // Mantém só dígitos e letras A-Z (maiúsculas): tira espaços e pontuação do DANFE e padroniza a caixa.
+    public static string Normalizar(string? valor)
+    {
+        if (string.IsNullOrEmpty(valor)) return string.Empty;
+
+        var buffer = new char[valor.Length];
+        var n = 0;
+        foreach (var c in valor)
+        {
+            if (c is >= '0' and <= '9' or >= 'A' and <= 'Z') buffer[n++] = c;
+            else if (c is >= 'a' and <= 'z') buffer[n++] = char.ToUpperInvariant(c);
+        }
+
+        return new string(buffer, 0, n);
+    }
+
+    public static bool Valida(string normalizada) => Formato.IsMatch(normalizada);
 }
 
 public static class Digitos

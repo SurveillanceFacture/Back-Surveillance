@@ -60,7 +60,7 @@ public class CorrecaoService
         var agora = DateTime.UtcNow;
         var hashErp = HashJson(erpNode);
 
-        var comparacao = new Comparacao(loja.LojaId, usuarioId, Digitos.Somente(nota.ChaveAcesso), HashNota(nota));
+        var comparacao = new Comparacao(loja.LojaId, usuarioId, ChaveDfe.Normalizar(nota.ChaveAcesso), HashNota(nota));
 
         foreach (var a in analise.Divergencias)
         {
@@ -299,10 +299,11 @@ public class CorrecaoService
 
     private static void ValidarNota(NotaFiscalDto nota)
     {
-        if (Digitos.Somente(nota.ChaveAcesso).Length != 44)
-            throw new DomainException("A chave de acesso da nota precisa ter 44 dígitos.");
+        if (!ChaveDfe.Valida(ChaveDfe.Normalizar(nota.ChaveAcesso)))
+            throw new DomainException("A chave de acesso da nota é inválida (44 posições; o trecho do CNPJ pode ter letras).");
 
-        if (Digitos.Somente(nota.CnpjDestinatario).Length != 14)
+        // Loja.NormalizarCnpj já aceita letras e dígitos (CNPJ alfanumérico).
+        if (Loja.NormalizarCnpj(nota.CnpjDestinatario).Length != 14)
             throw new DomainException("O CNPJ do destinatário da nota é inválido.");
 
         if (nota.Itens.Count == 0)
